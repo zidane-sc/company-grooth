@@ -19,8 +19,6 @@ Route::group(['prefix' => 'admin'], function () {
     Auth::routes();
 
     Route::get('/home', 'HomeController@index')->name('home');
-
-
 });
 
 
@@ -30,3 +28,8 @@ Route::group(['prefix' => 'admin'], function () {
 Route::get('/', function () {
     return view('welcome');
 });
+
+Auth::routes();
+
+// Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/', 'MainController@index')->name('main.index');
