@@ -18,10 +18,14 @@ use Illuminate\Support\Facades\Route;
 Route::group(['prefix' => 'admin'], function () {
     Auth::routes();
 
+<<<<<<< HEAD
     Route::get('/dashboard', function () {
         return view('server.dashboard');
     });
 
+=======
+    Route::get('/home', 'HomeController@index')->name('home');
+>>>>>>> fc91d0ebc4fce7dfc71dd6a28d1b91e2e30c8cfc
 });
 
 
@@ -31,3 +35,8 @@ Route::group(['prefix' => 'admin'], function () {
 Route::get('/', function () {
     return view('welcome');
 });
+
+Auth::routes();
+
+// Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/', 'MainController@index')->name('main.index');
