@@ -1,5 +1,6 @@
 <?php
 
+use App\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -19,9 +20,17 @@ Route::group(['prefix' => 'admin'], function () {
     Auth::routes();
 
     Route::get('/dashboard', function () {
-        return view('server.dashboard');
-    })->middleware('auth');
+        $user = count(User::all());
+        return view('server.dashboard', ['user' => $user]);
+    })->middleware('auth')->name('dashboard');
 
+    // User
+    Route::get('users', 'UserController@index')->name('users.index');
+    Route::get('users/create', 'UserController@create')->name('users.create');
+    Route::post('users', 'UserController@store')->name('users.store');
+    Route::get('users/{id}/edit', 'UserController@edit')->name('users.edit');
+    Route::patch('users/{id}', 'UserController@update')->name('users.update');
+    Route::delete('users/{id}', 'UserController@destroy')->name('users.destroy');
 });
 
 
