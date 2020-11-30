@@ -4,7 +4,7 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-	<title>Utouch - HomePage</title>
+	<title>Grooth | Company Profile</title>
 
 	<link rel="stylesheet" type="text/css" href="{{asset('frontAsset/css/theme-styles.css')}}">
 	<link rel="stylesheet" type="text/css" href="{{asset('frontAsset/css/blocks.css')}}">
@@ -18,7 +18,8 @@
 
 	<!-- Styles for Plugins -->
 	<link rel="stylesheet" type="text/css" href="{{asset('frontAsset/css/plugins/swiper.min.css')}}">
-	<!--Styles for RTL-->
+    <!--Styles for RTL-->
+@yield('css')
 
 </head>
 
@@ -282,7 +283,7 @@
 
 <!-- jQuery-scripts for Template -->
 
-<script src="{{asset('frontAsset/js/js-plugins/ajax-pagination.js')}}"></script>
+{{-- <script src="{{asset('frontAsset/js/js-plugins/ajax-pagination.js')}}"></script> --}}
 <script src="{{asset('frontAsset/js/js-plugins/jquery.countdown.min.js')}}"></script>
 
 <script src="{{asset('frontAsset/js/js-plugins/crum-mega-menu.js')}}"></script>
