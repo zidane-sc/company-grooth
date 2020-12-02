@@ -1,6 +1,6 @@
 
 <!-- Header -->
-<header class="header header--menu-rounded header--blue-lighteen" id="site-header">
+<header class="header  header--small-lines header--blue-lighteen" id="site-header">
 <div class="header-lines-decoration">
     <span class="bg-secondary-color"></span>
     <span class="bg-blue"></span>
@@ -29,7 +29,7 @@
             </div>
         </div>
 
-        <nav id="primary-menu" class="primary-menu">
+        <nav id="primary-menu" class="primary-menu" >
 
             <!-- menu-icon-wrapper -->
 
@@ -47,13 +47,16 @@
 
             <ul class="primary-menu-menu">
                 <li class="menu-item-has-children">
-                <a href="{{route('main.index')}}">Home</a>
-                </li>
-                 <li class="menu-item-has-children">
-                    <a href="{{route('main.about')}}">About</a>
+                <a href="{{route('main.home')}}">Home</a>
                 </li>
                 <li class="menu-item-has-children">
-                    <a href="{{route('main.blog')}}">Blog</a>
+                   <a href="{{route('main.portfolio')}}">Portfolio</a>
+               </li>
+                 <li class="menu-item-has-children">
+                    <a href="{{route('main.about')}}">About us</a>
+                </li>
+                <li class="menu-item-has-children">
+                    <a href="{{route('main.article')}}">Article</a>
                 </li>
                 <li class="menu-item-has-children">
                     <a href="{{route('main.contact')}}">Contact Us</a>

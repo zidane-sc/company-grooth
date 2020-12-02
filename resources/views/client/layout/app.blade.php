@@ -9,7 +9,7 @@
 	<link rel="stylesheet" type="text/css" href="{{asset('frontAsset/css/theme-styles.css')}}">
 	<link rel="stylesheet" type="text/css" href="{{asset('frontAsset/css/blocks.css')}}">
 	<link rel="stylesheet" type="text/css" href="{{asset('frontAsset/css/widgets.css')}}">
-	<link rel="stylesheet" type="text/css" href="{{asset('frontAsset/css/plugins/isn.rangeSlider.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('frontAsset/css/plugins/isn.rangeSlider.css')}}">
 
 	<!--External fonts-->
 
@@ -306,8 +306,11 @@
 <script src="{{asset('frontAsset/js/js-plugins/isotope.pkgd.min.js')}}"></script>
 <script src="{{asset('frontAsset/js/js-plugins/ion.rangeSlider.js')}}"></script>
 <script src="{{asset('frontAsset/js/js-plugins/parsley.min.js')}}"></script>
+<script src="{{asset('frontAsset/js/js-plugins/leaflet.js')}}"></script>
+<script src="{{asset('frontAsset/js/js-plugins/MarkerClusterGroup.js')}}"></script>
 
 <script src="{{asset('frontAsset/js/main.js')}}"></script>
+<script src="{{asset('frontAsset/js/js-plugins/leaflet-init.js')}}"></script>
 
 <!-- jQuery-scripts for Modules (Send Message) -->
 <script src="{{asset('frontAsset/modules/forms/src/js/jquery.validate.min.js')}}"></script>

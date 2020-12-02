@@ -41,7 +41,13 @@
 					<h5 class="widget-title">Userful Links</h5>
 					<ul class="list list--primary">
 						<li>
-							<a href="{{route('main.index')}}">Home</a>
+							<a href="{{route('main.home')}}">Home</a>
+							<svg class="utouch-icon utouch-icon-arrow-right">
+								<use xlink:href="#utouch-icon-arrow-right"></use>
+							</svg>
+						</li>
+						<li>
+							<a href="{{route('main.portfolio')}}">Portfolio</a>
 							<svg class="utouch-icon utouch-icon-arrow-right">
 								<use xlink:href="#utouch-icon-arrow-right"></use>
 							</svg>
@@ -53,7 +59,7 @@
 							</svg>
 						</li>
 						<li>
-							<a href="{{route('main.blog')}}">Blog</a>
+							<a href="{{route('main.article')}}">Article</a>
 							<svg class="utouch-icon utouch-icon-arrow-right">
 								<use xlink:href="#utouch-icon-arrow-right"></use>
 							</svg>

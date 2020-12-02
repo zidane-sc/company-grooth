@@ -162,14 +162,14 @@
 </div>
 
 <!-- ... end Main Slider -->
-<section class="crumina-module crumina-module-slider pt100 bg-13">
+<section class="crumina-module crumina-module-slider pt100 bg-rounded2 background-cover">
     <div class="container">
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 col-sm-12 col-sm-offset-0 col-xs-12" style="margin-top: -50px;">
 
                 <div class=" align-center">
 
-                    <h1 class="slider-content-title with-decoration" style="margin-top: 50px;"  >
+                    <h1 class="slider-content-title with-decoration" style="margin-top: 50px; color:black;"  >
                         Visi & Misi
 
                         <svg class="first-decoration utouch-icon utouch-icon-arrow-left">
@@ -186,49 +186,47 @@
         </div>
 <br>
         <div class="row">
-            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 " style="color: black;">
                 <div class="swiper-container navigation-bottom">
                     <div class="col-lg-4 col-md-12 col-sm-12" >
                         <div class="slider-faqs-thumb">
-                            <img width="100%" style="margin-top:50px ;" src="{{asset('frontAsset/img/bg-visi1.jpg')}}" alt="image">
+                            <img style="border-radius: 4px;" width="100%"" src="{{asset('frontAsset/img/bg-visi1.jpg')}}" alt="image">
                         </div>
 
                     </div>
-                    <div class="col-lg-8 col-md-12 col-sm-12">
-                        <h5 class="slider-faqs-title">Visi</h5>
+                    <div class="col-lg-8 col-md-12 col-sm-12 bg-3 background-cover">
+                        <h5 class="slider-faqs-title" style="color: black;" >Visi
+                            <hr style="width: 8%;  height:4px; background-color:whitesmoke; border-radius:4px; margin-left:4px; margin-top:0px;">
+                        </h5>
                         <p class="weight-bold">Mirum est notare quam littera gothica, quam nunc putamus parum claram, anteposuerit litterarum
                                     formas humanitatis. Gest etiam processus dynamicus, qui sequitur.
-                        </p>
-                        <p>Claritas est etiam processus dynamicus, qui sequitur mutationem consuetudium lectorum. Mirum
-                                    est notare quam littera gothica, quam nunc putamus parum claram, anteposuerit litterarum
-                                    formas humanitatis. Gest etiam processus dynamicus, qui sequitur mutationem consuetudium lectorum.
                         </p>
                     </div>
-                        <div class="col-lg-8 col-md-12 col-sm-12">
-                        <h5 class="slider-faqs-title">Misi</h5>
+                </div>
+                <div class="swiper-container navigation-bottom" >
+                    <div class="col-lg-8 col-md-12 col-sm-12 bg-3 background-cover">
+                        <h5 class="slider-faqs-title" style="color: black;">Misi
+                            <hr style="width: 8%;  height:4px; background-color:whitesmoke; border-radius:4px; margin-left:2px; margin-top:0px;">
+                        </h5>
                         <p class="weight-bold">Mirum est notare quam littera gothica, quam nunc putamus parum claram, anteposuerit litterarum
                                     formas humanitatis. Gest etiam processus dynamicus, qui sequitur.
                         </p>
-                        <p>Claritas est etiam processus dynamicus, qui sequitur mutationem consuetudium lectorum. Mirum
-                                    est notare quam littera gothica, quam nunc putamus parum claram, anteposuerit litterarum
-                                    formas humanitatis. Gest etiam processus dynamicus, qui sequitur mutationem consuetudium lectorum.
-                        </p>
-
                     </div>
                     <div class="col-lg-4 col-md-12 col-sm-12" >
-                    <div class="slider-faqs-thumb">
-                        <img width="100%" style="margin-top:50px;;" src="{{asset('frontAsset/img/bg-visi1.jpg')}}" alt="image">
-                    </div>
+                        <div class="slider-faqs-thumb">
+                            <img style="border-radius: 4px; transform: rotateY(180deg);" width="100%" src="{{asset('frontAsset/img/bg-visi1.jpg')}}" alt="image">
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+    <br><br><br><br>
 </section>
 <!-- Slider with vertical tabs -->
 
-<section class="crumina-module crumina-module-slider slider-tabs-vertical-line bg-light-color bg-17">
-            <div class="bg-light-color bg-1 " style="padding: 20px;" >
+<section class="crumina-module crumina-module-slider slider-tabs-vertical-line bg-3 background-cover">
+            <div style="padding: 20px;" >
                 <div class="container">
                     <div class="row">
                         <div class="col-lg-5 col-lg-offset-0 col-md-5 col-md-offset-0 col-sm-12 col-xs-12">
@@ -250,12 +248,14 @@
                             </div>
                         </div>
                     </div>
+
                 </div>
+
             </div>
 </section>
 
 <!-- ... Slider with vertical tabs -->
-<hr style="width: 70%; height:7px; background-color: #273f5b; border-radius:4px;">
+
 <!-- Info Boxes -->
 
 <section class="medium-padding100">
@@ -265,7 +265,7 @@
                 <div class="crumina-module crumina-info-box info-box--standard-hover">
 
                     <div class="info-box-image">
-                        <img class="utouch-icon" src="{{asset('frontAsset/img/icon-1.png')}}" alt="icon">
+                        <img class="utouch-icon" src="{{asset('frontAsset/img/icon-5.png')}}" alt="icon">
                         <img class="cloud" src="{{asset('frontAsset/img/clouds8.png')}}" alt="cloud">
                     </div>
 
@@ -349,21 +349,21 @@
 
 <!-- FAQS Slider -->
 
-<section class="crumina-module crumina-module-slider pt100 bg-light-color bg-17">
+<section class="crumina-module crumina-module-slider pt100 bg-light-color  bg-rounded2 background-cover">
     <div class="container">
         <div class="row">
-            <div class="col-lg-6 col-md-6 col-sm-12 mb30"style="margin-top: -60px; ">
-                <div class="crumina-module crumina-heading">
-
-                    <h2 class="heading-title">Six important questions on application</h2>
-                </div>
+            <div class="col-lg-12 col-md-6 col-sm-12 mb30"style="margin-top: -60px; text-align:center; ">
+                {{-- <div class="col-md-12 text-center" style="text-align:center;"> --}}
+                    <h3 class="spr" style="background: url('https://nidhacenter.com/assets_client/images/geo-1.png'); background-size: 59px; background-repeat: no-repeat; background-position: 60%; line-height: 77px;">Our Project</h3>
+                    <hr style="text-align:center; width: 12%; height:7px; background-color: #273f5b; border-radius:4px; margin-top:-25px;">
+                {{-- </div> --}}
             </div>
         </div>
 
         <div class="row">
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <div class="swiper-container navigation-bottom" data-effect="fade">
-                    <div class="slider-slides">
+                    <div class="slider-slides" >
                         <a href="#" class="slides-item">
                             1
                         </a>
@@ -402,6 +402,7 @@
                                 <a href="03_products.html" class="btn btn-border btn--with-shadow c-secondary">
                                     Learn More
                                 </a>
+                                <p></p>
                             </div>
                         </div>
                         <div class="swiper-slide">
@@ -502,76 +503,72 @@
 
 <!-- ... end FAQS Slider -->
 <!-- ... Slider with vertical tabs -->
-<div class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 col-sm-12 col-sm-offset-0 col-xs-12">
+<section class="crumina-module crumina-module-slider pt100 bg-3 background-cover">
+    <div class="container">
+        <div class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 col-sm-12 col-sm-offset-0 col-xs-12">
 
-    <div class=" align-center">
+            <div class=" align-center">
 
-        <h1 class="slider-content-title with-decoration" style="margin-top: 50px;"  >
-            Lorem Ipsum
+                <h1 class="slider-content-title with-decoration" style="margin-top: 50px;"  >
+                    Lorem Ipsum
 
-            <svg class="first-decoration utouch-icon utouch-icon-arrow-left">
-                <use xlink:href="#utouch-icon-arrow-left"></use>
-            </svg>
+                    <svg class="first-decoration utouch-icon utouch-icon-arrow-left">
+                        <use xlink:href="#utouch-icon-arrow-left"></use>
+                    </svg>
 
-            <svg class="second-decoration utouch-icon utouch-icon-arrow-left">
-                <use xlink:href="#utouch-icon-arrow-left"></use>
-            </svg>
+                    <svg class="second-decoration utouch-icon utouch-icon-arrow-left">
+                        <use xlink:href="#utouch-icon-arrow-left"></use>
+                    </svg>
 
-        </h1>
-        <h6 class="slider-content-text" data-swiper-parallax="-200">Lorem ipsum dolor sit
-            amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut
-            laoreet dolore magna aliquam erat volutpat.
-        </h6>
-    </div>
-</div>
-<br>
-    <div class=" bg-light-color bg-17 " style="padding: 20px;">
-
-        <div class="row" >
-            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
-                <div class="crumina-module crumina-info-box info-box--standard-hover" style=" padding-top:20px;">
-
-                    <div class="info-box-image card__one">
-                        <img style="width:100%;" class="member-image"  src="{{asset('frontAsset/img/author1.jpg')}}" alt="icon">
-                        <img class="cloud" src="{{asset('frontAsset/img/clouds8.png')}}" alt="cloud">
-                        <div class="member-text">
-                            <h5 class="member-name">John Doe</h5>
-                            <div class="member-tag"><span class="member-role">Direktur</span></div>
-
-                          </div>
+                </h1>
+                <h6 class="slider-content-text" data-swiper-parallax="-200">Lorem ipsum dolor sit
+                    amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut
+                    laoreet dolore magna aliquam erat volutpat.
+                </h6>
+            </div>
+        </div>
+        <br>
+        <div" style="padding: 20px;">
+            <div class="row" >
+                <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                    <div class="crumina-module crumina-info-box info-box--standard-hover" style=" padding-top:20px; ">
+                        <div class="info-box-image card__one">
+                            <img style="width:100%;" class="member-image"  src="{{asset('frontAsset/img/author1.jpg')}}" alt="icon">
+                            <img class="cloud" src="{{asset('frontAsset/img/clouds8.png')}}" alt="cloud">
+                            <div class="member-text">
+                                <h5 class="member-name">John Doe</h5>
+                                <div class="member-tag"><span class="member-role">Direktur</span></div>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
-                <div class="crumina-module crumina-info-box info-box--standard-hover" style="padding-top:20px;">
-
-                    <div class="info-box-image card__one">
-                        <img style="width:100%;" class="member-image"  src="{{asset('frontAsset/img/author2.png')}}" alt="icon">
-                        <img class="cloud" src="{{asset('frontAsset/img/clouds8.png')}}" alt="cloud">
-                        <div class="member-text">
-                            <h5 class="member-name">Prenky Hermawan</h5>
-                            <div class="member-tag"><span class="member-role">HRD</span></div>
-
-                          </div>
+                <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 ">
+                    <div class="crumina-module crumina-info-box info-box--standard-hover" style="padding-top:20px;">
+                        <div class="info-box-image card__one">
+                            <img style="width:100%;" class="member-image"  src="{{asset('frontAsset/img/author2.png')}}" alt="icon">
+                            <img class="cloud" src="{{asset('frontAsset/img/clouds8.png')}}" alt="cloud">
+                            <div class="member-text">
+                                <h5 class="member-name">Prenky Hermawan</h5>
+                                <div class="member-tag"><span class="member-role">HRD</span></div>
+                            </div>
+                        </div>
                     </div>
-
                 </div>
-            </div>
 
-            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
-                <div class="crumina-module crumina-info-box info-box--standard-hover" style="  padding-top:20px;">
-
-                    <div class="info-box-image card__one">
-                        <img style="width:100%;" class="member-image"  src="{{asset('frontAsset/img/author3.png')}}" alt="icon">
-                        <img class="cloud" src="{{asset('frontAsset/img/clouds8.png')}}" alt="cloud">
-                        <div class="member-text">
-                            <h5 class="member-name">John Blesa</h5>
-                            <div class="member-tag"><span class="member-role">Lead Developer</span></div>
-
-                          </div>
+                <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                    <div class="crumina-module crumina-info-box info-box--standard-hover" style="padding-top:20px;">
+                        <div class="info-box-image card__one">
+                            <img style="width:100%;" class="member-image"  src="{{asset('frontAsset/img/author3.png')}}" alt="icon">
+                            <img class="cloud" src="{{asset('frontAsset/img/clouds8.png')}}" alt="cloud">
+                            <div class="member-text">
+                                <h5 class="member-name">John Blesa</h5>
+                                <div class="member-tag"><span class="member-role">Lead Developer</span></div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+</section>
 @endsection

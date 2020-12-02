@@ -42,7 +42,8 @@ Route::get('/', function () {
 });
 
 // Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/', 'MainController@index')->name('main.index');
+Route::get('/', 'MainController@home')->name('main.home');
+Route::get('/portfolio', 'MainController@portfolio')->name('main.portfolio');
 Route::get('/about', 'MainController@about')->name('main.about');
-Route::get('/blog', 'MainController@blog')->name('main.blog');
+Route::get('/article', 'MainController@article')->name('main.article');
 Route::get('/contact', 'MainController@contact')->name('main.contact');

@@ -1,11 +1,14 @@
 @extends('client.layout.app')
 
-@section('content')
+ @section('content')
 <style>
 
 
     .card__one {
         transition: transform .5s;
+        width: 55%;
+        height: 40%;
+        padding: 10px;
     }
 
     .card__one::after {
@@ -159,9 +162,72 @@
 </div>
 
 <!-- ... end Main Slider -->
+<section class="crumina-module crumina-module-slider pt100 bg-13">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 col-sm-12 col-sm-offset-0 col-xs-12" style="margin-top: -50px;">
+
+                <div class=" align-center">
+
+                    <h1 class="slider-content-title with-decoration" style="margin-top: 50px;"  >
+                        Visi & Misi
+
+                        <svg class="first-decoration utouch-icon utouch-icon-arrow-left">
+                            <use xlink:href="#utouch-icon-arrow-left"></use>
+                        </svg>
+
+                        <svg class="second-decoration utouch-icon utouch-icon-arrow-left">
+                            <use xlink:href="#utouch-icon-arrow-left"></use>
+                        </svg>
+
+                    </h1>
+                </div>
+            </div>
+        </div>
+<br>
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="swiper-container navigation-bottom">
+                    <div class="col-lg-4 col-md-12 col-sm-12" >
+                        <div class="slider-faqs-thumb">
+                            <img width="100%" style="margin-top:50px ;" src="{{asset('frontAsset/img/bg-visi1.jpg')}}" alt="image">
+                        </div>
+
+                    </div>
+                    <div class="col-lg-8 col-md-12 col-sm-12">
+                        <h5 class="slider-faqs-title">Visi</h5>
+                        <p class="weight-bold">Mirum est notare quam littera gothica, quam nunc putamus parum claram, anteposuerit litterarum
+                                    formas humanitatis. Gest etiam processus dynamicus, qui sequitur.
+                        </p>
+                        <p>Claritas est etiam processus dynamicus, qui sequitur mutationem consuetudium lectorum. Mirum
+                                    est notare quam littera gothica, quam nunc putamus parum claram, anteposuerit litterarum
+                                    formas humanitatis. Gest etiam processus dynamicus, qui sequitur mutationem consuetudium lectorum.
+                        </p>
+                    </div>
+                        <div class="col-lg-8 col-md-12 col-sm-12">
+                        <h5 class="slider-faqs-title">Misi</h5>
+                        <p class="weight-bold">Mirum est notare quam littera gothica, quam nunc putamus parum claram, anteposuerit litterarum
+                                    formas humanitatis. Gest etiam processus dynamicus, qui sequitur.
+                        </p>
+                        <p>Claritas est etiam processus dynamicus, qui sequitur mutationem consuetudium lectorum. Mirum
+                                    est notare quam littera gothica, quam nunc putamus parum claram, anteposuerit litterarum
+                                    formas humanitatis. Gest etiam processus dynamicus, qui sequitur mutationem consuetudium lectorum.
+                        </p>
+
+                    </div>
+                    <div class="col-lg-4 col-md-12 col-sm-12" >
+                    <div class="slider-faqs-thumb">
+                        <img width="100%" style="margin-top:50px;;" src="{{asset('frontAsset/img/bg-visi1.jpg')}}" alt="image">
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 <!-- Slider with vertical tabs -->
 
-<section class="crumina-module crumina-module-slider slider-tabs-vertical-line p-5">
+<section class="crumina-module crumina-module-slider slider-tabs-vertical-line bg-light-color bg-17">
             <div class="bg-light-color bg-1 " style="padding: 20px;" >
                 <div class="container">
                     <div class="row">
@@ -281,13 +347,166 @@
 
 <!-- ... end Info Boxes -->
 
-<!-- Slider with vertical tabs -->
+<!-- FAQS Slider -->
 
-<div class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 col-sm-12 col-sm-offset-2 col-xs-12">
+<section class="crumina-module crumina-module-slider pt100 bg-light-color bg-17">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 col-md-6 col-sm-12 mb30"style="margin-top: -60px; ">
+                <div class="crumina-module crumina-heading">
 
-    <div class="slider-content align-center">
+                    <h2 class="heading-title">Six important questions on application</h2>
+                </div>
+            </div>
+        </div>
 
-        <h1 class="slider-content-title with-decoration" style="margin-top: 50px;">
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="swiper-container navigation-bottom" data-effect="fade">
+                    <div class="slider-slides">
+                        <a href="#" class="slides-item">
+                            1
+                        </a>
+
+                        <a href="#" class="slides-item">
+                            2
+                        </a>
+
+                        <a href="#" class="slides-item">
+                            3
+                        </a>
+
+                        <a href="#" class="slides-item">
+                            4
+                        </a>
+
+
+                    </div>
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide">
+                            <div class="col-lg-4 col-md-12 col-sm-12" data-swiper-parallax="-100">
+                                <div class="slider-faqs-thumb">
+                                    <img class="utouch-icon" src="{{asset('frontAsset/img/web-dev5.png')}}" alt="image">
+                                </div>
+                            </div>
+
+                            <div class="col-lg-8 col-md-12 col-sm-12" data-swiper-parallax="-300">
+                                <h5 class="slider-faqs-title">Duis autem vel eum iriure?</h5>
+                                <p class="weight-bold">Mirum est notare quam littera gothica, quam nunc putamus parum claram, anteposuerit litterarum
+                                    formas humanitatis. Gest etiam processus dynamicus, qui sequitur.
+                                </p>
+                                <p>Claritas est etiam processus dynamicus, qui sequitur mutationem consuetudium lectorum. Mirum
+                                    est notare quam littera gothica, quam nunc putamus parum claram, anteposuerit litterarum
+                                    formas humanitatis. Gest etiam processus dynamicus, qui sequitur mutationem consuetudium lectorum.
+                                </p>
+                                <a href="03_products.html" class="btn btn-border btn--with-shadow c-secondary">
+                                    Learn More
+                                </a>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="col-lg-4 col-md-12 col-sm-12" data-swiper-parallax="-100">
+                                <div class="slider-faqs-thumb">
+                                    <img class="utouch-icon" src="{{asset('frontAsset/img/web-dev4.png')}}" alt="image">
+                                </div>
+                            </div>
+
+                            <div class="col-lg-8 col-md-12 col-sm-12" data-swiper-parallax="-300">
+                                <h5 class="slider-faqs-title">Duis autem vel eum iriure?</h5>
+                                <p class="weight-bold">Mirum est notare quam littera gothica, quam nunc putamus parum claram, anteposuerit litterarum
+                                    formas humanitatis. Gest etiam processus dynamicus, qui sequitur.
+                                </p>
+                                <p>Claritas est etiam processus dynamicus, qui sequitur mutationem consuetudium lectorum. Mirum
+                                    est notare quam littera gothica, quam nunc putamus parum claram, anteposuerit litterarum
+                                    formas humanitatis. Gest etiam processus dynamicus, qui sequitur mutationem consuetudium lectorum.
+                                </p>
+                                <a href="03_products.html" class="btn btn-border btn--with-shadow c-secondary">
+                                    Learn More
+                                </a>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="col-lg-4 col-md-12 col-sm-12" data-swiper-parallax="-100">
+                                <div class="slider-faqs-thumb">
+                                    <img class="utouch-icon" src="{{asset('frontAsset/img/web-dev3.png')}}" alt="image">
+                                </div>
+                            </div>
+
+                            <div class="col-lg-8 col-md-12 col-sm-12" data-swiper-parallax="-300">
+                                <h5 class="slider-faqs-title">Duis autem vel eum iriure?</h5>
+                                <p class="weight-bold">Mirum est notare quam littera gothica, quam nunc putamus parum claram, anteposuerit litterarum
+                                    formas humanitatis. Gest etiam processus dynamicus, qui sequitur.
+                                </p>
+                                <p>Claritas est etiam processus dynamicus, qui sequitur mutationem consuetudium lectorum. Mirum
+                                    est notare quam littera gothica, quam nunc putamus parum claram, anteposuerit litterarum
+                                    formas humanitatis. Gest etiam processus dynamicus, qui sequitur mutationem consuetudium lectorum.
+                                </p>
+                                <a href="03_products.html" class="btn btn-border btn--with-shadow c-secondary">
+                                    Learn More
+                                </a>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="col-lg-4 col-md-12 col-sm-12" data-swiper-parallax="-100">
+                                <div class="slider-faqs-thumb">
+                                    <img class="utouch-icon" src="{{asset('frontAsset/img/web-dev1.png')}}" alt="image">
+                                </div>
+                            </div>
+
+                            <div class="col-lg-8 col-md-12 col-sm-12" data-swiper-parallax="-300">
+                                <h5 class="slider-faqs-title">Duis autem vel eum iriure?</h5>
+                                <p class="weight-bold">Mirum est notare quam littera gothica, quam nunc putamus parum claram, anteposuerit litterarum
+                                    formas humanitatis. Gest etiam processus dynamicus, qui sequitur.
+                                </p>
+                                <p>Claritas est etiam processus dynamicus, qui sequitur mutationem consuetudium lectorum. Mirum
+                                    est notare quam littera gothica, quam nunc putamus parum claram, anteposuerit litterarum
+                                    formas humanitatis. Gest etiam processus dynamicus, qui sequitur mutationem consuetudium lectorum.
+                                </p>
+                                <a href="03_products.html" class="btn btn-border btn--with-shadow c-secondary">
+                                    Learn More
+                                </a>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!--Prev next buttons-->
+
+                    <div class="btn-slider-wrap navigation-left-bottom">
+
+                        <div class="btn-prev">
+                            <svg class="utouch-icon icon-hover utouch-icon-arrow-left-1">
+                                <use xlink:href="#utouch-icon-arrow-left-1"></use>
+                            </svg>
+                            <svg class="utouch-icon utouch-icon-arrow-left1">
+                                <use xlink:href="#utouch-icon-arrow-left1"></use>
+                            </svg>
+                        </div>
+
+                        <div class="btn-next">
+                            <svg class="utouch-icon icon-hover utouch-icon-arrow-right-1">
+                                <use xlink:href="#utouch-icon-arrow-right-1"></use>
+                            </svg>
+                            <svg class="utouch-icon utouch-icon-arrow-right1">
+                                <use xlink:href="#utouch-icon-arrow-right1"></use>
+                            </svg>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ... end FAQS Slider -->
+<!-- ... Slider with vertical tabs -->
+<div class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 col-sm-12 col-sm-offset-0 col-xs-12">
+
+    <div class=" align-center">
+
+        <h1 class="slider-content-title with-decoration" style="margin-top: 50px;"  >
             Lorem Ipsum
 
             <svg class="first-decoration utouch-icon utouch-icon-arrow-left">
@@ -297,12 +516,12 @@
             <svg class="second-decoration utouch-icon utouch-icon-arrow-left">
                 <use xlink:href="#utouch-icon-arrow-left"></use>
             </svg>
+
         </h1>
-        <h6 class="slider-content-text">Lorem ipsum dolor sit
+        <h6 class="slider-content-text" data-swiper-parallax="-200">Lorem ipsum dolor sit
             amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut
             laoreet dolore magna aliquam erat volutpat.
         </h6>
-
     </div>
 </div>
 <br>
@@ -313,92 +532,7 @@
                 <div class="crumina-module crumina-info-box info-box--standard-hover" style=" padding-top:20px;">
 
                     <div class="info-box-image card__one">
-                        <img style="width: 55%; height:200px;" class="member-image"  src="{{asset('frontAsset/img/icon-3.png')}}" alt="icon">
-                        <img class="cloud" src="{{asset('frontAsset/img/clouds8.png')}}" alt="cloud">
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
-                <div class="crumina-module crumina-info-box info-box--standard-hover" style="padding-top:20px;">
-
-                    <div class="info-box-image">
-                        <img style="width: 55%; height:200px;"  src="{{asset('frontAsset/img/web-dev2.png')}}" alt="icon">
-                        <img class="cloud" src="{{asset('frontAsset/img/clouds8.png')}}" alt="cloud">
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
-                <div class="crumina-module crumina-info-box info-box--standard-hover" style="  padding-top:20px;">
-
-                    <div class="info-box-image">
-                        <img style="width: 55%; height:200px;"  src="{{asset('frontAsset/img/web-dev3.png')}}" alt="icon">
-                        <img class="cloud" src="{{asset('frontAsset/img/clouds8.png')}}" alt="cloud">
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
-                <div class="crumina-module crumina-info-box info-box--standard-hover" style=" padding-top:20px;">
-
-                    <div class="info-box-image">
-                        <img style="width: 55%; height:200px;"  src="{{asset('frontAsset/img/web-dev4.png')}}" alt="icon">
-                        <img class="cloud" src="{{asset('frontAsset/img/clouds8.png')}}" alt="cloud">
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
-                <div class="crumina-module crumina-info-box info-box--standard-hover" style=" padding-top:20px;">
-
-                    <div class="info-box-image">
-                        <img style="width: 55%; height:200px;"  src="{{asset('frontAsset/img/web-dev5.png')}}" alt="icon">
-                        <img class="cloud" src="{{asset('frontAsset/img/clouds8.png')}}" alt="cloud">
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
-                <div class="crumina-module crumina-info-box info-box--standard-hover" style=" padding-top:20px;">
-
-                    <div class="info-box-image">
-                        <img style="width: 55%; height:200px;"  src="{{asset('frontAsset/img/author1.jpg')}}" alt="icon">
-                        <img class="cloud" src="{{asset('frontAsset/img/clouds8.png')}}" alt="cloud">
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-<!-- ... Slider with vertical tabs -->
-<div class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 col-sm-12 col-sm-offset-2 col-xs-12">
-
-    <div class="slider-content align-center">
-
-        <h1 class="slider-content-title with-decoration" style="margin-top: 50px;">
-            Our Team
-
-            <svg class="first-decoration utouch-icon utouch-icon-arrow-left">
-                <use xlink:href="#utouch-icon-arrow-left"></use>
-            </svg>
-
-            <svg class="second-decoration utouch-icon utouch-icon-arrow-left">
-                <use xlink:href="#utouch-icon-arrow-left"></use>
-            </svg>
-        </h1>
-        <h6 class="slider-content-text">Lorem ipsum dolor sit
-            amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut
-            laoreet dolore magna aliquam erat volutpat.
-        </h6>
-
-    </div>
-</div>
-<br>
-    <div class=" bg-light-color bg-17 " style="padding: 20px;">
-
-        <div class="row" >
-            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
-                <div class="crumina-module crumina-info-box info-box--standard-hover" style=" padding-top:20px;">
-
-                    <div class="info-box-image card__one">
-                        <img style="width: 55%; height:200px;" class="member-image"  src="{{asset('frontAsset/img/icon-3.png')}}" alt="icon">
+                        <img style="width:100%;" class="member-image"  src="{{asset('frontAsset/img/author1.jpg')}}" alt="icon">
                         <img class="cloud" src="{{asset('frontAsset/img/clouds8.png')}}" alt="cloud">
                         <div class="member-text">
                             <h5 class="member-name">John Doe</h5>
@@ -412,7 +546,7 @@
                 <div class="crumina-module crumina-info-box info-box--standard-hover" style="padding-top:20px;">
 
                     <div class="info-box-image card__one">
-                        <img style="width: 55%; height:200px;" class="member-image"  src="{{asset('frontAsset/img/icon-3.png')}}" alt="icon">
+                        <img style="width:100%;" class="member-image"  src="{{asset('frontAsset/img/author2.png')}}" alt="icon">
                         <img class="cloud" src="{{asset('frontAsset/img/clouds8.png')}}" alt="cloud">
                         <div class="member-text">
                             <h5 class="member-name">Prenky Hermawan</h5>
@@ -428,7 +562,7 @@
                 <div class="crumina-module crumina-info-box info-box--standard-hover" style="  padding-top:20px;">
 
                     <div class="info-box-image card__one">
-                        <img style="width: 55%; height:200px;" class="member-image"  src="{{asset('frontAsset/img/icon-3.png')}}" alt="icon">
+                        <img style="width:100%;" class="member-image"  src="{{asset('frontAsset/img/author3.png')}}" alt="icon">
                         <img class="cloud" src="{{asset('frontAsset/img/clouds8.png')}}" alt="cloud">
                         <div class="member-text">
                             <h5 class="member-name">John Blesa</h5>
@@ -440,11 +574,4 @@
             </div>
         </div>
     </div>
-
-
-
-
-
-
-
 @endsection
