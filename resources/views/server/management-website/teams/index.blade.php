@@ -1,15 +1,16 @@
 @extends('server.layouts.app')
 
 @section('title')
-    List Admin
+    List Teams
 @endsection
 
 @section('breadcumb-active')
-    <li class="breadcrumb-item active">Admin</li>
+<li class="breadcrumb-item"><a href="">Management Website</a></li>
+<li class="breadcrumb-item active">Teams</li>
 @endsection
 
 @section('title-page')
-    Admin
+    Teams
 @endsection
 
 @section('style')
@@ -18,20 +19,26 @@
     <link rel="stylesheet" href="{{ asset('backend/plugins/datatables-responsive/css/responsive.bootstrap4.min.css') }}">
     <link rel="stylesheet" href="{{ asset('backend/plugins/datatables-buttons/css/buttons.bootstrap4.min.css') }}">
     <link rel="stylesheet" href="{{ asset('backend/plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css') }}">
+
+    <style>
+      .btn-100{
+          width: 100%;
+      }
+  </style>
 @endsection
 
 @section('content')
 <section class="content">
     <div class="container-fluid">
       <div class="row">
-        <div class="col-9">
+        <div class="col-10">
           <div class="card">
             <!-- /.card-header -->
             <div class="card-header">
                 <div class="row">
                     <div class="col-md-6"></div>
                     <div class="col-md-6 d-flex flex-row-reverse">
-                        <a href="{{ route('users.create') }}" class="btn btn-info">Add Admin</a>
+                        <a href="{{ route('teams.create') }}" class="btn btn-info">Add Teams</a>
                     </div>
                 </div>
             </div>
@@ -40,38 +47,34 @@
                 <thead>
                 <tr>
                     <th>No</th>
-                    <th>Avatar</th>
+                    <th>Image</th>
                     <th>Name</th>
-                    <th>Email</th>
+                    <th>Position</th>
                     <th>Action</th>
                 </tr>
                 </thead>
                 <tbody>
-                @foreach ($data['users'] as $user)
+                @foreach ($data['teams'] as $team)
                 <tr>
                     <td>{{ $loop->iteration }}</td>
                     <td>
-                        @if ($user->avatar)
-                            <img src="{{ asset('storage/'.$user->avatar) }}" width="40px">
-                        @else
-                            <img src="{{ asset('backend/dist/img/no-image.png') }}" width="40px">
-                        @endif
+                        <img src="{{ asset('storage/'.$team->image) }}" height="80px">
                     </td>
-                    <td>{{ $user->name }}</td>
-                    <td>{{ $user->email }}</td>
-                    <td class="d-flex justify-space-between">
-                        <a href="{{ route('users.edit', $user->id) }}" class="btn btn-warning text-white btn-sm">
+                    <td>{{ $team->name }}</td>
+                    <td>{{ $team->position }}</td>
+                    <td>
+                        <a href="{{ route('teams.edit', $team->id) }}" class="btn btn-warning text-white btn-sm btn-100">
                             <i class="far fa-edit"></i> Edit
                         </a>
-                        <form action="{{ route('users.destroy', $user->id) }}" method="POST">
+                        <form action="{{ route('teams.destroy', $team->id) }}" method="POST">
                             @method('delete')
                             @csrf
 
-                            <button type="submit" class="btn btn-danger btn-sm ml-3" onclick="return confirm('Apakah anda yakin ingin menghapus {{ $user->name }} ?')">
+                            <button type="submit" class="btn btn-danger btn-sm mt-3 btn-100" onclick="return confirm('Apakah anda yakin ingin menghapus {{ $team->name }}?')">
                                 <i class="far fa-trash-alt"></i> Delete
                             </button>
                         </form>
-                    </td>
+                  </td>
                 </tr>
                 @endforeach
                 </tbody>
@@ -121,7 +124,7 @@
 
       Toast.fire({
         icon: 'success',
-        title: 'Admin added successfully!'
+        title: 'Team added successfully!'
       })
     });
   </script>
@@ -139,7 +142,7 @@
 
       Toast.fire({
         icon: 'success',
-        title: 'Admin edited successfully!'
+        title: 'Team edited successfully!'
       })
     });
   </script>
@@ -158,7 +161,7 @@
 
     Toast.fire({
       icon: 'success',
-      title: 'Admin deleted successfully!'
+      title: 'Team deleted successfully!'
     })
   </script>
 @endif    

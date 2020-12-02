@@ -31,6 +31,40 @@ Route::group(['prefix' => 'admin'], function () {
     Route::get('users/{id}/edit', 'UserController@edit')->name('users.edit');
     Route::patch('users/{id}', 'UserController@update')->name('users.update');
     Route::delete('users/{id}', 'UserController@destroy')->name('users.destroy');
+
+    // Manage Website
+    Route::group(['prefix' => 'manage-website'], function () {
+        // -- Banner
+        Route::get('banners', 'BannerController@index')->name('banners.index');   
+        Route::get('banners/create', 'BannerController@create')->name('banners.create');
+        Route::post('banners', 'BannerController@store')->name('banners.store');
+        Route::get('banners/{id}/edit', 'BannerController@edit')->name('banners.edit');
+        Route::patch('banners/{id}', 'BannerController@update')->name('banners.update');
+        Route::delete('banners/{id}', 'BannerController@destroy')->name('banners.destroy');
+
+        // -- Visi & Misi
+        Route::get('visi-misi', 'VisiMisiController@index')->name('visi-misi.index');   
+        Route::post('visi-misi', 'VisiMisiController@store')->name('visi-misi.store');
+        Route::patch('visi-misi/{id}', 'VisiMisiController@update')->name('visi-misi.update');
+
+        // -- Portfolio
+        Route::get('portfolios', 'PortfolioController@index')->name('portfolios.index');   
+        Route::get('portfolios/create', 'PortfolioController@create')->name('portfolios.create');
+        Route::post('portfolios', 'PortfolioController@store')->name('portfolios.store');
+        Route::get('portfolios/{id}/edit', 'PortfolioController@edit')->name('portfolios.edit');
+        Route::patch('portfolios/{id}', 'PortfolioController@update')->name('portfolios.update');
+        Route::delete('portfolios/{id}', 'PortfolioController@destroy')->name('portfolios.destroy');
+
+        // -- Portfolio
+        Route::get('teams', 'TeamController@index')->name('teams.index');   
+        Route::get('teams/create', 'TeamController@create')->name('teams.create');
+        Route::post('teams', 'TeamController@store')->name('teams.store');
+        Route::get('teams/{id}/edit', 'TeamController@edit')->name('teams.edit');
+        Route::patch('teams/{id}', 'TeamController@update')->name('teams.update');
+        Route::delete('teams/{id}', 'TeamController@destroy')->name('teams.destroy');
+    });
+    
+    
 });
 
 

@@ -1,15 +1,16 @@
 @extends('server.layouts.app')
 
 @section('title')
-    List Admin
+    List Portfolio
 @endsection
 
 @section('breadcumb-active')
-    <li class="breadcrumb-item active">Admin</li>
+<li class="breadcrumb-item"><a href="">Management Website</a></li>
+<li class="breadcrumb-item active">Portfolio</li>
 @endsection
 
 @section('title-page')
-    Admin
+    Portfolio
 @endsection
 
 @section('style')
@@ -18,20 +19,30 @@
     <link rel="stylesheet" href="{{ asset('backend/plugins/datatables-responsive/css/responsive.bootstrap4.min.css') }}">
     <link rel="stylesheet" href="{{ asset('backend/plugins/datatables-buttons/css/buttons.bootstrap4.min.css') }}">
     <link rel="stylesheet" href="{{ asset('backend/plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css') }}">
+
+    <style>
+      .btn-100{
+          width: 100%;
+      }
+
+      .width-5{
+        width: 5rem;
+      }
+  </style>
 @endsection
 
 @section('content')
 <section class="content">
     <div class="container-fluid">
       <div class="row">
-        <div class="col-9">
+        <div class="col-12">
           <div class="card">
             <!-- /.card-header -->
             <div class="card-header">
                 <div class="row">
                     <div class="col-md-6"></div>
                     <div class="col-md-6 d-flex flex-row-reverse">
-                        <a href="{{ route('users.create') }}" class="btn btn-info">Add Admin</a>
+                        <a href="{{ route('portfolios.create') }}" class="btn btn-info">Add Portfolio</a>
                     </div>
                 </div>
             </div>
@@ -40,38 +51,46 @@
                 <thead>
                 <tr>
                     <th>No</th>
-                    <th>Avatar</th>
+                    <th>Image</th>
                     <th>Name</th>
-                    <th>Email</th>
+                    <th>Description</th>
+                    <th>Link</th>
                     <th>Action</th>
                 </tr>
                 </thead>
                 <tbody>
-                @foreach ($data['users'] as $user)
+                @foreach ($data['portfolios'] as $portfolio)
                 <tr>
                     <td>{{ $loop->iteration }}</td>
                     <td>
-                        @if ($user->avatar)
-                            <img src="{{ asset('storage/'.$user->avatar) }}" width="40px">
+                        @if ($portfolio->image)
+                            <img src="{{ asset('storage/'.$portfolio->image) }}" height="80px">
                         @else
-                            <img src="{{ asset('backend/dist/img/no-image.png') }}" width="40px">
+                            <img src="{{ asset('backend/dist/img/no-image.png') }}" height="80px">
                         @endif
                     </td>
-                    <td>{{ $user->name }}</td>
-                    <td>{{ $user->email }}</td>
-                    <td class="d-flex justify-space-between">
-                        <a href="{{ route('users.edit', $user->id) }}" class="btn btn-warning text-white btn-sm">
-                            <i class="far fa-edit"></i> Edit
-                        </a>
-                        <form action="{{ route('users.destroy', $user->id) }}" method="POST">
-                            @method('delete')
-                            @csrf
-
-                            <button type="submit" class="btn btn-danger btn-sm ml-3" onclick="return confirm('Apakah anda yakin ingin menghapus {{ $user->name }} ?')">
-                                <i class="far fa-trash-alt"></i> Delete
-                            </button>
-                        </form>
-                    </td>
+                    <td>{{ $portfolio->name }}</td>
+                    <td>{{ Str::limit($portfolio->description, 110, '...') }}</td>
+                    <td><a href="{{ $portfolio->link }}" target="blank">{{ $portfolio->link }}</a></td>
+                    <td class="width-5">
+                      <div class="row">
+                          <div class="col-md-12">
+                              <a href="{{ route('portfolios.edit', $portfolio->id) }}" class="btn btn-warning text-white btn-sm btn-100">
+                                  <i class="far fa-edit"></i> Edit
+                              </a>
+                          </div>
+                          <div class="col-md-12">
+                              <form action="{{ route('portfolios.destroy', $portfolio->id) }}" method="POST">
+                                  @method('delete')
+                                  @csrf
+      
+                                  <button type="submit" class="btn btn-danger btn-sm mt-3 btn-100" onclick="return confirm('Apakah anda yakin ingin menghapus {{ $portfolio->name }}?')">
+                                      <i class="far fa-trash-alt"></i> Delete
+                                  </button>
+                              </form>
+                          </div>
+                      </div>                        
+                  </td>
                 </tr>
                 @endforeach
                 </tbody>
@@ -121,7 +140,7 @@
 
       Toast.fire({
         icon: 'success',
-        title: 'Admin added successfully!'
+        title: 'Portfolio added successfully!'
       })
     });
   </script>
@@ -139,7 +158,7 @@
 
       Toast.fire({
         icon: 'success',
-        title: 'Admin edited successfully!'
+        title: 'Portfolio edited successfully!'
       })
     });
   </script>
@@ -158,7 +177,7 @@
 
     Toast.fire({
       icon: 'success',
-      title: 'Admin deleted successfully!'
+      title: 'Portfolio deleted successfully!'
     })
   </script>
 @endif    
