@@ -42,21 +42,22 @@
         <!-- Additional required wrapper -->
         <div class="swiper-wrapper">
             <!-- Slides -->
-            <div class="swiper-slide bg-1 main-slider-bg-light">
-
+            @foreach ($data['banners'] as $banner)
+            <div class="swiper-slide bg-1  main-slider-bg-light">
                 <div class="container">
                     <div class="row table-cell">
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                             <div class="slider-thumb" data-swiper-parallax="-400" data-swiper-parallax-duration="600">
-                                <img src="{{asset('frontAsset/img/slides1.png')}}" alt="slider">
+                                <img src="{{ asset('storage/'.$banner->image) }}" alt="slider">
                             </div>
                         </div>
 
                     </div>
                 </div>
             </div>
+            @endforeach
 
-            <div class="swiper-slide bg-2 main-slider-bg-light">
+            {{-- <div class="swiper-slide bg-2 main-slider-bg-light">
 
                 <div class="container table">
                     <div class="row table-cell">
@@ -135,7 +136,7 @@
 
                     </div>
                 </div>
-            </div>
+            </div> --}}
         </div>
 
         <!--Prev next buttons-->
@@ -190,16 +191,15 @@
                 <div class="swiper-container navigation-bottom">
                     <div class="col-lg-4 col-md-12 col-sm-12" >
                         <div class="slider-faqs-thumb">
-                            <img style="border-radius: 4px;" width="100%"" src="{{asset('frontAsset/img/bg-visi1.jpg')}}" alt="image">
+                            <img style="border-radius: 4px;" width="300px;" src="{{asset('storage/'.$data['visi_misi']->image_visi)}}" alt="image">
                         </div>
-
+{{-- {{dd($data['visi_misi'])}} --}}
                     </div>
                     <div class="col-lg-8 col-md-12 col-sm-12 bg-3 background-cover">
                         <h5 class="slider-faqs-title" style="color: black;" >Visi
                             <hr style="width: 8%;  height:4px; background-color:whitesmoke; border-radius:4px; margin-left:4px; margin-top:0px;">
                         </h5>
-                        <p class="weight-bold">Mirum est notare quam littera gothica, quam nunc putamus parum claram, anteposuerit litterarum
-                                    formas humanitatis. Gest etiam processus dynamicus, qui sequitur.
+                        <p class="weight-bold">{{$data['visi_misi']->visi}}
                         </p>
                     </div>
                 </div>
@@ -208,13 +208,12 @@
                         <h5 class="slider-faqs-title" style="color: black;">Misi
                             <hr style="width: 8%;  height:4px; background-color:whitesmoke; border-radius:4px; margin-left:2px; margin-top:0px;">
                         </h5>
-                        <p class="weight-bold">Mirum est notare quam littera gothica, quam nunc putamus parum claram, anteposuerit litterarum
-                                    formas humanitatis. Gest etiam processus dynamicus, qui sequitur.
+                        <p class="weight-bold">{{$data['visi_misi']->misi}}
                         </p>
                     </div>
                     <div class="col-lg-4 col-md-12 col-sm-12" >
                         <div class="slider-faqs-thumb">
-                            <img style="border-radius: 4px; transform: rotateY(180deg);" width="100%" src="{{asset('frontAsset/img/bg-visi1.jpg')}}" alt="image">
+                            <img style="border-radius: 4px;" width="300px;" src="{{asset('storage/'.$data['visi_misi']->image_misi)}}" alt="image">
                         </div>
                     </div>
                 </div>
@@ -364,48 +363,36 @@
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <div class="swiper-container navigation-bottom" data-effect="fade">
                     <div class="slider-slides" >
-                        <a href="#" class="slides-item">
-                            1
-                        </a>
+                        @foreach ($data['portfolios'] as $portfolio)
 
                         <a href="#" class="slides-item">
-                            2
+                            {{$loop->iteration}}
                         </a>
-
-                        <a href="#" class="slides-item">
-                            3
-                        </a>
-
-                        <a href="#" class="slides-item">
-                            4
-                        </a>
-
-
+                        @endforeach
+{{-- {{dd($data['portfolios'])}} --}}
                     </div>
                     <div class="swiper-wrapper">
+                        @foreach ($data['portfolios'] as $portfolio)
+
                         <div class="swiper-slide">
                             <div class="col-lg-4 col-md-12 col-sm-12" data-swiper-parallax="-100">
                                 <div class="slider-faqs-thumb">
-                                    <img class="utouch-icon" src="{{asset('frontAsset/img/web-dev5.png')}}" alt="image">
+                                    <img class="utouch-icon" src="{{asset('storage/'.$portfolio->image)}}" alt="image">
                                 </div>
                             </div>
 
                             <div class="col-lg-8 col-md-12 col-sm-12" data-swiper-parallax="-300">
-                                <h5 class="slider-faqs-title">Duis autem vel eum iriure?</h5>
-                                <p class="weight-bold">Mirum est notare quam littera gothica, quam nunc putamus parum claram, anteposuerit litterarum
-                                    formas humanitatis. Gest etiam processus dynamicus, qui sequitur.
-                                </p>
-                                <p>Claritas est etiam processus dynamicus, qui sequitur mutationem consuetudium lectorum. Mirum
-                                    est notare quam littera gothica, quam nunc putamus parum claram, anteposuerit litterarum
-                                    formas humanitatis. Gest etiam processus dynamicus, qui sequitur mutationem consuetudium lectorum.
-                                </p>
-                                <a href="03_products.html" class="btn btn-border btn--with-shadow c-secondary">
-                                    Learn More
+                                <h5 class="slider-faqs-title">{{$portfolio->name}}</h5>
+                                <p>{{$portfolio->description}} </p>
+                                <a href="{{$portfolio->link}}" target="_blank" class="btn btn-border btn--with-shadow c-secondary">
+                                    Visit
                                 </a>
                                 <p></p>
                             </div>
                         </div>
-                        <div class="swiper-slide">
+                        @endforeach
+
+                        {{-- <div class="swiper-slide">
                             <div class="col-lg-4 col-md-12 col-sm-12" data-swiper-parallax="-100">
                                 <div class="slider-faqs-thumb">
                                     <img class="utouch-icon" src="{{asset('frontAsset/img/web-dev4.png')}}" alt="image">
@@ -467,7 +454,7 @@
                                     Learn More
                                 </a>
                             </div>
-                        </div>
+                        </div> --}}
 
                     </div>
 
@@ -530,19 +517,22 @@
         <br>
         <div" style="padding: 20px;">
             <div class="row" >
+                @foreach ($data['teams'] as $team)
                 <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
                     <div class="crumina-module crumina-info-box info-box--standard-hover" style=" padding-top:20px; ">
                         <div class="info-box-image card__one">
-                            <img style="width:100%;" class="member-image"  src="{{asset('frontAsset/img/author1.jpg')}}" alt="icon">
+                            <img style="width:100%;" class="member-image"  src="{{asset('storage/'.$team->image)}}" alt="icon">
                             <img class="cloud" src="{{asset('frontAsset/img/clouds8.png')}}" alt="cloud">
                             <div class="member-text">
-                                <h5 class="member-name">John Doe</h5>
-                                <div class="member-tag"><span class="member-role">Direktur</span></div>
+                                <h5 class="member-name">{{$team->name}}</h5>
+                            <div class="member-tag"><span class="member-role">{{$team->position}}</span></div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 ">
+                @endforeach
+
+                {{-- <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 ">
                     <div class="crumina-module crumina-info-box info-box--standard-hover" style="padding-top:20px;">
                         <div class="info-box-image card__one">
                             <img style="width:100%;" class="member-image"  src="{{asset('frontAsset/img/author2.png')}}" alt="icon">
@@ -566,7 +556,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> --}}
             </div>
         </div>
     </div>
