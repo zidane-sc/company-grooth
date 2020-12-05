@@ -1,34 +1,23 @@
 @extends('server.layouts.app')
 
 @section('title')
-    Edit Teams
+    Add Section Two
 @endsection
 
 @section('breadcumb-active')
-    <li class="breadcrumb-item"><a href="">Management Website</a></li>
-    <li class="breadcrumb-item">Teams</li>
-    <li class="breadcrumb-item active">Edit</li>
+    <li class="breadcrumb-item"><a href="{{ route('section-two.index') }}">Management Website</a></li>
+    <li class="breadcrumb-item"><a href="{{ route('section-two.index') }}">Section Two</a></li>
+    <li class="breadcrumb-item active">Add</li>
 @endsection
 
 @section('title-page')
-    Edit Teams
+    Add Section Two
 @endsection
 
 @section('style')
     <style>
         .btn-footer{
             width: 110px;
-        }
-
-        img{
-            display: block;
-            margin: 10px;
-        }
-
-        .block{
-            display: block;
-            margin-bottom: 10px;
-            color: red;
         }
     </style>
 @endsection
@@ -42,20 +31,16 @@
                     <!-- general form elements -->
                     <div class="card card-primary">
                         <div class="card-header">
-                        <h3 class="card-title">Edit Teams</h3>
+                        <h3 class="card-title">Add Section Two</h3>
                         </div>
                         <!-- /.card-header -->
                         <!-- form start -->
-                        <form action="{{ route('teams.update', $team->id) }}" method="POST" enctype="multipart/form-data">
+                        <form action="{{ route('section-two.store') }}" method="POST" enctype="multipart/form-data">
                             @csrf
-                            @method('patch')
 
                             <div class="card-body">
                                 <div class="form-group">
                                     <label for="image">Image</label>
-
-                                    <img src="{{asset('storage/'.$team->image)}}" width="100px" class="image"/>
-
                                     <div class="input-group">
                                         <div class="custom-file">
                                             <input type="file" class="custom-file-input @error('image') is-invalid @enderror" id="image" name="image">
@@ -70,9 +55,9 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="name">Name</label>
-                                    <input type="text" class="form-control @error('name') is-invalid @enderror" id="name" name="name" value="{{ old('name') ?? $team->name }}"  placeholder="Enter name">
-                                    @error('name')
+                                    <label for="title">Title</label>
+                                    <input type="text" class="form-control @error('title') is-invalid @enderror" id="title" name="title" value="{{ old('title') }}"  placeholder="Enter Title">
+                                    @error('title')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
                                         </span>
@@ -80,9 +65,10 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="position">Position</label>
-                                    <input type="text" class="form-control @error('position') is-invalid @enderror" id="position" name="position" value="{{ old('position') ?? $team->position }}"  placeholder="Enter Position">
-                                    @error('position')
+                                    <label for="description">Description</label>
+                                    <textarea class="form-control @error('description') is-invalid @enderror" id="description" name="description"  rows="3" placeholder="Enter Desciption">{{ old('description') }}</textarea>
+
+                                     @error('description')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
                                         </span>
@@ -93,7 +79,7 @@
 
                             <div class="card-footer">
                                 <button type="submit" class="btn btn-success btn-footer">Save</button>
-                                <a href="{{ route('teams.index') }}" class="btn btn-secondary btn-footer">Cancel</a>
+                                <a href="{{ route('section-two.index') }}" class="btn btn-secondary btn-footer">Back</a>
                             </div>
                         </form>
                     </div>
@@ -104,5 +90,11 @@
 @endsection
 
 @section('script')
+    <script src="{{ asset('backend/plugins/bs-custom-file-input/bs-custom-file-input.min.js') }}"></script>
 
+    <script>
+    $(function () {
+        bsCustomFileInput.init();
+    });
+    </script>
 @endsection

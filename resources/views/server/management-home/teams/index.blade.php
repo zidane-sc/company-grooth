@@ -50,6 +50,7 @@
                     <th>Image</th>
                     <th>Name</th>
                     <th>Position</th>
+                    <th>Description</th>
                     <th>Action</th>
                 </tr>
                 </thead>
@@ -62,6 +63,7 @@
                     </td>
                     <td>{{ $team->name }}</td>
                     <td>{{ $team->position }}</td>
+                    <td>{{ Str::limit($team->description, 110, '...') }}</td>
                     <td>
                         <a href="{{ route('teams.edit', $team->id) }}" class="btn btn-warning text-white btn-sm btn-100">
                             <i class="far fa-edit"></i> Edit
