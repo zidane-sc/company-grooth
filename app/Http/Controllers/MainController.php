@@ -22,12 +22,16 @@ class MainController extends Controller
 
     public function portfolio()
     {
+
         return view('client.content.portfolio');
     }
 
     public function about()
     {
-        return view('client.content.about');
+        $data['visi_misi'] = VisiMisi::first();
+        $data['portfolios'] = Portfolio::all();
+        $data['teams'] = Team::all();
+        return view('client.content.about', ['data' => $data]);
     }
 
     public function article()

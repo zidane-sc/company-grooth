@@ -1,4 +1,12 @@
+<style>
+    .header{
+        box-shadow:0px 6px 0px rgba(201, 227, 255,0.8);
+    }
+    .header--blue-lighteen{
+        background-color: #d6e9ff !important;
+    }
 
+</style>
 <!-- Header -->
 <header class="header  header--small-lines header--blue-lighteen" id="site-header">
 <div class="header-lines-decoration">

@@ -30,7 +30,7 @@ class TeamController extends Controller
         $team = new Team();
 
         $image = $request->file('image');
-        $name  = $image->storeAs('images/teams', time().'-team.'.$image->extension());
+        $name  = $image->storeAs('images/teams', time() . '-team.' . $image->extension());
         $team->image = $name;
 
         $team->name = $validateData['name'];
@@ -57,11 +57,11 @@ class TeamController extends Controller
 
         $team = Team::findOrFail($id);
 
-        if($request->file('image')) {
+        if ($request->file('image')) {
             Storage::delete($team->image);
 
             $image = $request->file('image');
-            $name  = $image->storeAs('images/teams', time().'-team.'.$image->extension());
+            $name  = $image->storeAs('images/teams', time() . '-team.' . $image->extension());
             $team->image = $name;
         }
 
@@ -71,5 +71,14 @@ class TeamController extends Controller
         $team->save();
 
         return redirect()->route('teams.index')->with(['update' => 'Team edited successfully!']);
+    }
+
+    public function destroy($id)
+    {
+        $team = Team::findOrFail($id);
+        Storage::delete($team->image);
+        $team->delete();
+
+        return redirect()->route('teams.index')->with(['delete' => 'Team  added successfully!']);
     }
 }
