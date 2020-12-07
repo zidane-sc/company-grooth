@@ -100,6 +100,14 @@ Route::group(['prefix' => 'admin'], function () {
         Route::patch('tags/{id}', 'TagController@update')->name('tags.update');
         Route::delete('tags/{id}', 'TagController@destroy')->name('tags.destroy');
     
+        // -- Posts
+        Route::get('posts', 'PostController@index')->name('posts.index');   
+        Route::get('posts/create', 'PostController@create')->name('posts.create');
+        Route::post('posts', 'PostController@store')->name('posts.store');
+        Route::get('posts/{id}', 'PostController@show')->name('posts.show');   
+        Route::get('posts/{id}/edit', 'PostController@edit')->name('posts.edit');
+        Route::patch('posts/{id}', 'PostController@update')->name('posts.update');
+        Route::delete('posts/{id}', 'PostController@destroy')->name('posts.destroy');
     });
 });
 

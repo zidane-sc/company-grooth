@@ -63,14 +63,17 @@
                         <a href="{{ route('users.edit', $user->id) }}" class="btn btn-warning text-white btn-sm">
                             <i class="far fa-edit"></i> Edit
                         </a>
+                        
+                        @if ($user->id != Auth::user()->id)
                         <form action="{{ route('users.destroy', $user->id) }}" method="POST">
-                            @method('delete')
-                            @csrf
+                          @method('delete')
+                          @csrf
 
-                            <button type="submit" class="btn btn-danger btn-sm ml-3" onclick="return confirm('Apakah anda yakin ingin menghapus {{ $user->name }} ?')">
-                                <i class="far fa-trash-alt"></i> Delete
-                            </button>
+                          <button type="submit" class="btn btn-danger btn-sm ml-3" onclick="return confirm('Apakah anda yakin ingin menghapus {{ $user->name }} ?')">
+                              <i class="far fa-trash-alt"></i> Delete
+                          </button>
                         </form>
+                        @endif
                     </td>
                 </tr>
                 @endforeach
@@ -143,24 +146,24 @@
       })
     });
   </script>
-@endif    
+@endif 
 
 @if (session('delete'))
   <script>
     $(function() {
       var Toast = Swal.mixin({
-      toast: true,
-      position: 'top-end',
-      showConfirmButton: false,
-      timer: 3000
+        toast: true,
+        position: 'top-end',
+        showConfirmButton: false,
+        timer: 3000
       });
-    });
 
-    Toast.fire({
-      icon: 'success',
-      title: 'Admin deleted successfully!'
-    })
+      Toast.fire({
+        icon: 'success',
+        title: 'Admin deleted successfully!'
+      })
+    });
   </script>
-@endif    
+@endif 
 
 @endsection

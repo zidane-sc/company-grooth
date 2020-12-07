@@ -82,6 +82,6 @@ class UserController extends Controller
         Storage::delete($user->avatar);
         $user->delete();
 
-        return redirect()->route('users.index')->with(['delete' => 'Banner deleted successfully!']);
+        return redirect()->route('users.index')->with(['delete' => 'Admin deleted successfully!']);
     }
 }
