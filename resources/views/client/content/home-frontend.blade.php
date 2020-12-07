@@ -6,9 +6,8 @@
 
     .card__one {
         transition: transform .5s;
-        width: 55%;
-        height: 40%;
-        padding: 10px;
+        text-align: center;
+        margin-top:40px;
     }
 
     .card__one::after {
@@ -33,110 +32,47 @@
 
 
     }
+    .img-banner{
+        height: 680px;
+        background-size: cover;
+
+    }
+
+    .member-content {
+    margin-bottom: 30px;
+}
+
+.member-content .member-text {
+    padding: 20px;
+}
+
+.member-content .member-text .member-name {
+    margin-bottom: 7px;
+}
+
+.member-content .member-text .member-tag {
+
+    font-weight: 500;
+}
+.slider-thumb{
+    padding: 0 !important;
+}
 
 </style>
 
 <div class="crumina-module crumina-module-slider container-full-width">
     <div class="swiper-container main-slider navigation-center-both-sides" data-effect="fade">
-
         <!-- Additional required wrapper -->
         <div class="swiper-wrapper">
             <!-- Slides -->
             @foreach ($data['banners'] as $banner)
-            <div class="swiper-slide bg-1  main-slider-bg-light">
-                <div class="container">
-                    <div class="row table-cell">
-                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                            <div class="slider-thumb" data-swiper-parallax="-400" data-swiper-parallax-duration="600">
-                                <img src="{{ asset('storage/'.$banner->image) }}" alt="slider">
-                            </div>
-                        </div>
-
-                    </div>
+            <div class="swiper-slide  main-slider-bg-light">
+                <div class="slider-thumb img-banner">
+                    <img width="1400px;" src="{{ asset('storage/'.$banner->image) }}" alt="slider">
                 </div>
             </div>
             @endforeach
 
-            {{-- <div class="swiper-slide bg-2 main-slider-bg-light">
-
-                <div class="container table">
-                    <div class="row table-cell">
-
-                        <div class="col-lg-5 col-md-12 col-sm-12 col-xs-12">
-                            <div class="slider-content align-both">
-                                <h2 class="slider-content-title" data-swiper-parallax="-100">
-                                    <span class="c-primary">Utouch</span>
-                                    is quality product that will make your life better
-                                </h2>
-                                <h6 class="slider-content-text" data-swiper-parallax="-200">Lorem ipsum dolor sit amet,
-                                    consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore
-                                    magna aliquam erat volutpat.
-                                </h6>
-
-                                <div class="main-slider-btn-wrap" data-swiper-parallax="-300">
-
-                                    <a href="#" class="btn btn-market btn--with-shadow">
-                                        <svg class="utouch-icon utouch-icon-apple-logotype-1">
-                                            <use xlink:href="#utouch-icon-apple-logotype-1"></use>
-                                        </svg>
-                                        <div class="text">
-                                            <span class="sup-title">Download on the</span>
-                                            <span class="title">App Store</span>
-                                        </div>
-                                    </a>
-
-                                    <a href="#" class="btn btn-market btn--with-shadow">
-                                        <img class="utouch-icon" src="{{asset('frontAsset/svg-icons/google-play.svg')}}" alt="google">
-                                        <div class="text">
-                                            <span class="sup-title">Download on the</span>
-                                            <span class="title">Google Play</span>
-                                        </div>
-                                    </a>
-
-                                </div>
-
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-            <div class="swiper-slide thumb-left bg-3 main-slider-bg-light">
-
-                <div class="container table full-height">
-                    <div class="row table-cell">
-                        <div class="col-lg-6 col-sm-12 table-cell">
-
-                            <div class="slider-content align-both">
-
-                                <h2 class="slider-content-title" data-swiper-parallax="-100">Rise Up With the Most Interesting App</h2>
-
-                                <h6 class="slider-content-text" data-swiper-parallax="-200">Lorem ipsum dolor sit amet,
-                                    consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet
-                                    dolore magna aliquam erat volutpat.
-                                </h6>
-
-                                <div class="main-slider-btn-wrap" data-swiper-parallax="-300">
-
-                                    <a href="02_company.html" class="btn btn--lime btn--with-shadow">
-                                        Get Started Now
-                                    </a>
-
-                                </div>
-
-                            </div>
-
-                        </div>
-
-                        <div class="col-lg-6 col-sm-12 table-cell">
-                            <div class="slider-thumb" data-swiper-parallax="-300" data-swiper-parallax-duration="500">
-                                <img src="{{asset('frontAsset/img/slides2.png')}}" alt="slider">
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-            </div> --}}
         </div>
 
         <!--Prev next buttons-->
@@ -158,197 +94,177 @@
                 <use xlink:href="#utouch-icon-arrow-right1"></use>
             </svg>
         </div>
-
     </div>
 </div>
 
-<!-- ... end Main Slider -->
-<section class="crumina-module crumina-module-slider pt100 bg-rounded2 background-cover">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 col-sm-12 col-sm-offset-0 col-xs-12" style="margin-top: -50px;">
+	<!-- Our Video -->
 
-                <div class=" align-center">
+    <section class="bg-blue-lighteen medium-padding120">
+        <div class="container bg-11 background-cover">
+            <div class="row">
+                {{-- <div class="row"> --}}
+                    <div class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 col-sm-12 col-sm-offset-0 col-xs-12" style="margin-top: -50px;">
 
-                    <h1 class="slider-content-title with-decoration" style="margin-top: 50px; color:black;"  >
-                        Visi & Misi
+                        <div class=" align-center">
 
-                        <svg class="first-decoration utouch-icon utouch-icon-arrow-left">
-                            <use xlink:href="#utouch-icon-arrow-left"></use>
-                        </svg>
+                            <h1 class="slider-content-title with-decoration" style="margin-top: 50px; color:black; font-size:40px;"  >
+                                VISI <span class="c-primary">&</span> MISI
 
-                        <svg class="second-decoration utouch-icon utouch-icon-arrow-left">
-                            <use xlink:href="#utouch-icon-arrow-left"></use>
-                        </svg>
+                                <svg class="first-decoration utouch-icon utouch-icon-arrow-left">
+                                    <use xlink:href="#utouch-icon-arrow-left"></use>
+                                </svg>
 
-                    </h1>
+                                <svg class="second-decoration utouch-icon utouch-icon-arrow-left">
+                                    <use xlink:href="#utouch-icon-arrow-left"></use>
+                                </svg>
+
+                            </h1>
+                            <span>Informasi tentang kami</span>
+                        </div>
+                    </div>
+                {{-- </div> --}}
+                <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 " style="margin-top: 50px">
+                    <h6 class="heading-sup-title c-black" style="font-size: 28px; text-align:center;">Visi</h6>
+                    <div class="heading-text c-black"><p style="font-size: 18px;">{{$data['visi_misi']->visi}}</p>
+                    </div>
+                    <div class="video-thumb">
+                        <img  style="margin-top: 0px; width:500px; height:300px;" src="{{asset('storage/'.$data['visi_misi']->image)}}" alt="visi">
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 " style="margin-top: 50px">
+                    <div class="crumina-module crumina-heading">
+
+
+                        <h6 class="heading-sup-title  c-black"style="font-size: 28px; text-align:center;">Misi</h6>
+                        <ul class="list list--standard">
+                            <li>
+                                <svg class="utouch-icon utouch-icon-correct-symbol-1"><use xlink:href="#utouch-icon-correct-symbol-1"></use></svg>
+                                <a href="#" style="font-size: 18px;">Claritas est Claritas est Claritas est etiam processus dynamicus</a>
+                            </li>
+                            <li>
+                                <svg class="utouch-icon utouch-icon-correct-symbol-1"><use xlink:href="#utouch-icon-correct-symbol-1"></use></svg>
+                                <a href="#" style="font-size: 18px;">Ypi non habent claritatem insitam</a>
+                            </li>
+                            <li>
+                                <svg class="utouch-icon utouch-icon-correct-symbol-1"><use xlink:href="#utouch-icon-correct-symbol-1"></use></svg>
+                                <a href="#"style="font-size: 18px;">Ut wisi enim ad minim veniam, quis nostrud</a>
+                            </li>
+                            <li>
+                                <svg class="utouch-icon utouch-icon-correct-symbol-1"><use xlink:href="#utouch-icon-correct-symbol-1"></use></svg>
+                                <a href="#" style="font-size: 18px;">Mirum est notare quam</a>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
-<br>
-        <div class="row">
-            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 " style="color: black;">
-                <div class="swiper-container navigation-bottom">
-                    <div class="col-lg-4 col-md-12 col-sm-12" >
-                        <div class="slider-faqs-thumb">
-                            <img style="border-radius: 4px;" width="300px;" src="{{asset('storage/'.$data['visi_misi']->image_visi)}}" alt="image">
-                        </div>
-{{-- {{dd($data['visi_misi'])}} --}}
-                    </div>
-                    <div class="col-lg-8 col-md-12 col-sm-12 bg-3 background-cover">
-                        <h5 class="slider-faqs-title" style="color: black;" >Visi
-                            <hr style="width: 8%;  height:4px; background-color:whitesmoke; border-radius:4px; margin-left:4px; margin-top:0px;">
-                        </h5>
-                        <p class="weight-bold">{{$data['visi_misi']->visi}}
-                        </p>
-                    </div>
-                </div>
-                <div class="swiper-container navigation-bottom" >
-                    <div class="col-lg-8 col-md-12 col-sm-12 bg-3 background-cover">
-                        <h5 class="slider-faqs-title" style="color: black;">Misi
-                            <hr style="width: 8%;  height:4px; background-color:whitesmoke; border-radius:4px; margin-left:2px; margin-top:0px;">
-                        </h5>
-                        <p class="weight-bold">{{$data['visi_misi']->misi}}
-                        </p>
-                    </div>
-                    <div class="col-lg-4 col-md-12 col-sm-12" >
-                        <div class="slider-faqs-thumb">
-                            <img style="border-radius: 4px;" width="300px;" src="{{asset('storage/'.$data['visi_misi']->image_misi)}}" alt="image">
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <br><br><br><br>
-</section>
+    </section>
+
+
+	<!-- ... end Our Video -->
 <!-- Slider with vertical tabs -->
+<div class="bg-22 background-cover pt100">
+    <section class="crumina-module crumina-module-slider slider-tabs-vertical-line ">
+        <div class="bg-22 background-cover ">
+            <section class="crumina-module crumina-module-slider slider-tabs-vertical-line ">
+                <div class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 col-sm-12 col-sm-offset-0 col-xs-12" style="margin-top: -50px;">
+                    <div class=" align-center">
+                        <h1 class="slider-content-title with-decoration" style="margin-top: 50px; color:black; font-size:40px;"  >
+                            INTERNET <span class="c-primary">OF</span> THINGS
 
-<section class="crumina-module crumina-module-slider slider-tabs-vertical-line bg-3 background-cover">
-            <div style="padding: 20px;" >
-                <div class="container">
-                    <div class="row">
-                        <div class="col-lg-5 col-lg-offset-0 col-md-5 col-md-offset-0 col-sm-12 col-xs-12">
+                            <svg class="first-decoration utouch-icon utouch-icon-arrow-left">
+                                <use xlink:href="#utouch-icon-arrow-left"></use>
+                            </svg>
 
-                            <div class="m-auto">
-                                <img src="{{asset('frontAsset/img/bg-gedung.jpg')}}" alt="iphone">
+                            <svg class="second-decoration utouch-icon utouch-icon-arrow-left">
+                                <use xlink:href="#utouch-icon-arrow-left"></use>
+                            </svg>
+
+                        </h1>
+                        <span>Informasi tentang kami</span>
+                    </div>
+                </div><br>
+                <div style="padding: 20px; margin-top:20px;" >
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-lg-5 col-lg-offset-0 col-md-5 col-md-offset-0 col-sm-12 col-xs-12">
+
+                                <div class="m-auto">
+                                    <img src="{{asset('storage/'.$data['section_one']->image)}}" alt="iphone">
+                                </div>
                             </div>
-                        </div>
-                        <div class="col-lg-6 col-lg-offset-1 col-md-7 col-md-offset-0 col-sm-12 col-xs-12">
-                            <div class="crumina-module crumina-heading custom-color c-dark">
-                                <h6 class="heading-sup-title"></h6>
-                                <h2 class="heading-title">Lorem  Ipsum</h2>
-                                <div class="heading-text">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed
-                                    diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.
-                                    Claritas est etiam processus dynamicus, qui sequitur mutationem consuetudium lectorum.
-                                    Mirum est notare quam littera gothica, quam nunc putamus parum claram, anteposuerit
-                                    litterarum formas humanitatis per.
+                            <div class="col-lg-6 col-lg-offset-1 col-md-7 col-md-offset-0 col-sm-12 col-xs-12">
+                                <div class="crumina-module crumina-heading custom-color c-black">
+                                    <h6 class="heading-sup-title"></h6>
+                                    <h2 class="heading-title">{{$data['section_one']->title}}</h2>
+                                    <div class="heading-text">{{$data['section_one']->description}}
+                                    </div>
+                                    <p></p>
+                                    <a href="{{$data['section_one']->link}}" target="_blank" class="btn btn-border btn--with-shadow c-black">
+                                        Visit
+                                    </a>
+
                                 </div>
                             </div>
                         </div>
+
                     </div>
 
                 </div>
-
-            </div>
-</section>
+    </section>
 
 <!-- ... Slider with vertical tabs -->
+    <hr style="width: 70%; height:6px; opacity:0.8; background-color:black; border-radius:5px;">
+    <!-- Info Boxes -->
 
-<!-- Info Boxes -->
+    <!-- Info Boxes -->
 
-<section class="medium-padding100">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
-                <div class="crumina-module crumina-info-box info-box--standard-hover">
-
-                    <div class="info-box-image">
-                        <img class="utouch-icon" src="{{asset('frontAsset/img/icon-5.png')}}" alt="icon">
-                        <img class="cloud" src="{{asset('frontAsset/img/clouds8.png')}}" alt="cloud">
+    <section class="medium-padding120">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
+                    <div class="crumina-module crumina-info-box info-box--classic" data-mh="box--classic">
+                        <div class="info-box-image">
+                            <img class="utouch-icon" src="{{asset('frontAsset/img/icon-5.png')}}" alt="smartphone">
+                        </div>
+                        <div class="info-box-content">
+                            <h5 class="info-box-title">Automation</h5>
+                            <p class="info-box-text">IoT mampu merubah suatu proses manual menjadi suatu proses otomatis, sehingga proses interaksi antara mesin dan manusia dapat diminimalisir.</p>
+                        </div>
                     </div>
-
-                    <div class="info-box-content">
-                        <a href="#" class="h5 info-box-title">Lorem ipsum</a>
-                        <p class="info-box-text">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy
-                            nibh euismod tincidunt ut laoreet dolore magna aliquam.
-                        </p>
-                    </div>
-
-                    <a href="#" class="btn-next">
-                        <svg class="utouch-icon icon-hover utouch-icon-arrow-right-1">
-                            <use xlink:href="#utouch-icon-arrow-right-1"></use>
-                        </svg>
-                        <svg class="utouch-icon utouch-icon-arrow-right1">
-                            <use xlink:href="#utouch-icon-arrow-right1"></use>
-                        </svg>
-                    </a>
-
                 </div>
-            </div>
-
-            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
-                <div class="crumina-module crumina-info-box info-box--standard-hover">
-
-                    <div class="info-box-image">
-                        <img class="utouch-icon" src="{{asset('frontAsset/img/icon-9.png')}}" alt="smartphone">
-                        <img class="cloud" src="{{asset('frontAsset/img/clouds9.png')}}" alt="cloud">
+                <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
+                    <div class="crumina-module crumina-info-box info-box--classic" data-mh="box--classic">
+                        <div class="info-box-image">
+                            <img class="utouch-icon" src="{{asset('frontAsset/img/icon-9.png')}}" alt="smartphone">
+                        </div>
+                        <div class="info-box-content">
+                            <h5 class="info-box-title">Cloud Computing</h5>
+                            <p class="info-box-text">Data - data yang dihasilkan dari proses IoT dapat disimpan baik secara Cloud maupun dalam komputer lokal, yang dapat digunakan lebih lanjut lagi kedepannya.</p>
+                        </div>
                     </div>
-
-                    <div class="info-box-content">
-                        <a href="#" class="h5 info-box-title">Lorem Ipsum</a>
-                        <p class="info-box-text">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy
-                            nibh euismod tincidunt ut laoreet dolore magna aliquam.
-                        </p>
-                    </div>
-
-                    <a href="#" class="btn-next">
-                        <svg class="utouch-icon icon-hover utouch-icon-arrow-right-1">
-                            <use xlink:href="#utouch-icon-arrow-right-1"></use>
-                        </svg>
-                        <svg class="utouch-icon utouch-icon-arrow-right1">
-                            <use xlink:href="#utouch-icon-arrow-right1"></use>
-                        </svg>
-                    </a>
-
                 </div>
-            </div>
 
-            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
-                <div class="crumina-module crumina-info-box info-box--standard-hover" >
-
-                    <div class="info-box-image">
-                        <img class="utouch-icon" src="{{asset('frontAsset/img/icon-3.png')}}" alt="smartphone">
-                        <img class="cloud" src="{{asset('frontAsset/img/clouds10.png')}}" alt="cloud">
+                <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
+                    <div class="crumina-module crumina-info-box info-box--classic" data-mh="box--classic">
+                        <div class="info-box-image">
+                            <img class="utouch-icon" src="{{asset('frontAsset/img/icon-3.png')}}" alt="smartphone">
+                        </div>
+                        <div class="info-box-content">
+                            <h5 class="info-box-title">Data Management</h5>
+                            <p class="info-box-text">Data yang sudah tersimpan tadi dapat diatur dan dikelola sesuai kebutuhan, seperti melihat trend pemakaian dari suatu mesin dll.</p>
+                        </div>
                     </div>
-
-                    <div class="info-box-content">
-                        <a href="#" class="h5 info-box-title">Lorem ipsum</a>
-                        <p class="info-box-text">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy
-                            nibh euismod tincidunt ut laoreet dolore magna aliquam.
-                        </p>
-                    </div>
-
-                    <a href="#" class="btn-next">
-                        <svg class="utouch-icon icon-hover utouch-icon-arrow-right-1">
-                            <use xlink:href="#utouch-icon-arrow-right-1"></use>
-                        </svg>
-                        <svg class="utouch-icon utouch-icon-arrow-right1">
-                            <use xlink:href="#utouch-icon-arrow-right1"></use>
-                        </svg>
-                    </a>
-
                 </div>
             </div>
         </div>
-    </div>
-</section>
-
-<!-- ... end Info Boxes -->
+    </section>
+</div>
+<!-- ... Info Boxes -->
 
 <!-- FAQS Slider -->
 
-<section class="crumina-module crumina-module-slider pt100 bg-light-color  bg-rounded2 background-cover">
+<section class="crumina-module crumina-module-slider bg-blue-lighteen pt100">
     <div class="container">
         <div class="row">
             <div class="col-lg-12 col-md-6 col-sm-12 mb30"style="margin-top: -60px; text-align:center; ">
@@ -391,71 +307,6 @@
                             </div>
                         </div>
                         @endforeach
-
-                        {{-- <div class="swiper-slide">
-                            <div class="col-lg-4 col-md-12 col-sm-12" data-swiper-parallax="-100">
-                                <div class="slider-faqs-thumb">
-                                    <img class="utouch-icon" src="{{asset('frontAsset/img/web-dev4.png')}}" alt="image">
-                                </div>
-                            </div>
-
-                            <div class="col-lg-8 col-md-12 col-sm-12" data-swiper-parallax="-300">
-                                <h5 class="slider-faqs-title">Duis autem vel eum iriure?</h5>
-                                <p class="weight-bold">Mirum est notare quam littera gothica, quam nunc putamus parum claram, anteposuerit litterarum
-                                    formas humanitatis. Gest etiam processus dynamicus, qui sequitur.
-                                </p>
-                                <p>Claritas est etiam processus dynamicus, qui sequitur mutationem consuetudium lectorum. Mirum
-                                    est notare quam littera gothica, quam nunc putamus parum claram, anteposuerit litterarum
-                                    formas humanitatis. Gest etiam processus dynamicus, qui sequitur mutationem consuetudium lectorum.
-                                </p>
-                                <a href="03_products.html" class="btn btn-border btn--with-shadow c-secondary">
-                                    Learn More
-                                </a>
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="col-lg-4 col-md-12 col-sm-12" data-swiper-parallax="-100">
-                                <div class="slider-faqs-thumb">
-                                    <img class="utouch-icon" src="{{asset('frontAsset/img/web-dev3.png')}}" alt="image">
-                                </div>
-                            </div>
-
-                            <div class="col-lg-8 col-md-12 col-sm-12" data-swiper-parallax="-300">
-                                <h5 class="slider-faqs-title">Duis autem vel eum iriure?</h5>
-                                <p class="weight-bold">Mirum est notare quam littera gothica, quam nunc putamus parum claram, anteposuerit litterarum
-                                    formas humanitatis. Gest etiam processus dynamicus, qui sequitur.
-                                </p>
-                                <p>Claritas est etiam processus dynamicus, qui sequitur mutationem consuetudium lectorum. Mirum
-                                    est notare quam littera gothica, quam nunc putamus parum claram, anteposuerit litterarum
-                                    formas humanitatis. Gest etiam processus dynamicus, qui sequitur mutationem consuetudium lectorum.
-                                </p>
-                                <a href="03_products.html" class="btn btn-border btn--with-shadow c-secondary">
-                                    Learn More
-                                </a>
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="col-lg-4 col-md-12 col-sm-12" data-swiper-parallax="-100">
-                                <div class="slider-faqs-thumb">
-                                    <img class="utouch-icon" src="{{asset('frontAsset/img/web-dev1.png')}}" alt="image">
-                                </div>
-                            </div>
-
-                            <div class="col-lg-8 col-md-12 col-sm-12" data-swiper-parallax="-300">
-                                <h5 class="slider-faqs-title">Duis autem vel eum iriure?</h5>
-                                <p class="weight-bold">Mirum est notare quam littera gothica, quam nunc putamus parum claram, anteposuerit litterarum
-                                    formas humanitatis. Gest etiam processus dynamicus, qui sequitur.
-                                </p>
-                                <p>Claritas est etiam processus dynamicus, qui sequitur mutationem consuetudium lectorum. Mirum
-                                    est notare quam littera gothica, quam nunc putamus parum claram, anteposuerit litterarum
-                                    formas humanitatis. Gest etiam processus dynamicus, qui sequitur mutationem consuetudium lectorum.
-                                </p>
-                                <a href="03_products.html" class="btn btn-border btn--with-shadow c-secondary">
-                                    Learn More
-                                </a>
-                            </div>
-                        </div> --}}
-
                     </div>
 
                     <!--Prev next buttons-->
@@ -489,76 +340,83 @@
 </section>
 
 <!-- ... end FAQS Slider -->
-<!-- ... Slider with vertical tabs -->
-<section class="crumina-module crumina-module-slider pt100 bg-3 background-cover">
+<!-- Teammembers -->
+
+<section class="crumina-module crumina-module-slider medium-padding120">
     <div class="container">
-        <div class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 col-sm-12 col-sm-offset-0 col-xs-12">
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="crumina-module crumina-heading align-center">
+                    <h6 class="heading-sup-title">Speakers</h6>
+                    <h3 class="heading-title">Meet Our Specialists</h3>
+                </div>
+                <div class="swiper-container navigation-bottom" data-show-items="2">
 
-            <div class=" align-center">
+                    <div class="swiper-wrapper">
+                        @foreach ($data['teams'] as $team)
+                        <div class="swiper-slide">
+                            <div class="crumina-module crumina-teammembers-item teammember-item--author-in-round thumb--big">
 
-                <h1 class="slider-content-title with-decoration" style="margin-top: 50px;"  >
-                    Lorem Ipsum
+                                <div class="teammembers-thumb">
+                                    <img src="{{asset('storage/'.$team->image)}}" alt="team member">
+                                </div>
 
-                    <svg class="first-decoration utouch-icon utouch-icon-arrow-left">
-                        <use xlink:href="#utouch-icon-arrow-left"></use>
-                    </svg>
+                                <div class="teammember-content">
 
-                    <svg class="second-decoration utouch-icon utouch-icon-arrow-left">
-                        <use xlink:href="#utouch-icon-arrow-left"></use>
-                    </svg>
+                                    <div class="teammembers-item-prof">{{$team->position}}</div>
 
-                </h1>
-                <h6 class="slider-content-text" data-swiper-parallax="-200">Lorem ipsum dolor sit
-                    amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut
-                    laoreet dolore magna aliquam erat volutpat.
-                </h6>
-            </div>
-        </div>
-        <br>
-        <div" style="padding: 20px;">
-            <div class="row" >
-                @foreach ($data['teams'] as $team)
-                <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
-                    <div class="crumina-module crumina-info-box info-box--standard-hover" style=" padding-top:20px; ">
-                        <div class="info-box-image card__one">
-                            <img style="width:100%;" class="member-image"  src="{{asset('storage/'.$team->image)}}" alt="icon">
-                            <img class="cloud" src="{{asset('frontAsset/img/clouds8.png')}}" alt="cloud">
-                            <div class="member-text">
-                                <h5 class="member-name">{{$team->name}}</h5>
-                            <div class="member-tag"><span class="member-role">{{$team->position}}</span></div>
+                                    <a href="#" class="h5 teammembers-item-name">{{$team->name}}</a>
+
+                                    <p>Sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt
+                                        est etiam est etiam processus dynamicus, qui sequitur.
+                                    </p>
+
+                                    <ul class="socials socials--round">
+                                        <li>
+                                            <a href="#" class="social__item facebook">
+                                                <svg class="utouch-icon" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="1.414"><path d="M15.117 0H.883C.395 0 0 .395 0 .883v14.234c0 .488.395.883.883.883h7.663V9.804H6.46V7.39h2.086V5.607c0-2.066 1.262-3.19 3.106-3.19.883 0 1.642.064 1.863.094v2.16h-1.28c-1 0-1.195.48-1.195 1.18v1.54h2.39l-.31 2.42h-2.08V16h4.077c.488 0 .883-.395.883-.883V.883C16 .395 15.605 0 15.117 0" fill-rule="nonzero"></path></svg>
+                                            </a>
+                                        </li>
+
+                                        <li>
+                                            <a href="#" class="social__item twitter">
+                                                <svg class="utouch-icon" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="1.414"><path d="M16 3.038c-.59.26-1.22.437-1.885.517.677-.407 1.198-1.05 1.443-1.816-.634.37-1.337.64-2.085.79-.598-.64-1.45-1.04-2.396-1.04-1.812 0-3.282 1.47-3.282 3.28 0 .26.03.51.085.75-2.728-.13-5.147-1.44-6.766-3.42C.83 2.58.67 3.14.67 3.75c0 1.14.58 2.143 1.46 2.732-.538-.017-1.045-.165-1.487-.41v.04c0 1.59 1.13 2.918 2.633 3.22-.276.074-.566.114-.865.114-.21 0-.41-.02-.61-.058.42 1.304 1.63 2.253 3.07 2.28-1.12.88-2.54 1.404-4.07 1.404-.26 0-.52-.015-.78-.045 1.46.93 3.18 1.474 5.04 1.474 6.04 0 9.34-5 9.34-9.33 0-.14 0-.28-.01-.42.64-.46 1.2-1.04 1.64-1.7z" fill-rule="nonzero"></path></svg>
+                                            </a>
+                                        </li>
+
+                                        <li>
+                                            <a href="#" class="social__item googlePlus">
+                                                <svg class="utouch-icon" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="1.414"><path d="M8.16 6.857V9.6h4.537c-.183 1.177-1.37 3.45-4.537 3.45-2.73 0-4.96-2.26-4.96-5.05s2.23-5.05 4.96-5.05c1.554 0 2.594.66 3.19 1.233l2.17-2.092C12.126.79 10.32 0 8.16 0c-4.423 0-8 3.577-8 8s3.577 8 8 8c4.617 0 7.68-3.246 7.68-7.817 0-.526-.057-.926-.126-1.326H8.16z"></path></svg>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
                             </div>
                         </div>
+                        @endforeach
+                    </div>
+
+                    <!--Prev next buttons-->
+
+                    <div class="btn-slider-wrap navigation-center-bottom">
+
+                        <div class="btn-prev">
+                            <svg class="utouch-icon icon-hover utouch-icon-arrow-left-1"><use xlink:href="#utouch-icon-arrow-left-1"></use></svg>
+                            <svg class="utouch-icon utouch-icon-arrow-left1"><use xlink:href="#utouch-icon-arrow-left1"></use></svg>
+                        </div>
+
+                        <div class="btn-next">
+                            <svg class="utouch-icon icon-hover utouch-icon-arrow-right-1"><use xlink:href="#utouch-icon-arrow-right-1"></use></svg>
+                            <svg class="utouch-icon utouch-icon-arrow-right1"><use xlink:href="#utouch-icon-arrow-right1"></use></svg>
+                        </div>
+
                     </div>
                 </div>
-                @endforeach
-
-                {{-- <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 ">
-                    <div class="crumina-module crumina-info-box info-box--standard-hover" style="padding-top:20px;">
-                        <div class="info-box-image card__one">
-                            <img style="width:100%;" class="member-image"  src="{{asset('frontAsset/img/author2.png')}}" alt="icon">
-                            <img class="cloud" src="{{asset('frontAsset/img/clouds8.png')}}" alt="cloud">
-                            <div class="member-text">
-                                <h5 class="member-name">Prenky Hermawan</h5>
-                                <div class="member-tag"><span class="member-role">HRD</span></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
-                    <div class="crumina-module crumina-info-box info-box--standard-hover" style="padding-top:20px;">
-                        <div class="info-box-image card__one">
-                            <img style="width:100%;" class="member-image"  src="{{asset('frontAsset/img/author3.png')}}" alt="icon">
-                            <img class="cloud" src="{{asset('frontAsset/img/clouds8.png')}}" alt="cloud">
-                            <div class="member-text">
-                                <h5 class="member-name">John Blesa</h5>
-                                <div class="member-tag"><span class="member-role">Lead Developer</span></div>
-                            </div>
-                        </div>
-                    </div>
-                </div> --}}
             </div>
         </div>
     </div>
+
 </section>
+
+<!-- ... end Teammembers -->
 @endsection
