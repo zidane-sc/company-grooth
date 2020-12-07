@@ -16,24 +16,23 @@ class MainController extends Controller
     {
         $data['banners'] = Banner::all();
         $data['visi_misi'] = VisiMisi::first();
-        $data['portfolios'] = Portfolio::all();
-        $data['teams'] = Team::all();
+        $data['misi'] = json_decode($data['visi_misi']->misi);
+
         $data['section_one'] = SectionOne::first();
-        $data['section_two'] = SectionTwo::first();
+        $data['section_two'] = SectionTwo::all();
 
         return view('client.content.home-frontend', ['data' => $data]);
     }
 
     public function portfolio()
     {
-
-        return view('client.content.portfolio');
+        $data['portfolios'] = Portfolio::all();
+        return view('client.content.portfolio', ['data' => $data]);
     }
 
     public function about()
     {
-        $data['visi_misi'] = VisiMisi::first();
-        $data['portfolios'] = Portfolio::all();
+
         $data['teams'] = Team::all();
         return view('client.content.about', ['data' => $data]);
     }
@@ -46,5 +45,9 @@ class MainController extends Controller
     public function contact()
     {
         return view('client.content.contact-us');
+    }
+    public function detail()
+    {
+        return view('client.content.detail');
     }
 }

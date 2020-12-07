@@ -51,95 +51,60 @@
     }
 
 </style>
-<section class="background-contain bg-15 bg-blue-lighteen pt100">
+
+<!-- Zoom Image -->
+
+<section class="bg-primary-color medium-padding100">
     <div class="container">
         <div class="row">
-            <div class="crumina-module crumina-module-img-bottom">
-                <div class="col-lg-7 col-md-12 col-sm-12 col-xs-12">
-                    <div class="crumina-module-img-content medium-padding100">
-                        <div class="crumina-module crumina-heading">
-                            <h6 class="heading-sup-title">Company</h6>
-                            <h2 class="heading-title">Welcome to
-                                <span class="c-primary">Utouch!</span> We create high quality products that will make your life better.
-                            </h2>
-                            <div class="h6 heading-text">Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</div>
-                        </div>
-
-                        <a href="03_products.html" class="btn btn-border btn--with-shadow c-primary">
-                            Learn More
-                        </a>
-
-                        <a href="15_pricing_tables.html" class="btn btn--green btn--with-shadow">
-                            Get trial version
-                        </a>
-
+            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                <div class="crumina-module crumina-zoom-image">
+                    <img src="{{asset('frontAsset/img/smartphone.png')}}" alt="smartphone">
+                    <div class="zoom-round-img">
+                        <img src="{{asset('frontAsset/img/zoom-img.png')}}" alt="zoom">
                     </div>
                 </div>
+            </div>
 
-                <div class="col-lg-4 col-lg-offset-1 col-md-12 col-sm-12 col-xs-12">
-                    <img class="img-bottom" src="{{asset('frontAsset/img/man.png')}}" alt="man">
+            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                <div class="crumina-module crumina-heading custom-color c-white">
+                    <h2 class="heading-title">Simple and Powerful Dashboard</h2>
+                    <div class="heading-text">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.
+                        Claritas est etiam processus dynamicus, qui sequitur mutationem consuetudium lectorum. Mirum est notare quam littera gothica, quam nunc putamus parum claram, anteposuerit litterarum formas humanitatis per.
+                    </div>
                 </div>
+                <ul class="list list--breez">
+                    <li>
+                        <svg class="utouch-icon utouch-icon-checked">
+                            <use xlink:href="#utouch-icon-checked"></use>
+                        </svg>
+                        <a href="#">Claritas est etiam processus dynamicus</a>
+                    </li>
+                    <li>
+                        <svg class="utouch-icon utouch-icon-checked">
+                            <use xlink:href="#utouch-icon-checked"></use>
+                        </svg>
+                        <a href="#">Investigationes demonstraverunt lectores legere</a>
+                    </li>
+                    <li>
+                        <svg class="utouch-icon utouch-icon-checked">
+                            <use xlink:href="#utouch-icon-checked"></use>
+                        </svg>
+                        <a href="#">Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod</a>
+                    </li>
+                    <li>
+                        <svg class="utouch-icon utouch-icon-checked">
+                            <use xlink:href="#utouch-icon-checked"></use>
+                        </svg>
+                        <a href="#">Qum soluta nobis eleifend</a>
+                    </li>
+                </ul>
             </div>
         </div>
     </div>
 </section>
 
-<!-- ... end Block IMG-bottom -->
-<!-- Our Video -->
-
-<section class="bg-3 background-cover medium-padding120">
-    <div class="container bg-11 background-cover">
-        <div class="row">
-            {{-- <div class="row"> --}}
-                <div class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 col-sm-12 col-sm-offset-0 col-xs-12" style="margin-top: -50px;">
-
-                    <div class=" align-center">
-
-                        <h1 class="slider-content-title with-decoration" style="margin-top: 50px; color:black; font-size:40px;"  >
-                            VISI <span class="c-primary">&</span> MISI
-
-                            <svg class="first-decoration utouch-icon utouch-icon-arrow-left">
-                                <use xlink:href="#utouch-icon-arrow-left"></use>
-                            </svg>
-
-                            <svg class="second-decoration utouch-icon utouch-icon-arrow-left">
-                                <use xlink:href="#utouch-icon-arrow-left"></use>
-                            </svg>
-
-                        </h1>
-                        <span>Informasi tentang kami</span>
-                    </div>
-                </div>
-            {{-- </div> --}}
-            <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 " style="margin-top: 50px">
-                <h6 class="heading-sup-title c-black" style="font-size: 28px; text-align:center;">Visi</h6>
-                <div class="heading-text c-black"><p style="font-size: 18px;">{{$data['visi_misi']->visi}}</p>
-                </div>
-                <div class="video-thumb">
-                    <img  style="margin-top: 0px; width:500px; height:300px;" src="{{asset('storage/'.$data['visi_misi']->image)}}" alt="visi">
-                </div>
-            </div>
-            <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 " style="margin-top: 50px">
-                <div class="crumina-module crumina-heading">
-
-
-                    <h6 class="heading-sup-title  c-black"style="font-size: 28px; text-align:center;">Misi</h6>
-
-                    <ul class="list list--standard">
-                        <li>
-                            <svg class="utouch-icon utouch-icon-correct-symbol-1"><use xlink:href="#utouch-icon-correct-symbol-1"></use></svg>
-                            <a href="#" style="font-size: 18px;">{{$data['visi_misi']->misi}}</a>
-                        </li>
-                    </ul>
-
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- ... end Our Video -->
-
+<!-- ... end Zoom Image -->
 <!-- Info Boxes -->
 
 <section class="crumina-module crumina-module-slider bg-blue-lighteen medium-padding100">
@@ -268,121 +233,141 @@
 </section>
 
 <!-- ... end Info Boxes -->
+<!-- Accordion -->
 
- <!-- FAQS Slider -->
-    <section class="crumina-module crumina-module-slider pt100  bg-light-color  bg-13 background-cover">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12 col-md-6 col-sm-12 mb30"style="margin-top: -60px; text-align:center; ">
+<section class="medium-padding120">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
 
-                        <h3 class="spr" style="background: url('https://nidhacenter.com/assets_client/images/geo-1.png'); background-size: 59px; background-repeat: no-repeat; background-position: 60%; line-height: 77px;">Our Project</h3>
-                        <hr style="text-align:center; width: 12%; height:7px; background-color: #273f5b; border-radius:4px; margin-top:-25px;">
-
+                <div class="crumina-module crumina-heading">
+                    <h2 class="heading-title">
+                        <span class="c-primary">Utouch</span> the app, challenge your teammates</h2>
                 </div>
-            </div>
 
-            <div class="row">
-                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                    <div class="swiper-container navigation-bottom" data-effect="fade">
-                        <div class="slider-slides" >
-                            @foreach ($data['portfolios'] as $portfolio)
-
-                            <a href="#" class="slides-item">
-                                {{$loop->iteration}}
-                            </a>
-                            @endforeach
+                <div id="accordion" class="crumina-module crumina-accordion">
+                    <div class="card accordion-panel">
+                        <div class="card-header panel-heading" id="headingOne">
+                            <button class="btn-link accordion-heading" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                <span class="icons">
+                                    <svg class="utouch-icon utouch-icon-add"><use xlink:href="#utouch-icon-add"></use></svg>
+                                    <svg class="utouch-icon active utouch-icon-minus"><use xlink:href="#utouch-icon-minus"></use></svg>
+                                </span>
+                                <span class="title">Claritas est etiam processus dynamicus</span>
+                            </button>
 
                         </div>
-                        <div class="swiper-wrapper">
-                            @foreach ($data['portfolios'] as $portfolio)
 
-                            <div class="swiper-slide">
-                                <div class="col-lg-4 col-md-12 col-sm-12" data-swiper-parallax="-100">
-                                    <div class="slider-faqs-thumb">
-                                        <img class="utouch-icon" src="{{asset('storage/'.$portfolio->image)}}" alt="image">
-                                    </div>
-                                </div>
-
-                                <div class="col-lg-8 col-md-12 col-sm-12" data-swiper-parallax="-300">
-                                    <h5 class="slider-faqs-title">{{$portfolio->name}}</h5>
-                                    <p>{{$portfolio->description}} </p>
-
-                                    <p></p>
+                        <div id="collapseOne" class="panel-collapse collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+                            <div class="card-body">
+                                <div class="panel-info">
+                                    Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod
+                                    tincidunt ut laoreet dolore magna aliquam erat volutpat odio dignissim qui blandit.
                                 </div>
                             </div>
-                            @endforeach
+                        </div>
+                    </div>
+                    <div class="card accordion-panel">
+                        <div class="card-header panel-heading" id="headingTwo">
+
+                            <button class="btn-link accordion-heading collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+                                <span class="icons">
+                                    <svg class="utouch-icon utouch-icon-add"><use xlink:href="#utouch-icon-add"></use></svg>
+                                    <svg class="utouch-icon active utouch-icon-minus"><use xlink:href="#utouch-icon-minus"></use></svg>
+                                </span>
+                                <span class="title">Gectores legere me lius quod</span>
+                            </button>
+
                         </div>
 
+                        <div id="collapseTwo" class="panel-collapse collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+                            <div class="card-body">
+                                <div class="panel-info">
+                                    Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod
+                                    tincidunt ut laoreet dolore magna aliquam erat volutpat odio dignissim qui blandit.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card accordion-panel">
+                        <div class="card-header panel-heading" id="headingThree">
 
+                            <button class="btn-link accordion-heading collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="true" aria-controls="collapseThree">
+                                <span class="icons">
+                                    <svg class="utouch-icon utouch-icon-add"><use xlink:href="#utouch-icon-add"></use></svg>
+                                    <svg class="utouch-icon active utouch-icon-minus"><use xlink:href="#utouch-icon-minus"></use></svg>
+                                </span>
+                                <span class="title">Investigationes demonstraverunt lectores legere</span>
+                            </button>
+
+                        </div>
+
+                        <div id="collapseThree" class="panel-collapse collapse" aria-labelledby="headingThree" data-parent="#accordion">
+                            <div class="card-body">
+                                <div class="panel-info">
+                                    Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod
+                                    tincidunt ut laoreet dolore magna aliquam erat volutpat odio dignissim qui blandit.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card accordion-panel">
+                        <div class="card-header panel-heading" id="headingFour">
+                            <button class="btn-link accordion-heading collapsed" data-toggle="collapse" data-target="#collapseFour" aria-expanded="true" aria-controls="collapseFour">
+                                <span class="icons">
+                                    <svg class="utouch-icon utouch-icon-add"><use xlink:href="#utouch-icon-add"></use></svg>
+                                    <svg class="utouch-icon active utouch-icon-minus"><use xlink:href="#utouch-icon-minus"></use></svg>
+                                </span>
+                                <span class="title">Mirum est notare quam littera</span>
+                            </button>
+                        </div>
+
+                        <div id="collapseFour" class="panel-collapse collapse" aria-labelledby="headingFour" data-parent="#accordion">
+                            <div class="card-body">
+                                <div class="panel-info">
+                                    Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod
+                                    tincidunt ut laoreet dolore magna aliquam erat volutpat odio dignissim qui blandit.
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
+
+            </div>
+
+            <div class="col-lg-5 col-lg-offset-1 col-md-6 col-sm-12 col-xs-12">
+                <img src="{{asset('frontAsset/img/product-img2.png')}}" alt="image">
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <!-- ... end FAQS Slider -->
-    <!-- Slider with vertical tabs -->
-<div class="" >
-    <section class="crumina-module crumina-module-slider slider-tabs-vertical-line ">
-                <div style="padding: 20px; margin-top:20px;" >
-                    <div class="container" style="background-color: rgb(255, 240, 34); border-radius:5px; box-shadow: 5px 8px 2px rgb(0,0,0,0.4);">
-                        <div class="row">
-                            <div class="col-lg-10 col-lg-offset-1 col-md-7 col-md-offset-0 col-sm-12 col-xs-12">
-                                <div class="crumina-module crumina-heading custom-color c-dark">
-                                    <h6 class="heading-sup-title"></h6>
-                                    <h2 class="heading-title">Tertarik dengan Produk kami ?</h2>
-                                    <div class="heading-text">Produk aplikasi dengan kualitas terbaik yang mampu bersaing dengan vendor lainnya dengan harga yang kompetitif. Untuk melihat demo aplikasi silahkan klik tombol lihat detail.
-                                    </div>
-                                    <p></p>
-                                    <a href="" target="_blank" class="btn btn-border btn--with-shadow c-secondary">
-                                        Visit
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-    </section>
-</div>
-    <!-- ... end Info Boxes -->
+<!-- ... end Accordion -->
+
+
 
 <!-- Teammembers -->
 
-<section class="crumina-module crumina-module-slider medium-padding100">
+<section class="crumina-module crumina-module-slider medium-padding100 bg-3 background-cover">
     <div class="container">
         <div class="row">
-            <div class="col-lg-4 col-md-12 col-sm-12 col-xs-12">
-                <div class="crumina-module-img-content">
-                    <div class="crumina-module crumina-heading">
-                        <h3 class="heading-title">Our proffesional instructors</h3>
-                        <div class="heading-text">Claritas est etiam processus dynamicus.</div>
-                    </div>
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="crumina-module crumina-heading align-center">
+                    <h6 class="heading-sup-title">Speakers</h6>
+                    <h3 class="heading-title">Meet Our Specialists</h3>
                 </div>
-                <div class="slider-slides with-thumbs align-left">
-                    @foreach ($data['teams'] as $team)
-                        <a href="#" class="slides-item slide-active">
-                            <div class="testimonial-img-author">
-                                <img src="{{asset('storage/'.$team->image)}}" alt="author">
-                                {{$loop->iteration}}
-                            </div>
-                        </a>
-                    @endforeach
-                </div>
-            </div>
+                <div class="swiper-container navigation-bottom" data-show-items="2">
 
-
-            <div class="col-lg-7 col-lg-offset-1 col-md-12 col-sm-12 col-xs-12">
-                <div class="swiper-container" data-effect="fade">
                     <div class="swiper-wrapper">
                         @foreach ($data['teams'] as $team)
                         <div class="swiper-slide">
                             <div class="crumina-module crumina-teammembers-item teammember-item--author-in-round thumb--big">
 
-                                <div class="teammembers-thumb" data-swiper-parallax="-100">
+                                <div class="teammembers-thumb">
                                     <img src="{{asset('storage/'.$team->image)}}" alt="team member">
                                 </div>
 
-                                <div class="teammember-content" data-swiper-parallax="-300">
+                                <div class="teammember-content">
 
                                     <div class="teammembers-item-prof">{{$team->position}}</div>
 
@@ -416,10 +401,26 @@
                         @endforeach
                     </div>
 
+                    <!--Prev next buttons-->
+
+                    <div class="btn-slider-wrap navigation-center-bottom">
+
+                        <div class="btn-prev">
+                            <svg class="utouch-icon icon-hover utouch-icon-arrow-left-1"><use xlink:href="#utouch-icon-arrow-left-1"></use></svg>
+                            <svg class="utouch-icon utouch-icon-arrow-left1"><use xlink:href="#utouch-icon-arrow-left1"></use></svg>
+                        </div>
+
+                        <div class="btn-next">
+                            <svg class="utouch-icon icon-hover utouch-icon-arrow-right-1"><use xlink:href="#utouch-icon-arrow-right-1"></use></svg>
+                            <svg class="utouch-icon utouch-icon-arrow-right1"><use xlink:href="#utouch-icon-arrow-right1"></use></svg>
+                        </div>
+
+                    </div>
                 </div>
             </div>
         </div>
     </div>
+
 </section>
 
 <!-- ... end Teammembers -->
