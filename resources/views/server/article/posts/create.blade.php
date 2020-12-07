@@ -167,11 +167,13 @@
     <script src="{{ asset('backend/plugins/select2/js/select2.full.min.js') }}"></script>
 
     <script>
-      var content = document.getElementById("content");
+        var content = document.getElementById("content");
         CKEDITOR.replace(content,{
-        language:'en'
-      });
-      CKEDITOR.config.allowedContent = true;
+            filebrowserUploadUrl: "{{ route('posts.upload', ['_token' => csrf_token() ])}}",
+            filebrowserUploadMethod: 'form',
+            height: 600,
+        });
+        CKEDITOR.config.allowedContent = true;
     </script>
 
     <script>

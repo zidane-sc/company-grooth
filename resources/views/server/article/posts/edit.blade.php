@@ -174,7 +174,9 @@
     <script>
       var content = document.getElementById("content");
         CKEDITOR.replace(content,{
-        language:'en'
+            filebrowserUploadUrl: "{{ route('posts.upload', ['_token' => csrf_token() ])}}",
+            filebrowserUploadMethod: 'form',
+            height: 600,
       });
       CKEDITOR.config.allowedContent = true;
     </script>
