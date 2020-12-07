@@ -35,8 +35,8 @@
 
             <li class="nav-item {{ (request()->segment(2) == 'manage-website') ? 'menu-open' : ''}}">
                 <a href="#" class="nav-link {{ (request()->segment(2) == 'manage-website') ? 'active' : ''}}">
-                    <i class="nav-icon fas fa-globe"></i>
-                    <p>Manage Website<i class="right fas fa-angle-left"></i></p>
+                    <i class="nav-icon fas fa-home mr-2"></i>
+                    <p>Manage Home<i class="right fas fa-angle-left"></i></p>
                 </a>
                 <ul class="nav nav-treeview">
                     <li class="nav-item">
@@ -52,6 +52,18 @@
                         </a>
                     </li>
                     <li class="nav-item">
+                        <a href="{{ route('section-one.index') }}" class="nav-link {{ (request()->segment(3) == 'section-one') ? 'active' : ''}}">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>Section One</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ route('section-two.index') }}" class="nav-link {{ (request()->segment(3) == 'section-two') ? 'active' : ''}}">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>Section Two</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
                         <a href="{{ route('portfolios.index') }}" class="nav-link {{ (request()->segment(3) == 'portfolios') ? 'active' : ''}}">
                             <i class="far fa-circle nav-icon"></i>
                             <p>Portfolio</p>
@@ -60,7 +72,35 @@
                     <li class="nav-item">
                         <a href="{{ route('teams.index') }}" class="nav-link {{ (request()->segment(3) == 'teams') ? 'active' : ''}}">
                             <i class="far fa-circle nav-icon"></i>
-                            <p>Teams</p>
+                            <p>Team</p>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+
+            <li class="nav-item">
+                <a href="{{ route('contact.index') }}" class="nav-link {{ (request()->segment(2) == 'contact') ? 'active' : ''}}">
+                    <i class="nav-icon fas fa-phone-alt mr-2"></i>
+                    <p>Manage Contact Us</p>
+                </a>
+            </li>
+
+            <li class="nav-item {{ (request()->segment(2) == 'article') ? 'menu-open' : ''}}">
+                <a href="#" class="nav-link {{ (request()->segment(2) == 'article') ? 'active' : ''}}">
+                    <i class="nav-icon fas fa-book mr-2"></i>
+                    <p>Article<i class="right fas fa-angle-left"></i></p>
+                </a>
+                <ul class="nav nav-treeview">
+                    <li class="nav-item">
+                        <a href="{{ route('categories.index') }}" class="nav-link {{ (request()->segment(3) == 'categories') ? 'active' : ''}}">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>Categories</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ route('tags.index') }}" class="nav-link {{ (request()->segment(3) == 'tags') ? 'active' : ''}}">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>Tags</p>
                         </a>
                     </li>
                 </ul>

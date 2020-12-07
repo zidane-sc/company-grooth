@@ -11,12 +11,12 @@ class TeamController extends Controller
     public function index()
     {
         $data['teams'] = Team::all();
-        return view('server.management-website.teams.index', ['data' => $data]);
+        return view('server.management-home.teams.index', ['data' => $data]);
     }
 
     public function create()
     {
-        return view('server.management-website.teams.create');
+        return view('server.management-home.teams.create');
     }
 
     public function store(Request $request)
@@ -25,6 +25,7 @@ class TeamController extends Controller
             'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg',
             'name' => 'required',
             'position' => 'required',
+            'description' => 'required',
         ]);
 
         $team = new Team();
@@ -35,6 +36,7 @@ class TeamController extends Controller
 
         $team->name = $validateData['name'];
         $team->position = $validateData['position'];
+        $team->description = $validateData['description'];
 
         $team->save();
 
@@ -44,7 +46,7 @@ class TeamController extends Controller
     public function edit($id)
     {
         $team = Team::findOrFail($id);
-        return view('server.management-website.teams.edit', ['team' => $team]);
+        return view('server.management-home.teams.edit', ['team' => $team]);
     }
 
     public function update(Request $request, $id)
@@ -53,6 +55,7 @@ class TeamController extends Controller
             'image' => 'image|mimes:jpeg,png,jpg,gif,svg',
             'name' => 'required',
             'position' => 'required',
+            'description' => 'required',
         ]);
 
         $team = Team::findOrFail($id);
@@ -67,6 +70,7 @@ class TeamController extends Controller
 
         $team->name = $validateData['name'];
         $team->position = $validateData['position'];
+        $team->description = $validateData['description'];
 
         $team->save();
 
@@ -79,6 +83,6 @@ class TeamController extends Controller
         Storage::delete($team->image);
         $team->delete();
 
-        return redirect()->route('teams.index')->with(['delete' => 'Team  added successfully!']);
+        return redirect()->route('teams.index')->with(['delete' => 'Team deleted successfully!']);
     }
 }

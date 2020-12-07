@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateVisiMisisTable extends Migration
+class CreateCategoriesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,10 @@ class CreateVisiMisisTable extends Migration
      */
     public function up()
     {
-        Schema::create('visi_misis', function (Blueprint $table) {
+        Schema::create('categories', function (Blueprint $table) {
             $table->id();
-            $table->string('image')->nullable();
-            $table->text('visi');
-            $table->text('misi');
+            $table->string('name')->unique();
+            $table->string('slug');
             $table->timestamps();
         });
     }
@@ -29,6 +28,6 @@ class CreateVisiMisisTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('visi_misis');
+        Schema::dropIfExists('categories');
     }
 }

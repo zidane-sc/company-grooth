@@ -128,7 +128,7 @@
                     <div class="heading-text c-black"><p style="font-size: 18px;">{{$data['visi_misi']->visi}}</p>
                     </div>
                     <div class="video-thumb">
-                        <img  style="margin-top: 0px; width:500px; height:300px;" src="{{asset('storage/'.$data['visi_misi']->image_misi)}}" alt="visi">
+                        <img  style="margin-top: 0px; width:500px; height:300px;" src="{{asset('storage/'.$data['visi_misi']->image)}}" alt="visi">
                     </div>
                 </div>
                 <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 " style="margin-top: 50px">
@@ -190,18 +190,17 @@
                             <div class="col-lg-5 col-lg-offset-0 col-md-5 col-md-offset-0 col-sm-12 col-xs-12">
 
                                 <div class="m-auto">
-                                    <img src="{{asset('frontAsset/img/bg-gedung.jpg')}}" alt="iphone">
+                                    <img src="{{asset('storage/'.$data['section_one']->image)}}" alt="iphone">
                                 </div>
                             </div>
                             <div class="col-lg-6 col-lg-offset-1 col-md-7 col-md-offset-0 col-sm-12 col-xs-12">
                                 <div class="crumina-module crumina-heading custom-color c-black">
                                     <h6 class="heading-sup-title"></h6>
-                                    <h2 class="heading-title">Internet of Things</h2>
-                                    <div class="heading-text">Dengan perkembangan zaman yang sangat cepat, internet sudah menjadi hal yang biasa dewasa ini.
-                                        Dengan adanya teknologi Internet of Thing atau lebih sering disebut dengan IoT, objek tertentu dapat memiliki kemampuan untuk mentranfer data melalui jaringan tanpa memerlukan interaksi dari manusia ke manusia maupun dari manusia ke perangkat komputer.
+                                    <h2 class="heading-title">{{$data['section_one']->title}}</h2>
+                                    <div class="heading-text">{{$data['section_one']->description}}
                                     </div>
                                     <p></p>
-                                    <a href="" target="_blank" class="btn btn-border btn--with-shadow c-black">
+                                    <a href="{{$data['section_one']->link}}" target="_blank" class="btn btn-border btn--with-shadow c-black">
                                         Visit
                                     </a>
 
@@ -308,71 +307,6 @@
                             </div>
                         </div>
                         @endforeach
-
-                        {{-- <div class="swiper-slide">
-                            <div class="col-lg-4 col-md-12 col-sm-12" data-swiper-parallax="-100">
-                                <div class="slider-faqs-thumb">
-                                    <img class="utouch-icon" src="{{asset('frontAsset/img/web-dev4.png')}}" alt="image">
-                                </div>
-                            </div>
-
-                            <div class="col-lg-8 col-md-12 col-sm-12" data-swiper-parallax="-300">
-                                <h5 class="slider-faqs-title">Duis autem vel eum iriure?</h5>
-                                <p class="weight-bold">Mirum est notare quam littera gothica, quam nunc putamus parum claram, anteposuerit litterarum
-                                    formas humanitatis. Gest etiam processus dynamicus, qui sequitur.
-                                </p>
-                                <p>Claritas est etiam processus dynamicus, qui sequitur mutationem consuetudium lectorum. Mirum
-                                    est notare quam littera gothica, quam nunc putamus parum claram, anteposuerit litterarum
-                                    formas humanitatis. Gest etiam processus dynamicus, qui sequitur mutationem consuetudium lectorum.
-                                </p>
-                                <a href="03_products.html" class="btn btn-border btn--with-shadow c-secondary">
-                                    Learn More
-                                </a>
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="col-lg-4 col-md-12 col-sm-12" data-swiper-parallax="-100">
-                                <div class="slider-faqs-thumb">
-                                    <img class="utouch-icon" src="{{asset('frontAsset/img/web-dev3.png')}}" alt="image">
-                                </div>
-                            </div>
-
-                            <div class="col-lg-8 col-md-12 col-sm-12" data-swiper-parallax="-300">
-                                <h5 class="slider-faqs-title">Duis autem vel eum iriure?</h5>
-                                <p class="weight-bold">Mirum est notare quam littera gothica, quam nunc putamus parum claram, anteposuerit litterarum
-                                    formas humanitatis. Gest etiam processus dynamicus, qui sequitur.
-                                </p>
-                                <p>Claritas est etiam processus dynamicus, qui sequitur mutationem consuetudium lectorum. Mirum
-                                    est notare quam littera gothica, quam nunc putamus parum claram, anteposuerit litterarum
-                                    formas humanitatis. Gest etiam processus dynamicus, qui sequitur mutationem consuetudium lectorum.
-                                </p>
-                                <a href="03_products.html" class="btn btn-border btn--with-shadow c-secondary">
-                                    Learn More
-                                </a>
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="col-lg-4 col-md-12 col-sm-12" data-swiper-parallax="-100">
-                                <div class="slider-faqs-thumb">
-                                    <img class="utouch-icon" src="{{asset('frontAsset/img/web-dev1.png')}}" alt="image">
-                                </div>
-                            </div>
-
-                            <div class="col-lg-8 col-md-12 col-sm-12" data-swiper-parallax="-300">
-                                <h5 class="slider-faqs-title">Duis autem vel eum iriure?</h5>
-                                <p class="weight-bold">Mirum est notare quam littera gothica, quam nunc putamus parum claram, anteposuerit litterarum
-                                    formas humanitatis. Gest etiam processus dynamicus, qui sequitur.
-                                </p>
-                                <p>Claritas est etiam processus dynamicus, qui sequitur mutationem consuetudium lectorum. Mirum
-                                    est notare quam littera gothica, quam nunc putamus parum claram, anteposuerit litterarum
-                                    formas humanitatis. Gest etiam processus dynamicus, qui sequitur mutationem consuetudium lectorum.
-                                </p>
-                                <a href="03_products.html" class="btn btn-border btn--with-shadow c-secondary">
-                                    Learn More
-                                </a>
-                            </div>
-                        </div> --}}
-
                     </div>
 
                     <!--Prev next buttons-->

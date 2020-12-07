@@ -19,9 +19,9 @@
             width: 110px;
         }
 
-        img{
+        .img{
             display: block;
-            margin: 5px;
+            margin: 10px;
         }
     </style>
 @endsection
@@ -68,9 +68,9 @@
                                     <label for="avatar">Avatar :</label>
 
                                     @if($user->avatar)
-                                        <img src="{{asset('storage/'.$user->avatar)}}" width="110px" class="image"/>
+                                        <img src="{{asset('storage/'.$user->avatar)}}" width="110px" class="image img"/>
                                     @else
-                                        <img src="{{ asset('backend/dist/img/avatar.png') }}" class="image"  width="110px">
+                                        <img src="{{ asset('backend/dist/img/avatar.png') }}" class="image img"  width="110px">
                                     @endif
 
                                     <div class="input-group">
@@ -97,5 +97,11 @@
 @endsection
 
 @section('script')
-   
+    <script src="{{ asset('backend/plugins/bs-custom-file-input/bs-custom-file-input.min.js') }}"></script>
+
+    <script>
+    $(function () {
+        bsCustomFileInput.init();
+    });
+    </script>
 @endsection

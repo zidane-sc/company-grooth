@@ -1,16 +1,16 @@
 @extends('server.layouts.app')
 
 @section('title')
-    Visi Misi
+    Section One
 @endsection
 
 @section('breadcumb-active')
     <li class="breadcrumb-item"><a href="{{ route('users.index') }}">Management Website</a></li>
-    <li class="breadcrumb-item active">Visi & Misi</li>
+    <li class="breadcrumb-item active">Section One</li>
 @endsection
 
 @section('title-page')
-    Visi & Misi
+    Section One
 @endsection
 
 @section('style')
@@ -19,6 +19,11 @@
     <style>
         .btn-footer{
             width: 110px;
+        }
+        
+        .img{
+            display: block;
+            margin: 10px;
         }
     </style>
 @endsection
@@ -32,11 +37,11 @@
                     <!-- general form elements -->
                     <div class="card card-primary">
                         <div class="card-header">
-                        <h3 class="card-title">Change Visi & Misi</h3>
+                        <h3 class="card-title">Change Section One</h3>
                         </div>
                         <!-- /.card-header -->
                         <!-- form start -->
-                        <form action="{{ ($data) ? route('visi-misi.update', $data->id) : route('visi-misi.store')  }}" method="POST" enctype="multipart/form-data">
+                        <form action="{{ ($data) ? route('section-one.update', $data->id) : route('section-one.store')  }}" method="POST" enctype="multipart/form-data">
                             @if ($data)
                                 @method('patch')                        
                             @endif
@@ -44,20 +49,20 @@
 
                             <div class="card-body">
                                 <div class="form-group">
-                                    <label for="image_visi">Visi Image :</label>
-                                    @if($data && $data->image_visi)
-                                        <img src="{{asset('storage/'.$data->image_visi)}}" width="170px" class="image"/>
+                                    <label for="image">Image :</label>
+                                    @if($data && $data->image)
+                                        <img src="{{asset('storage/'.$data->image)}}" width="170px" class="image img"/>
                                     @else
                                         <span class="block">No Image</span>
                                     @endif
 
                                     <div class="input-group">
                                         <div class="custom-file">
-                                            <input type="file" class="custom-file-input @error('image_visi') is-invalid @enderror" id="image_visi" name="image_visi">
-                                            <label class="custom-file-label @error('image_visi') is-invalid @enderror" for="image">Change Visi Image</label>
+                                            <input type="file" class="custom-file-input @error('image') is-invalid @enderror" id="image" name="image">
+                                            <label class="custom-file-label @error('image') is-invalid @enderror" for="image">Change Image</label>
                                         </div>
                                     </div>
-                                    @error('image_visi')
+                                    @error('image')
                                         <span class="small text-danger" role="alert">
                                             <strong>{{ $message }}</strong>
                                         </span>
@@ -65,10 +70,10 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="visi">Visi</label>
-                                    <textarea class="form-control @error('visi') is-invalid @enderror"  id="visi" name="visi" rows="3">{{ old('visi') ?? ($data->visi ?? "") }}</textarea>
+                                    <label for="title">Title</label>
+                                    <input type="text" class="form-control @error('title') is-invalid @enderror" id="title" name="title" value="{{ old('title') ?? ($data->title ?? "") }}"  placeholder="Enter Title">
 
-                                     @error('visi')
+                                     @error('title')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
                                         </span>
@@ -76,31 +81,21 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="image_misi">Misi Image :</label>
-                                    @if($data && $data->image_misi)
-                                        <img src="{{asset('storage/'.$data->image_misi)}}" width="170px" class="image"/>
-                                    @else
-                                        <span class="block">No Image</span>
-                                    @endif
+                                    <label for="description">Description</label>
+                                    <textarea class="form-control @error('description') is-invalid @enderror" id="description" name="description"  rows="3" placeholder="Enter Description">{{ old('description') ?? ($data->description ?? "") }}</textarea>
 
-                                    <div class="input-group">
-                                        <div class="custom-file">
-                                            <input type="file" class="custom-file-input @error('image_misi') is-invalid @enderror" id="image_misi" name="image_misi">
-                                            <label class="custom-file-label @error('image_misi') is-invalid @enderror" for="image">Change Misi Image</label>
-                                        </div>
-                                    </div>
-                                    @error('image_misi')
-                                        <span class="small text-danger" role="alert">
+                                     @error('description')
+                                        <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
                                         </span>
                                     @enderror
                                 </div>
 
+                                
                                 <div class="form-group">
-                                    <label for="misi">Misi</label>
-                                    <textarea class="form-control @error('misi') is-invalid @enderror" id="misi" name="misi"  rows="3">{{ old('misi') ?? ($data->misi ?? "") }}</textarea>
-
-                                     @error('misi')
+                                    <label for="link">Link</label>
+                                    <input type="text" class="form-control @error('link') is-invalid @enderror" id="link" name="link" value="{{ old('link') ?? ($data->link ?? "") }}"  placeholder="Enter link">
+                                    @error('link')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
                                         </span>
@@ -123,6 +118,13 @@
 
 @section('script')
 <script src="{{ asset('backend/plugins/sweetalert2/sweetalert2.min.js') }}"></script>
+<script src="{{ asset('backend/plugins/bs-custom-file-input/bs-custom-file-input.min.js') }}"></script>
+
+<script>
+    $(function () {
+    bsCustomFileInput.init();
+});
+</script>
 
 @if (session('change'))
 <script>
@@ -136,7 +138,7 @@
 
         Toast.fire({
             icon: 'success',
-            title: 'Visi And Misi changed successfully!'
+            title: 'Section One changed successfully!'
         })
     });
 </script>

@@ -11,12 +11,12 @@ class BannerController extends Controller
     public function index()
     {
         $banners = Banner::all();
-        return view('server.management-website.banners.index', ['banners' => $banners]);
+        return view('server.management-home.banners.index', ['banners' => $banners]);
     }
 
     public function create()
     {
-        return view('server.management-website.banners.create');
+        return view('server.management-home.banners.create');
     }
 
     public function store(Request $request)
@@ -27,7 +27,7 @@ class BannerController extends Controller
 
         $banner = new Banner();
 
-        $image = $request->file('image');
+        $image = $validateData['image'];
         $name  = $image->storeAs('images/banners', time().'.'.$image->extension());
 
         $banner->image = $name;
@@ -41,7 +41,7 @@ class BannerController extends Controller
     public function edit($id)
     {
         $banner = Banner::findOrFail($id);
-        return view('server.management-website.banners.edit', ['banner' => $banner]);
+        return view('server.management-home.banners.edit', ['banner' => $banner]);
     }
 
     public function update(Request $request, $id)

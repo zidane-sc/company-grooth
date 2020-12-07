@@ -116,7 +116,7 @@
                 <div class="heading-text c-black"><p style="font-size: 18px;">{{$data['visi_misi']->visi}}</p>
                 </div>
                 <div class="video-thumb">
-                    <img  style="margin-top: 0px; width:500px; height:300px;" src="{{asset('storage/'.$data['visi_misi']->image_misi)}}" alt="visi">
+                    <img  style="margin-top: 0px; width:500px; height:300px;" src="{{asset('storage/'.$data['visi_misi']->image)}}" alt="visi">
                 </div>
             </div>
             <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 " style="margin-top: 50px">
@@ -124,24 +124,14 @@
 
 
                     <h6 class="heading-sup-title  c-black"style="font-size: 28px; text-align:center;">Misi</h6>
+
                     <ul class="list list--standard">
                         <li>
                             <svg class="utouch-icon utouch-icon-correct-symbol-1"><use xlink:href="#utouch-icon-correct-symbol-1"></use></svg>
-                            <a href="#" style="font-size: 18px;">Claritas est Claritas est Claritas est etiam processus dynamicus</a>
-                        </li>
-                        <li>
-                            <svg class="utouch-icon utouch-icon-correct-symbol-1"><use xlink:href="#utouch-icon-correct-symbol-1"></use></svg>
-                            <a href="#" style="font-size: 18px;">Ypi non habent claritatem insitam</a>
-                        </li>
-                        <li>
-                            <svg class="utouch-icon utouch-icon-correct-symbol-1"><use xlink:href="#utouch-icon-correct-symbol-1"></use></svg>
-                            <a href="#"style="font-size: 18px;">Ut wisi enim ad minim veniam, quis nostrud</a>
-                        </li>
-                        <li>
-                            <svg class="utouch-icon utouch-icon-correct-symbol-1"><use xlink:href="#utouch-icon-correct-symbol-1"></use></svg>
-                            <a href="#" style="font-size: 18px;">Mirum est notare quam</a>
+                            <a href="#" style="font-size: 18px;">{{$data['visi_misi']->misi}}</a>
                         </li>
                     </ul>
+
                 </div>
             </div>
         </div>
@@ -398,8 +388,7 @@
 
                                     <a href="#" class="h5 teammembers-item-name">{{$team->name}}</a>
 
-                                    <p>Sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt
-                                        est etiam est etiam processus dynamicus, qui sequitur.
+                                    <p>{{$team->description}}
                                     </p>
 
                                     <ul class="socials socials--round">

@@ -11,12 +11,12 @@ class PortfolioController extends Controller
     public function index()
     {
         $data['portfolios'] = Portfolio::all();
-        return view('server.management-website.portfolios.index', ['data' => $data]);
+        return view('server.management-home.portfolios.index', ['data' => $data]);
     }
 
     public function create()
     {
-        return view('server.management-website.portfolios.create');
+        return view('server.management-home.portfolios.create');
     }
 
     public function store(Request $request)
@@ -48,7 +48,7 @@ class PortfolioController extends Controller
     public function edit($id)
     {
         $portfolio = Portfolio::findOrFail($id);
-        return view('server.management-website.portfolios.edit', ['portfolio' => $portfolio]);
+        return view('server.management-home.portfolios.edit', ['portfolio' => $portfolio]);
     }
 
     public function update(Request $request, $id)
