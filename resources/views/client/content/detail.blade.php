@@ -19,7 +19,7 @@
 
 				<ul class="breadcrumbs">
 					<li class="breadcrumbs-item">
-						<a href="index-2.html">Article</a>
+						<a href="{{route('main.article')}}">Article</a>
 						<svg class="utouch-icon utouch-icon-media-play-symbol"><use xlink:href="#utouch-icon-media-play-symbol"></use></svg>
 					</li>
 					<li class="breadcrumbs-item active">
