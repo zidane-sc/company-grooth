@@ -99,6 +99,15 @@ Route::group(['prefix' => 'admin'], function () {
         Route::get('tags/{id}/edit', 'TagController@edit')->name('tags.edit');
         Route::patch('tags/{id}', 'TagController@update')->name('tags.update');
         Route::delete('tags/{id}', 'TagController@destroy')->name('tags.destroy');
+    
+        // -- Posts
+        Route::get('posts', 'PostController@index')->name('posts.index');   
+        Route::get('posts/create', 'PostController@create')->name('posts.create');
+        Route::post('posts/upload', 'PostController@upload')->name('posts.upload');
+        Route::post('posts', 'PostController@store')->name('posts.store');
+        Route::get('posts/{id}/edit', 'PostController@edit')->name('posts.edit');
+        Route::patch('posts/{id}', 'PostController@update')->name('posts.update');
+        Route::delete('posts/{id}', 'PostController@destroy')->name('posts.destroy');
     });
 });
 
@@ -116,4 +125,6 @@ Route::get('/portfolio', 'MainController@portfolio')->name('main.portfolio');
 Route::get('/about', 'MainController@about')->name('main.about');
 Route::get('/article', 'MainController@article')->name('main.article');
 Route::get('/contact', 'MainController@contact')->name('main.contact');
-Route::get('/detail', 'MainController@detail')->name('main.detail');
+// Route::get('/detail', 'MainController@detail')->name('main.detail');
+Route::get('detail/{slug}', 'MainController@detail')->name('main.detail');   
+

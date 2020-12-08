@@ -3,9 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Banner;
+use App\Category;
 use App\Portfolio;
+use App\Post;
 use App\SectionOne;
 use App\SectionTwo;
+use App\Tag;
 use App\Team;
 use App\VisiMisi;
 use Illuminate\Http\Request;
@@ -39,15 +42,20 @@ class MainController extends Controller
 
     public function article()
     {
-        return view('client.content.article');
+        $data['posts'] = Post::where('status', 'PUBLISHED')->paginate(10); 
+        $data['categories'] = Category::all();
+        $data['tags'] = Tag::all();
+        return view('client.content.article', ['data' => $data]);
     }
 
     public function contact()
     {
         return view('client.content.contact-us');
     }
-    public function detail()
+    public function detail($slug)
     {
-        return view('client.content.detail');
+        // dd($slug);
+        $data['post'] = Post::where('slug', $slug)->first();
+        return view('client.content.detail', ['data' => $data]);
     }
 }

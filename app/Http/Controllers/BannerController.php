@@ -64,7 +64,7 @@ class BannerController extends Controller
 
         $banner->save();
 
-        return redirect()->route('banners.index')->with(['update' => 'Admin edited successfully!']);
+        return redirect()->route('banners.index')->with(['update' => 'Banner edited successfully!']);
     }
 
     public function destroy($id)

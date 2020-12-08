@@ -151,7 +151,7 @@
     });
 </script>
 @endif    
-
+ 
 @if (session('delete'))
 <script>
     $(function() {
@@ -161,13 +161,12 @@
         showConfirmButton: false,
         timer: 3000
     });
-    });
 
     Toast.fire({
         icon: 'success',
         title: 'Banner deleted successfully!'
     })
+    });
 </script>
 @endif    
-
 @endsection

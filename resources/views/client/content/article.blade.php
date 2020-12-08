@@ -42,14 +42,15 @@
 			<div class="col-lg-8 col-md-12 col-sm-12 col-xs-12">
 				<main class="main">
 
+					@foreach ($data['posts'] as $post)
 					<article class="hentry post post-standard has-post-thumbnail sticky">
-
+						
 						<div class="post-thumb">
-							<img src="{{asset('frontAsset/img/blog1.jpg')}}" alt="post">
-							<a href="{{asset('frontAsset/img/blog1.jpg')}}" class="link-image js-zoom-image">
+							<img src="{{asset('storage/'.$post->thumbnail)}}">
+							<a href="{{asset('storage/'.$post->thumbnail)}}" class="link-image js-zoom-image">
 								<svg class="utouch-icon utouch-icon-zoom-increasing-button-outline"><use xlink:href="#utouch-icon-zoom-increasing-button-outline"></use></svg>
 							</a>
-							<a href="#" class="link-post">
+							<a href="{{ route('main.detail', $post->slug) }}" class="link-post">
 								<svg class="utouch-icon utouch-icon-link-chain"><use xlink:href="#utouch-icon-link-chain"></use></svg>
 							</a>
 							<div class="overlay-standard overlay--blue-dark"></div>
@@ -90,42 +91,37 @@
 								</ul>
 
 							</div>
-
 							<div class="post__date">
-
-								<time class="published" datetime="2017-03-20 12:00:00">
-									<a href="#" class="number">20</a>
-									<span class="month">March 2017</span>
-									<span class="day">Monday</span>
+								<time class="published" datetime="{{ $post->created_at }}">
+									<a href="#" class="number">{{ date('d', strtotime($post->created_at)) }}</a>
+									<span class="month">{{ date('F Y', strtotime($post->created_at)) }}</span>
+									<span class="day">{{ date('l', strtotime($post->created_at)) }}</span>
 								</time>
 
 							</div>
 
 							<div class="post__content-info">
 
-								<a href="{{route('main.detail')}}" class="h5 post__title entry-title">The Important Standard Post Format</a>
-
-								<p class="post__text">Eodem modo typi, qui nunc nobis videntur parum clari, fiant sollemnes
-									in futurumlaritas est etiam processus.
-								</p>
+								<a href="{{ route('main.detail', $post->slug) }}" class="h5 post__title entry-title">{{ $post->title }}</a>
+								<span style="word-wrap: break-word">{!! Str::limit($post->content, 180, '...') !!}</span>
 
 								<div class="post-additional-info">
 									<span class="post__author author vcard">
 										 By
-										<a href="#" class="fn">Admin</a>
+										<a href="#" class="fn">{{ $post->user->name }}</a>
 
 									</span>
 
 									<span class="category">
 										In
-										<a href="16_news.html">News</a>
+										<a href="16_news.html">{{ $post->category->name }}</a>
 									</span>
 
 									<span class="post__comments">
 										<a href="#">0 <span>Comments</span></a>
 									</span>
 
-									<a href="{{route('main.detail')}}" class="btn-next">
+									<a href="{{ route('main.detail', $post->slug) }}" class="btn-next">
 										<svg class="utouch-icon icon-hover utouch-icon-arrow-right-1"><use xlink:href="#utouch-icon-arrow-right-1"></use></svg>
 										<svg class="utouch-icon utouch-icon-arrow-right1"><use xlink:href="#utouch-icon-arrow-right1"></use></svg>
 									</a>
@@ -136,10 +132,10 @@
 						</div>
 
 					</article>
-
+					@endforeach
 
 				</main>
-
+				{{ $data['posts']->links() }}
 				<div class="row mb60">
 					<div class="col-lg-12">
 						<nav class="navigation">
@@ -183,41 +179,24 @@
 					<aside class="widget w-category">
 						<h5 class="widget-title">Categories</h5>
 						<ul class="category-list">
+							@foreach ($data['categories'] as $category)
 							<li>
-								<a href="#">Entrepreneur
-									<span class="cat-count">39</span>
+								<a href="#">{{ $category->name }}
+									<span class="cat-count">{{ $category->posts->count() }}</span>
 								</a>
 							</li>
+							@endforeach
+						</ul>
+					</aside>
+
+					<aside class="widget w-tags">
+						<h5 class="widget-title">Tags</h5>
+						<ul class="tags-list">
+							@foreach ($data['tags'] as $tag)
 							<li>
-								<a href="#">Innovation
-									<span class="cat-count">632</span>
-								</a>
+								<a href="#">{{ $tag->name }}</a>
 							</li>
-							<li>
-								<a href="#">Startup
-									<span class="cat-count">8</span>
-								</a>
-							</li>
-							<li>
-								<a href="#">Strategy
-									<span class="cat-count">24</span>
-								</a>
-							</li>
-							<li>
-								<a href="#">Tech
-									<span class="cat-count">2</span>
-								</a>
-							</li>
-							<li>
-								<a href="#">Marketing
-									<span class="cat-count">16</span>
-								</a>
-							</li>
-							<li>
-								<a href="#">Trends
-									<span class="cat-count">9</span>
-								</a>
-							</li>
+							@endforeach
 						</ul>
 					</aside>
 
@@ -627,37 +606,6 @@
 						</ul>
 
 					</aside>
-
-					<aside class="widget w-tags">
-						<h5 class="widget-title">Categories</h5>
-						<ul class="tags-list">
-							<li>
-								<a href="#">App</a>
-							</li>
-							<li>
-								<a href="#">WordPress</a>
-							</li>
-							<li>
-								<a href="#">UI Kit</a>
-							</li>
-							<li>
-								<a href="#">Innovation</a>
-							</li>
-							<li>
-								<a href="#">Trends</a>
-							</li>
-							<li>
-								<a href="#">Startup</a>
-							</li>
-							<li>
-								<a href="#">Marketing</a>
-							</li>
-							<li>
-								<a href="#">WordPress Themes</a>
-							</li>
-						</ul>
-					</aside>
-
 
 				</aside>
 			</div>

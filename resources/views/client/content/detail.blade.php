@@ -42,7 +42,7 @@
 				<article class="hentry post post-standard has-post-thumbnail sticky post-standard-details">
 
 					<div class="post-thumb">
-						<img src="{{asset('frontAsset/img/blog1.jpg')}}" alt="post">
+						<img src="{{asset('storage/'.$data['post']->thumbnail)}}" alt="post">
 					</div>
 
 					<div class="post__content">
@@ -83,26 +83,26 @@
 
 						<div class="post__date">
 
-							<time class="published" datetime="2017-03-20 12:00:00">
-								<a href="#" class="number">20</a>
-								<span class="month">March 2017</span>
-								<span class="day">Monday</span>
+							<time class="published" datetime="{{ $data['post']->created_at }}">
+								<a href="#" class="number">{{ date('d', strtotime($data['post']->created_at)) }}</a>
+								<span class="month">{{ date('F Y', strtotime($data['post']->created_at)) }}</span>
+								<span class="day">{{ date('l', strtotime($data['post']->created_at)) }}</span>
 							</time>
 
 						</div>
 
 						<div class="post__content-info">
 
-							<h3 class="post__title entry-title">The Important Standard Post Format</h3>
+							<h3 class="post__title entry-title">{{ $data['post']->title }}</h3>
 
 							<div class="post-additional-info">
 								<span class="post__author author vcard">
 									By
-									<a href="#" class="fn">Admin</a>
+									<a href="#" class="fn">{{ $data['post']->user->name }}</a>
 								</span>
 								<span class="category">
 									In
-									<a href="16_news.html">News</a>
+									<a href="16_news.html">{{ $data['post']->category->name }}</a>
 								</span>
 								<span class="post__comments">
 									<a href="#">6 <span>Comments</span></a>
@@ -111,92 +111,27 @@
 
 						</div>
 
-						<p class="weight-bold">Eodem modo typi, qui nunc nobis videntur parum clari, fiant sollemnes in futurumlaritas est etiam processus.</p>
-						<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt
-							ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci
-							tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum
-							iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat
-							nulla facilisis.
-						</p>
-						<p>Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer possim assum.</p>
-
-
-						<blockquote>
-							<p>Claritas est etiam processus dynamicus, mutationem consuetudium lectorum.</p>
-							<h6><span>Christian Miller</span>
-								Web Developer</h6>
-						</blockquote>
-
-						<p>Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut
-							aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit
-							esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et
-							iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait
-							nulla facilisi.
-						</p>
-
-						<p>Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer possim assum.</p>
-
-						<img src="{{asset('frontAsset/img/image-post.png')}}" alt="image" class="alignleft">
-						<h5>Duis autem vel eum iriure</h5>
-						<p>Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero.</p>
-						<ul class="list list--standard">
-							<li>
-								<svg class="utouch-icon utouch-icon-correct-symbol-1"><use xlink:href="#utouch-icon-correct-symbol-1"></use></svg>
-								<a href="#">Qolor sit amet, consectetuer;</a>
-							</li>
-							<li>
-								<svg class="utouch-icon utouch-icon-correct-symbol-1"><use xlink:href="#utouch-icon-correct-symbol-1"></use></svg>
-								<a href="#">Investigationes demonstraverunt;</a>
-							</li>
-							<li>
-								<svg class="utouch-icon utouch-icon-correct-symbol-1"><use xlink:href="#utouch-icon-correct-symbol-1"></use></svg>
-								<a href="#">Dam liber tempor cum soluta</a>
-							</li>
-						</ul>
-
-						<p>Investigationes demonstraverunt lectores legere me lius quod ii legunt saepius. Claritas
-							est etiam processus dynamicus, qui sequitur mutationem consuetudium lectorum. Mirum est notare
-							quam littera gothica, quam nunc putamus parum claram, anteposuerit litterarum formas humanitatis
-							per seacula quarta decima et quinta decima.
-						</p>
-
-						<p>Eodem modo typi, qui nunc nobis videntur parum clari, fiant sollemnes in futurum. Claritas
-							est etiam processus dynamicus, qui sequitur mutationem consuetudium lectorum eleifend option.
-						</p>
+						<span style="word-wrap: break-word">{!! $data['post']->content !!}</span>
 
 						<div class="post-details-shared">
 							<ul class="tags-inline">
 								<li>Tags:</li>
+								@foreach ($data['post']->tags as $tag)
+								@if($loop->last)
 								<li>
 									<a href="#">
-										Entrepreneur
+										{{ $tag->name }}
+									</a>
+									@break
+								</li>
+								@endif
+								<li>
+									<a href="#">
+										{{ $tag->name }}
 									</a>
 									,
 								</li>
-								<li>
-									<a href="#">
-										Innovation
-									</a>
-									,
-								</li>
-								<li>
-									<a href="#">
-										Startup
-									</a>
-									,
-								</li>
-
-								<li>
-									<a href="#">
-										Tech
-									</a>
-									,
-								</li>
-								<li>
-									<a href="#">
-										Trends
-									</a>
-								</li>
+								@endforeach
 							</ul>
 
 							<div class="widget w-follow">
