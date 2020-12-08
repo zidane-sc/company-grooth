@@ -38,8 +38,9 @@
 
 	<div class="container">
 		<div class="row">
+            {{-- {{dd($data['posts'])}} --}}
 			<div class="col-lg-8 col-md-12 col-sm-12 col-xs-12">
-				@if($data['posts'] != null)
+				@if($data['posts']->count() != 0)
 					<main class="main">
 
                     @foreach ($data['posts'] as $post)
@@ -153,7 +154,14 @@
 							</nav>
 						</div>
 					</div> --}}
-				@endif
+                @else
+                <div class="alert alert-danger" role="alert">
+                    <h3 class="c-white" style="text-align: center;">POST NOT FOUND!</h3>
+					<span style="font-size: 18px;"><strong>Oh snap!</strong> The post you are looking for is not found. Please, make sure the title is correct.</span>
+                    <img style="margin-top: 15px; border-radius:5px; opacity:.95;" src="{{asset('frontAsset/img/not-found.gif')}}" alt="">
+				</div>
+                @endif
+
 			</div>
 
 
@@ -176,10 +184,10 @@
 						<h5 class="widget-title">Categories</h5>
 						<ul class="category-list">
                  @foreach ($data['categories'] as $category)
-							<li>
-                    <a href="{{route('main.category', $category->slug)}}">{{$category->name}}
-										<span class="cat-count">{{$category->totalPost}}</span>
-								</a>
+                             <li>
+                                <a href="{{route('main.category', $category->slug)}}">{{$category->name}}
+                                <span class="cat-count">{{$category->totalPost}}</span>
+                                </a>
 							</li>
 										@endforeach
 						</ul>
