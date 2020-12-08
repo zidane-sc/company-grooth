@@ -118,7 +118,7 @@
 									</span>
 
 									<span class="post__comments">
-										<a href="#">0 <span>Comments</span></a>
+										<a href="#">{{ $post->view ?? "0" }} <span>Views</span></a>
 									</span>
 
 									<a href="{{ route('main.detail', $post->slug) }}" class="btn-next">
@@ -181,8 +181,8 @@
 						<ul class="category-list">
 							@foreach ($data['categories'] as $category)
 							<li>
-								<a href="#">{{ $category->name }}
-									<span class="cat-count">{{ $category->posts->count() }}</span>
+								<a href="{{ route('main.category', $category->slug) }}">{{ $category->name }}
+									<span class="cat-count">{{ $category->totalPost }}</span>
 								</a>
 							</li>
 							@endforeach
@@ -194,7 +194,7 @@
 						<ul class="tags-list">
 							@foreach ($data['tags'] as $tag)
 							<li>
-								<a href="#">{{ $tag->name }}</a>
+								<a href="{{ route('main.tags', $tag->slug) }}">{{ $tag->name }}</a>
 							</li>
 							@endforeach
 						</ul>

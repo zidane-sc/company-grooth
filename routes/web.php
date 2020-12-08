@@ -123,8 +123,9 @@ Route::get('/', function () {
 Route::get('/', 'MainController@home')->name('main.home');
 Route::get('/portfolio', 'MainController@portfolio')->name('main.portfolio');
 Route::get('/about', 'MainController@about')->name('main.about');
-Route::get('/article', 'MainController@article')->name('main.article');
 Route::get('/contact', 'MainController@contact')->name('main.contact');
-// Route::get('/detail', 'MainController@detail')->name('main.detail');
-Route::get('detail/{slug}', 'MainController@detail')->name('main.detail');   
+Route::get('/article', 'MainController@article')->name('main.article');
+Route::get('aricle/detail/{slug}', 'MainController@detail')->name('main.detail');   
+Route::get('aricle/category/{slug}', 'MainController@category')->name('main.category');   
+Route::get('aricle/tag/{slug}', 'MainController@tag')->name('main.tags');   
 

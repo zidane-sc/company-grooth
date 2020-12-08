@@ -43,6 +43,7 @@ class ContactController extends Controller
             'latitude' => ['required','regex:/^[-]?(([0-8]?[0-9])\.(\d+))|(90(\.0+)?)$/'],
             'longitude' => ['required','regex:/^[-]?((((1[0-7][0-9])|([0-9]?[0-9]))\.(\d+))|180(\.0+)?)$/'],
             'phone' => 'required|regex:/(0)[0-9]{11}/',
+            'whatsapp' => 'required|regex:/(0)[0-9]{11}/',
             'email' => 'required'
         ]);
 
@@ -52,6 +53,7 @@ class ContactController extends Controller
         $contact->latitude = $validateData['latitude'];
         $contact->longitude = $validateData['longitude'];
         $contact->phone = $validateData['phone'];
+        $contact->whatsapp = $validateData['whatsapp'];
         $contact->email = $validateData['email'];
 
         $contact->save();

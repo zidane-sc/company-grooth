@@ -32,27 +32,24 @@
             </div>
 
             <div class="crumina-module crumina-heading">
-                <h3 class="heading-title">Lorem Ipsum</h3></h3>
-                <div class="heading-text">Eodem modo typi, qui nunc nobis videntur parum clari, fiant sollemnes
-                    in futurum laritas est etiam processus.
-                </div>
+                <h3 class="heading-title">Contact</h3></h3>
+                {{-- <div class="heading-text">Dekat Pabrik Gudang Garam</div> --}}
             </div>
             <div class="widget w-contacts w-contacts--style2 ">
                 <div class="contact-item display-flex">
                     <svg class="utouch-icon utouch-icon-placeholder-3"><use xlink:href="#utouch-icon-placeholder-3"></use></svg>
-                    <span class="info">
-                        Jl. Asam Sari II, Kp Babakan No. 128 Mustika Jaya – Mustika Sari Bekasi, 17157 Indonesia</span>
+                    <span class="info">{{ $data['contact']->address }}</span>
                 </div>
                 <div class="contact-item display-flex">
                     <svg class="utouch-icon utouch-icon-telephone-keypad-with-ten-keys"><use xlink:href="#utouch-icon-telephone-keypad-with-ten-keys"></use></svg>
                     <div class="info-wrap">
-                        <span class="info">8 800 567.890.11 <span>- Central Office</span></span>
-                        <span class="info">8 800 567.890.12 <span>- Fax</span></span>
+                        <span class="info">{{ $data['contact']->whatsapp }} <span>- Whatsapp</span></span>
+                        <span class="info">{{ $data['contact']->phone }} <span>- Phone</span></span>
                     </div>
                 </div>
                 <div class="contact-item display-flex">
                     <svg class="utouch-icon utouch-icon-message"><use xlink:href="#utouch-icon-message"></use></svg>
-                    <a href="#" class="info">Grooth@web.com</a>
+                    <a href="#" class="info">{{ $data['contact']->email }}</a>
                 </div>
 
 
