@@ -41,9 +41,16 @@ class MainController extends Controller
         return view('client.content.about', ['data' => $data]);
     }
 
-    public function article()
+    public function article(Request $request)
     {
         $data['posts'] = Post::where('status', 'PUBLISHED')->paginate(10); 
+
+        if ($request->get('keyword')) {
+            $data['posts'] = Post::where('status', 'PUBLISHED')->where('title', 'like', '%' . $request->get('keyword') . '%')->paginate(10); 
+        }
+
+        $data['latest'] = Post::where('status', 'PUBLISHED')->orderBy('created_at', 'DESC')->limit(5)->get();
+        $data['popular'] = Post::where('status', 'PUBLISHED')->orderBy('view', 'DESC')->limit(5)->get();
         $data['categories'] = Category::all();
         $data['tags'] = Tag::all();
         return view('client.content.article', ['data' => $data]);
@@ -53,6 +60,8 @@ class MainController extends Controller
     {
         // dd($slug);
         $data['post'] = Post::where('slug', $slug)->firstOrFail();
+        $data['latest'] = Post::where('status', 'PUBLISHED')->orderBy('created_at', 'DESC')->limit(5)->get();
+        $data['popular'] = Post::where('status', 'PUBLISHED')->orderBy('view', 'DESC')->limit(5)->get();
         $data['post']->view += 1;
         $data['post']->save();
         return view('client.content.detail', ['data' => $data]);
@@ -65,6 +74,8 @@ class MainController extends Controller
         })
         ->where('status', 'PUBLISHED')
         ->paginate(10);
+        $data['latest'] = Post::where('status', 'PUBLISHED')->orderBy('created_at', 'DESC')->limit(5)->get();
+        $data['popular'] = Post::where('status', 'PUBLISHED')->orderBy('view', 'DESC')->limit(5)->get();
         $data['categories'] = Category::all();
         $data['tags'] = Tag::all();
         return view('client.content.article', ['data' => $data]);
