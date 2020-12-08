@@ -40,7 +40,7 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-lg-8 col-md-12 col-sm-12 col-xs-12">
-				@if($data['posts'] != null)
+				@if($data['posts']->count() != 0)
 					<main class="main">
 
 					@foreach ($data['posts'] as $post)
@@ -150,6 +150,8 @@
 							</nav>
 						</div>
 					</div> --}}
+				@else
+				<h1>Kosong COY</h1>
 				@endif
 			</div>
 

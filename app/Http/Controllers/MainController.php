@@ -88,6 +88,8 @@ class MainController extends Controller
         })
         ->where('status', 'PUBLISHED')
         ->paginate(10);
+        $data['latest'] = Post::where('status', 'PUBLISHED')->orderBy('created_at', 'DESC')->limit(5)->get();
+        $data['popular'] = Post::where('status', 'PUBLISHED')->orderBy('view', 'DESC')->limit(5)->get();
         $data['categories'] = Category::all();
         $data['tags'] = Tag::all();
         return view('client.content.article', ['data' => $data]);
