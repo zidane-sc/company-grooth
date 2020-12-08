@@ -7,7 +7,6 @@
      }
  </style>
  <div class="content-wrapper">
-
 	<!-- Breadcrumbs -->
 
 	<div class="container pt30">
@@ -23,7 +22,7 @@
 						<svg class="utouch-icon utouch-icon-media-play-symbol"><use xlink:href="#utouch-icon-media-play-symbol"></use></svg>
 					</li>
 					<li class="breadcrumbs-item active">
-						<span>Article</span>
+						<span>News</span>
 						<svg class="utouch-icon utouch-icon-media-play-symbol"><use xlink:href="#utouch-icon-media-play-symbol"></use></svg>
 					</li>
 				</ul>
@@ -39,19 +38,21 @@
 
 	<div class="container">
 		<div class="row">
+            {{-- {{dd($data['posts'])}} --}}
 			<div class="col-lg-8 col-md-12 col-sm-12 col-xs-12">
 				@if($data['posts']->count() != 0)
 					<main class="main">
 
-					@foreach ($data['posts'] as $post)
+                    @foreach ($data['posts'] as $post)
+
+
 					<article class="hentry post post-standard has-post-thumbnail sticky">
-						
 						<div class="post-thumb">
-							<img src="{{asset('storage/'.$post->thumbnail)}}">
+							<img src="{{asset('storage/'.$post->thumbnail)}}" alt="post">
 							<a href="{{asset('storage/'.$post->thumbnail)}}" class="link-image js-zoom-image">
 								<svg class="utouch-icon utouch-icon-zoom-increasing-button-outline"><use xlink:href="#utouch-icon-zoom-increasing-button-outline"></use></svg>
 							</a>
-							<a href="{{ route('main.detail', $post->slug) }}" class="link-post">
+                        <a href="{{route('main.detail', $post->slug)}}" class="link-post">
 								<svg class="utouch-icon utouch-icon-link-chain"><use xlink:href="#utouch-icon-link-chain"></use></svg>
 							</a>
 							<div class="overlay-standard overlay--blue-dark"></div>
@@ -92,37 +93,40 @@
 								</ul>
 
 							</div>
+
 							<div class="post__date">
-								<time class="published" datetime="{{ $post->created_at }}">
-									<a href="#" class="number">{{ date('d', strtotime($post->created_at)) }}</a>
-									<span class="month">{{ date('F Y', strtotime($post->created_at)) }}</span>
-									<span class="day">{{ date('l', strtotime($post->created_at)) }}</span>
+
+								<time class="published" datetime="{{$post->created_at}}">
+                                <a href="#" class="number">{{date('d', strtotime($post->created_at))}}</a>
+									<span class="month">{{date('F Y', strtotime($post->created_at))}}</span>
+									<span class="day">{{date('l', strtotime($post->created_at))}}</span>
 								</time>
 
 							</div>
 
 							<div class="post__content-info">
 
-								<a href="{{ route('main.detail', $post->slug) }}" class="h5 post__title entry-title">{{ $post->title }}</a>
-								<span style="word-wrap: break-word">{!! Str::limit($post->content, 180, '...') !!}</span>
+								<a href="{{route('main.detail', $post->slug)}}" class="h5 post__title entry-title">{{$post->title}}</a>
+
+                            <span style="word-wrap: break-word">{!! Str::limit($post->content, 180, '...') !!}</span>
 
 								<div class="post-additional-info">
 									<span class="post__author author vcard">
 										 By
-										<a href="#" class="fn">{{ $post->user->name }}</a>
+										<a href="#" class="fn">{{$post->user->name}}</a>
 
 									</span>
 
 									<span class="category">
 										In
-										<a href="16_news.html">{{ $post->category->name }}</a>
+										<a href="16_news.html">{{$post->category->name}}</a>
 									</span>
 
 									<span class="post__comments">
-										<a href="#">{{ $post->view ?? "0" }} <span>Views</span></a>
+										<a href="#">{{$post->view ?? '0'}} <span>Views</span></a>
 									</span>
 
-									<a href="{{ route('main.detail', $post->slug) }}" class="btn-next">
+									<a href="{{route('main.detail', $post->slug)}}" class="btn-next">
 										<svg class="utouch-icon icon-hover utouch-icon-arrow-right-1"><use xlink:href="#utouch-icon-arrow-right-1"></use></svg>
 										<svg class="utouch-icon utouch-icon-arrow-right1"><use xlink:href="#utouch-icon-arrow-right1"></use></svg>
 									</a>
@@ -150,9 +154,14 @@
 							</nav>
 						</div>
 					</div> --}}
-				@else
-				<h1>Kosong COY</h1>
-				@endif
+                @else
+                <div class="alert alert-danger" role="alert">
+                    <h3 class="c-white" style="text-align: center;">POST NOT FOUND!</h3>
+					<span style="font-size: 18px;"><strong>Oh snap!</strong> The post you are looking for is not found. Please, make sure the title is correct.</span>
+                    <img style="margin-top: 15px; border-radius:5px; opacity:.95;" src="{{asset('frontAsset/img/not-found.gif')}}" alt="">
+				</div>
+                @endif
+
 			</div>
 
 
@@ -171,22 +180,23 @@
 						</form>
 					</aside>
 
-					<aside class="widget w-category">
+             <aside class="widget w-category">
 						<h5 class="widget-title">Categories</h5>
 						<ul class="category-list">
-							@foreach ($data['categories'] as $category)
-							<li>
-								<a href="{{ route('main.category', $category->slug) }}">{{ $category->name }}
-									<span class="cat-count">{{ $category->totalPost }}</span>
-								</a>
+                 @foreach ($data['categories'] as $category)
+                             <li>
+                                <a href="{{route('main.category', $category->slug)}}">{{$category->name}}
+                                <span class="cat-count">{{$category->totalPost}}</span>
+                                </a>
 							</li>
-							@endforeach
+										@endforeach
 						</ul>
 					</aside>
 
-					<aside class="widget w-tags">
+                    <aside class="widget w-tags">
 						<h5 class="widget-title">Tags</h5>
 						<ul class="tags-list">
+
 							@foreach ($data['tags'] as $tag)
 							<li>
 								<a href="{{ route('main.tags', $tag->slug) }}">{{ $tag->name }}</a>
@@ -195,7 +205,7 @@
 						</ul>
 					</aside>
 
-					
+
 					<aside class="widget w-latest-news">
 						<h5 class="widget-title">Latest News</h5>
 
