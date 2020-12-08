@@ -81,7 +81,7 @@
                         <a href="{{ route('posts.edit', $post->id) }}" class="btn btn-warning text-white btn-sm btn-100">
                             <i class="far fa-edit"></i> Edit
                         </a>
-                        <a href="{{ route('posts.show', $post->id) }}" class="btn btn-info btn-sm mt-1 btn-100">
+                        <a href="{{ route('main.detail', $post->slug) }}" class="btn btn-info btn-sm mt-1 btn-100">
                             <i class="far fa-eye"></i> Show
                         </a>
                         <form action="{{ route('posts.destroy', $post->id) }}" method="POST">

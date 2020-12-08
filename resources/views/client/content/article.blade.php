@@ -42,14 +42,15 @@
 			<div class="col-lg-8 col-md-12 col-sm-12 col-xs-12">
 				<main class="main">
 
+					@foreach ($data['posts'] as $post)
 					<article class="hentry post post-standard has-post-thumbnail sticky">
-
+						
 						<div class="post-thumb">
-							<img src="{{asset('frontAsset/img/blog1.jpg')}}" alt="post">
-							<a href="{{asset('frontAsset/img/blog1.jpg')}}" class="link-image js-zoom-image">
+							<img src="{{asset('storage/'.$post->thumbnail)}}">
+							<a href="{{asset('storage/'.$post->thumbnail)}}" class="link-image js-zoom-image">
 								<svg class="utouch-icon utouch-icon-zoom-increasing-button-outline"><use xlink:href="#utouch-icon-zoom-increasing-button-outline"></use></svg>
 							</a>
-							<a href="#" class="link-post">
+							<a href="{{ route('main.detail', $post->slug) }}" class="link-post">
 								<svg class="utouch-icon utouch-icon-link-chain"><use xlink:href="#utouch-icon-link-chain"></use></svg>
 							</a>
 							<div class="overlay-standard overlay--blue-dark"></div>
@@ -90,42 +91,37 @@
 								</ul>
 
 							</div>
-
 							<div class="post__date">
-
-								<time class="published" datetime="2017-03-20 12:00:00">
-									<a href="#" class="number">20</a>
-									<span class="month">March 2017</span>
-									<span class="day">Monday</span>
+								<time class="published" datetime="{{ $post->created_at }}">
+									<a href="#" class="number">{{ date('d', strtotime($post->created_at)) }}</a>
+									<span class="month">{{ date('F Y', strtotime($post->created_at)) }}</span>
+									<span class="day">{{ date('l', strtotime($post->created_at)) }}</span>
 								</time>
 
 							</div>
 
 							<div class="post__content-info">
 
-								<a href="17_news_details.html" class="h5 post__title entry-title">The Important Standard Post Format</a>
-
-								<p class="post__text">Eodem modo typi, qui nunc nobis videntur parum clari, fiant sollemnes
-									in futurumlaritas est etiam processus.
-								</p>
+								<a href="{{ route('main.detail', $post->slug) }}" class="h5 post__title entry-title">{{ $post->title }}</a>
+								<span style="word-wrap: break-word">{!! Str::limit($post->content, 180, '...') !!}</span>
 
 								<div class="post-additional-info">
 									<span class="post__author author vcard">
 										 By
-										<a href="#" class="fn">Admin</a>
+										<a href="#" class="fn">{{ $post->user->name }}</a>
 
 									</span>
 
 									<span class="category">
 										In
-										<a href="16_news.html">News</a>
+										<a href="16_news.html">{{ $post->category->name }}</a>
 									</span>
 
 									<span class="post__comments">
 										<a href="#">0 <span>Comments</span></a>
 									</span>
 
-									<a href="17_news_details.html" class="btn-next">
+									<a href="{{ route('main.detail', $post->slug) }}" class="btn-next">
 										<svg class="utouch-icon icon-hover utouch-icon-arrow-right-1"><use xlink:href="#utouch-icon-arrow-right-1"></use></svg>
 										<svg class="utouch-icon utouch-icon-arrow-right1"><use xlink:href="#utouch-icon-arrow-right1"></use></svg>
 									</a>
@@ -136,771 +132,10 @@
 						</div>
 
 					</article>
-
-					<article class="hentry post post-standard has-post-thumbnail slider">
-
-
-						<div class="swiper-container post-standard-thumb-slider">
-
-							<div class="swiper-wrapper">
-
-								<div class="post-thumb swiper-slide">
-									<img src="{{asset('frontAsset/img/blog2.jpg')}}" alt="video">
-								</div>
-
-								<div class="post-thumb swiper-slide">
-									<img src="{{asset('frontAsset/img/blog2.jpg')}}" alt="video">
-								</div>
-
-								<div class="post-thumb swiper-slide">
-									<img src="{{asset('frontAsset/img/blog2.jpg')}}" alt="video">
-								</div>
-
-								<div class="post-thumb swiper-slide">
-									<img src="{{asset('frontAsset/img/blog2.jpg')}}" alt="video">
-								</div>
-
-							</div>
-
-							<!-- If we need pagination -->
-							<div class="swiper-pagination pagination-white"></div>
-
-
-						</div>
-						<div class="post__content">
-
-							<a href="#" class="social__item main">
-								<svg class="utouch-icon utouch-icon-1496680146-share"><use xlink:href="#utouch-icon-1496680146-share"></use></svg>
-							</a>
-
-							<div class="share-product">
-
-								<ul class="socials">
-									<li>
-										<a href="#" class="social__item facebook">
-											<svg class="utouch-icon" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="1.414"><path d="M15.117 0H.883C.395 0 0 .395 0 .883v14.234c0 .488.395.883.883.883h7.663V9.804H6.46V7.39h2.086V5.607c0-2.066 1.262-3.19 3.106-3.19.883 0 1.642.064 1.863.094v2.16h-1.28c-1 0-1.195.48-1.195 1.18v1.54h2.39l-.31 2.42h-2.08V16h4.077c.488 0 .883-.395.883-.883V.883C16 .395 15.605 0 15.117 0" fill-rule="nonzero"></path></svg>
-										</a>
-									</li>
-
-									<li>
-										<a href="#" class="social__item twitter">
-											<svg class="utouch-icon" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="1.414"><path d="M16 3.038c-.59.26-1.22.437-1.885.517.677-.407 1.198-1.05 1.443-1.816-.634.37-1.337.64-2.085.79-.598-.64-1.45-1.04-2.396-1.04-1.812 0-3.282 1.47-3.282 3.28 0 .26.03.51.085.75-2.728-.13-5.147-1.44-6.766-3.42C.83 2.58.67 3.14.67 3.75c0 1.14.58 2.143 1.46 2.732-.538-.017-1.045-.165-1.487-.41v.04c0 1.59 1.13 2.918 2.633 3.22-.276.074-.566.114-.865.114-.21 0-.41-.02-.61-.058.42 1.304 1.63 2.253 3.07 2.28-1.12.88-2.54 1.404-4.07 1.404-.26 0-.52-.015-.78-.045 1.46.93 3.18 1.474 5.04 1.474 6.04 0 9.34-5 9.34-9.33 0-.14 0-.28-.01-.42.64-.46 1.2-1.04 1.64-1.7z" fill-rule="nonzero"></path></svg>
-										</a>
-									</li>
-
-									<li>
-										<a href="#" class="social__item googlePlus">
-											<svg class="utouch-icon" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="1.414"><path d="M8.16 6.857V9.6h4.537c-.183 1.177-1.37 3.45-4.537 3.45-2.73 0-4.96-2.26-4.96-5.05s2.23-5.05 4.96-5.05c1.554 0 2.594.66 3.19 1.233l2.17-2.092C12.126.79 10.32 0 8.16 0c-4.423 0-8 3.577-8 8s3.577 8 8 8c4.617 0 7.68-3.246 7.68-7.817 0-.526-.057-.926-.126-1.326H8.16z"></path></svg>
-										</a>
-									</li>
-
-									<li>
-										<a href="#" class="social__item rss">
-											<svg class="utouch-icon" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="1.414"><path d="M12.8 16C12.8 8.978 7.022 3.2 0 3.2V0c8.777 0 16 7.223 16 16h-3.2zM2.194 11.61c1.21 0 2.195.985 2.195 2.196 0 1.21-.99 2.194-2.2 2.194C.98 16 0 15.017 0 13.806c0-1.21.983-2.195 2.194-2.195zM10.606 16h-3.11c0-4.113-3.383-7.497-7.496-7.497v-3.11c5.818 0 10.606 4.79 10.606 10.607z"/></svg>
-										</a>
-									</li>
-								</ul>
-
-							</div>
-
-							<div class="post__date">
-
-								<time class="published" datetime="2017-03-20 12:00:00">
-									<a href="#" class="number">16</a>
-									<span class="month">March 2017</span>
-									<span class="day">Thursday</span>
-								</time>
-
-							</div>
-
-							<div class="post__content-info">
-
-								<a href="17_news_details.html" class="h5 post__title entry-title">Photo with Slider Post Format</a>
-
-								<p class="post__text">Mirum est notare quam littera gothica, quam nunc putamus parum claram,
-									anteposuerit litterarum formas humanitatis per.
-								</p>
-
-								<div class="post-additional-info">
-									<span class="post__author author vcard">
-										 By
-										<a href="#" class="fn">Admin</a>
-
-									</span>
-
-									<span class="category">
-										In
-										<a href="16_news.html">News</a>
-									</span>
-
-									<span class="post__comments">
-										<a href="#">2 <span>Comments</span></a>
-									</span>
-
-									<a href="17_news_details.html" class="btn-next">
-										<svg class="utouch-icon icon-hover utouch-icon-arrow-right-1"><use xlink:href="#utouch-icon-arrow-right-1"></use></svg>
-										<svg class="utouch-icon utouch-icon-arrow-right1"><use xlink:href="#utouch-icon-arrow-right1"></use></svg>
-									</a>
-
-								</div>
-
-							</div>
-						</div>
-
-					</article>
-
-					<article class="hentry post post-standard has-post-thumbnail quote">
-
-						<div class="post-thumb bg-red">
-							<div class="testimonial-content">
-								<p class="text">‘Claritas est etiam processus dynamicus, mutationem consuetudium lectorum.’</p>
-								<div class="author-info-wrap">
-									<div class="testimonial-img-author">
-										<img src="{{asset('frontAsset/img/author7.png')}}" alt="author">
-									</div>
-									<div class="author-info">
-										<a href="#" class="h6 author-name c-yellow">Chris Miller</a>
-										<div class="author-company c-white">Web Developer</div>
-									</div>
-								</div>
-								<div class="quote">
-									<img src="{{asset('frontAsset/img/quote.png')}}" alt="quote">
-								</div>
-							</div>
-
-						</div>
-
-						<div class="post__content">
-
-							<a href="#" class="social__item main">
-								<svg class="utouch-icon utouch-icon-1496680146-share"><use xlink:href="#utouch-icon-1496680146-share"></use></svg>
-							</a>
-
-							<div class="share-product">
-
-								<ul class="socials">
-									<li>
-										<a href="#" class="social__item facebook">
-											<svg class="utouch-icon" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="1.414"><path d="M15.117 0H.883C.395 0 0 .395 0 .883v14.234c0 .488.395.883.883.883h7.663V9.804H6.46V7.39h2.086V5.607c0-2.066 1.262-3.19 3.106-3.19.883 0 1.642.064 1.863.094v2.16h-1.28c-1 0-1.195.48-1.195 1.18v1.54h2.39l-.31 2.42h-2.08V16h4.077c.488 0 .883-.395.883-.883V.883C16 .395 15.605 0 15.117 0" fill-rule="nonzero"></path></svg>
-										</a>
-									</li>
-
-									<li>
-										<a href="#" class="social__item twitter">
-											<svg class="utouch-icon" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="1.414"><path d="M16 3.038c-.59.26-1.22.437-1.885.517.677-.407 1.198-1.05 1.443-1.816-.634.37-1.337.64-2.085.79-.598-.64-1.45-1.04-2.396-1.04-1.812 0-3.282 1.47-3.282 3.28 0 .26.03.51.085.75-2.728-.13-5.147-1.44-6.766-3.42C.83 2.58.67 3.14.67 3.75c0 1.14.58 2.143 1.46 2.732-.538-.017-1.045-.165-1.487-.41v.04c0 1.59 1.13 2.918 2.633 3.22-.276.074-.566.114-.865.114-.21 0-.41-.02-.61-.058.42 1.304 1.63 2.253 3.07 2.28-1.12.88-2.54 1.404-4.07 1.404-.26 0-.52-.015-.78-.045 1.46.93 3.18 1.474 5.04 1.474 6.04 0 9.34-5 9.34-9.33 0-.14 0-.28-.01-.42.64-.46 1.2-1.04 1.64-1.7z" fill-rule="nonzero"></path></svg>
-										</a>
-									</li>
-
-									<li>
-										<a href="#" class="social__item googlePlus">
-											<svg class="utouch-icon" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="1.414"><path d="M8.16 6.857V9.6h4.537c-.183 1.177-1.37 3.45-4.537 3.45-2.73 0-4.96-2.26-4.96-5.05s2.23-5.05 4.96-5.05c1.554 0 2.594.66 3.19 1.233l2.17-2.092C12.126.79 10.32 0 8.16 0c-4.423 0-8 3.577-8 8s3.577 8 8 8c4.617 0 7.68-3.246 7.68-7.817 0-.526-.057-.926-.126-1.326H8.16z"></path></svg>
-										</a>
-									</li>
-
-									<li>
-										<a href="#" class="social__item rss">
-											<svg class="utouch-icon" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="1.414"><path d="M12.8 16C12.8 8.978 7.022 3.2 0 3.2V0c8.777 0 16 7.223 16 16h-3.2zM2.194 11.61c1.21 0 2.195.985 2.195 2.196 0 1.21-.99 2.194-2.2 2.194C.98 16 0 15.017 0 13.806c0-1.21.983-2.195 2.194-2.195zM10.606 16h-3.11c0-4.113-3.383-7.497-7.496-7.497v-3.11c5.818 0 10.606 4.79 10.606 10.607z"/></svg>
-										</a>
-									</li>
-								</ul>
-
-							</div>
-
-							<div class="post__date">
-
-								<time class="published" datetime="2017-03-20 12:00:00">
-									<a href="#" class="number">28</a>
-									<span class="month">March 2017</span>
-									<span class="day">Friday</span>
-								</time>
-
-							</div>
-
-							<div class="post__content-info">
-
-								<a href="17_news_details.html" class="h5 post__title entry-title">Quote Post Format</a>
-
-								<p class="post__text">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam
-									nonummy nibh euismod tincidunt ut laoreet dolore.
-								</p>
-
-								<div class="post-additional-info">
-									<span class="post__author author vcard">
-										 By
-										<a href="#" class="fn">Admin</a>
-
-									</span>
-
-									<span class="category">
-										In
-										<a href="16_news.html">News</a>
-									</span>
-
-									<span class="post__comments">
-										<a href="#">0 <span>Comments</span></a>
-									</span>
-
-									<a href="17_news_details.html" class="btn-next">
-										<svg class="utouch-icon icon-hover utouch-icon-arrow-right-1"><use xlink:href="#utouch-icon-arrow-right-1"></use></svg>
-										<svg class="utouch-icon utouch-icon-arrow-right1"><use xlink:href="#utouch-icon-arrow-right1"></use></svg>
-									</a>
-
-								</div>
-
-							</div>
-						</div>
-
-					</article>
-
-					<article class="hentry post post-standard has-post-thumbnail video">
-
-						<div class="post-thumb">
-							<img src="{{asset('frontAsset/img/blog3.jpg')}}" alt="video">
-							<div class="overlay"></div>
-							<a href="https://www.youtube.com/watch?v=wnJ6LuUFpMo" class="video-control js-popup-iframe">
-								<img src="{{asset('frontAsset/img/play.png')}}" alt="play">
-							</a>
-						</div>
-
-						<div class="post__content">
-
-							<a href="#" class="social__item main">
-								<svg class="utouch-icon utouch-icon-1496680146-share"><use xlink:href="#utouch-icon-1496680146-share"></use></svg>
-							</a>
-
-							<div class="share-product">
-
-								<ul class="socials">
-									<li>
-										<a href="#" class="social__item facebook">
-											<svg class="utouch-icon" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="1.414"><path d="M15.117 0H.883C.395 0 0 .395 0 .883v14.234c0 .488.395.883.883.883h7.663V9.804H6.46V7.39h2.086V5.607c0-2.066 1.262-3.19 3.106-3.19.883 0 1.642.064 1.863.094v2.16h-1.28c-1 0-1.195.48-1.195 1.18v1.54h2.39l-.31 2.42h-2.08V16h4.077c.488 0 .883-.395.883-.883V.883C16 .395 15.605 0 15.117 0" fill-rule="nonzero"></path></svg>
-										</a>
-									</li>
-
-									<li>
-										<a href="#" class="social__item twitter">
-											<svg class="utouch-icon" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="1.414"><path d="M16 3.038c-.59.26-1.22.437-1.885.517.677-.407 1.198-1.05 1.443-1.816-.634.37-1.337.64-2.085.79-.598-.64-1.45-1.04-2.396-1.04-1.812 0-3.282 1.47-3.282 3.28 0 .26.03.51.085.75-2.728-.13-5.147-1.44-6.766-3.42C.83 2.58.67 3.14.67 3.75c0 1.14.58 2.143 1.46 2.732-.538-.017-1.045-.165-1.487-.41v.04c0 1.59 1.13 2.918 2.633 3.22-.276.074-.566.114-.865.114-.21 0-.41-.02-.61-.058.42 1.304 1.63 2.253 3.07 2.28-1.12.88-2.54 1.404-4.07 1.404-.26 0-.52-.015-.78-.045 1.46.93 3.18 1.474 5.04 1.474 6.04 0 9.34-5 9.34-9.33 0-.14 0-.28-.01-.42.64-.46 1.2-1.04 1.64-1.7z" fill-rule="nonzero"></path></svg>
-										</a>
-									</li>
-
-									<li>
-										<a href="#" class="social__item googlePlus">
-											<svg class="utouch-icon" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="1.414"><path d="M8.16 6.857V9.6h4.537c-.183 1.177-1.37 3.45-4.537 3.45-2.73 0-4.96-2.26-4.96-5.05s2.23-5.05 4.96-5.05c1.554 0 2.594.66 3.19 1.233l2.17-2.092C12.126.79 10.32 0 8.16 0c-4.423 0-8 3.577-8 8s3.577 8 8 8c4.617 0 7.68-3.246 7.68-7.817 0-.526-.057-.926-.126-1.326H8.16z"></path></svg>
-										</a>
-									</li>
-
-									<li>
-										<a href="#" class="social__item rss">
-											<svg class="utouch-icon" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="1.414"><path d="M12.8 16C12.8 8.978 7.022 3.2 0 3.2V0c8.777 0 16 7.223 16 16h-3.2zM2.194 11.61c1.21 0 2.195.985 2.195 2.196 0 1.21-.99 2.194-2.2 2.194C.98 16 0 15.017 0 13.806c0-1.21.983-2.195 2.194-2.195zM10.606 16h-3.11c0-4.113-3.383-7.497-7.496-7.497v-3.11c5.818 0 10.606 4.79 10.606 10.607z"/></svg>
-										</a>
-									</li>
-								</ul>
-
-							</div>
-
-							<div class="post__date">
-
-								<time class="published" datetime="2017-03-20 12:00:00">
-									<a href="#" class="number">11</a>
-									<span class="month">February 2017</span>
-									<span class="day">Monday</span>
-								</time>
-
-							</div>
-
-							<div class="post__content-info">
-
-								<a href="17_news_details.html" class="h5 post__title entry-title">Video Post Format</a>
-
-								<p class="post__text">Eodem modo typi, qui nunc nobis videntur parum clari, fiant sollemnes
-									in futurumlaritas est etiam processus.
-								</p>
-
-								<div class="post-additional-info">
-									<span class="post__author author vcard">
-										 By
-										<a href="#" class="fn">Admin</a>
-
-									</span>
-
-									<span class="category">
-										In
-										<a href="16_news.html">News</a>
-									</span>
-
-									<span class="post__comments">
-										<a href="#">0 <span>Comments</span></a>
-									</span>
-
-									<a href="17_news_details.html" class="btn-next">
-										<svg class="utouch-icon icon-hover utouch-icon-arrow-right-1"><use xlink:href="#utouch-icon-arrow-right-1"></use></svg>
-										<svg class="utouch-icon utouch-icon-arrow-right1"><use xlink:href="#utouch-icon-arrow-right1"></use></svg>
-									</a>
-
-								</div>
-
-							</div>
-						</div>
-
-					</article>
-
-					<article class="hentry post post-standard">
-
-						<div class="post__content">
-
-							<a href="#" class="social__item main">
-								<svg class="utouch-icon utouch-icon-1496680146-share"><use xlink:href="#utouch-icon-1496680146-share"></use></svg>
-							</a>
-
-							<div class="share-product">
-
-								<ul class="socials">
-									<li>
-										<a href="#" class="social__item facebook">
-											<svg class="utouch-icon" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="1.414"><path d="M15.117 0H.883C.395 0 0 .395 0 .883v14.234c0 .488.395.883.883.883h7.663V9.804H6.46V7.39h2.086V5.607c0-2.066 1.262-3.19 3.106-3.19.883 0 1.642.064 1.863.094v2.16h-1.28c-1 0-1.195.48-1.195 1.18v1.54h2.39l-.31 2.42h-2.08V16h4.077c.488 0 .883-.395.883-.883V.883C16 .395 15.605 0 15.117 0" fill-rule="nonzero"></path></svg>
-										</a>
-									</li>
-
-									<li>
-										<a href="#" class="social__item twitter">
-											<svg class="utouch-icon" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="1.414"><path d="M16 3.038c-.59.26-1.22.437-1.885.517.677-.407 1.198-1.05 1.443-1.816-.634.37-1.337.64-2.085.79-.598-.64-1.45-1.04-2.396-1.04-1.812 0-3.282 1.47-3.282 3.28 0 .26.03.51.085.75-2.728-.13-5.147-1.44-6.766-3.42C.83 2.58.67 3.14.67 3.75c0 1.14.58 2.143 1.46 2.732-.538-.017-1.045-.165-1.487-.41v.04c0 1.59 1.13 2.918 2.633 3.22-.276.074-.566.114-.865.114-.21 0-.41-.02-.61-.058.42 1.304 1.63 2.253 3.07 2.28-1.12.88-2.54 1.404-4.07 1.404-.26 0-.52-.015-.78-.045 1.46.93 3.18 1.474 5.04 1.474 6.04 0 9.34-5 9.34-9.33 0-.14 0-.28-.01-.42.64-.46 1.2-1.04 1.64-1.7z" fill-rule="nonzero"></path></svg>
-										</a>
-									</li>
-
-									<li>
-										<a href="#" class="social__item googlePlus">
-											<svg class="utouch-icon" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="1.414"><path d="M8.16 6.857V9.6h4.537c-.183 1.177-1.37 3.45-4.537 3.45-2.73 0-4.96-2.26-4.96-5.05s2.23-5.05 4.96-5.05c1.554 0 2.594.66 3.19 1.233l2.17-2.092C12.126.79 10.32 0 8.16 0c-4.423 0-8 3.577-8 8s3.577 8 8 8c4.617 0 7.68-3.246 7.68-7.817 0-.526-.057-.926-.126-1.326H8.16z"></path></svg>
-										</a>
-									</li>
-
-									<li>
-										<a href="#" class="social__item rss">
-											<svg class="utouch-icon" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="1.414"><path d="M12.8 16C12.8 8.978 7.022 3.2 0 3.2V0c8.777 0 16 7.223 16 16h-3.2zM2.194 11.61c1.21 0 2.195.985 2.195 2.196 0 1.21-.99 2.194-2.2 2.194C.98 16 0 15.017 0 13.806c0-1.21.983-2.195 2.194-2.195zM10.606 16h-3.11c0-4.113-3.383-7.497-7.496-7.497v-3.11c5.818 0 10.606 4.79 10.606 10.607z"/></svg>
-										</a>
-									</li>
-								</ul>
-
-							</div>
-
-							<div class="post__date">
-
-								<time class="published" datetime="2017-03-20 12:00:00">
-									<a href="#" class="number">3</a>
-									<span class="month">February 2017</span>
-									<span class="day">Wednesday</span>
-								</time>
-
-							</div>
-
-							<div class="post__content-info">
-
-								<a href="17_news_details.html" class="h5 post__title entry-title">Standard Post Format Without Image: Quam nunc putamus parum</a>
-
-								<p class="post__text">Mirum est notare quam littera gothica, quam nunc putamus parum claram,
-									anteposuerit litterarum formas humanitatis per seacula quarta decima et quinta decima
-									odem modo typi, qui nunc nobis videntur parum clari, fiant sollemnes in futurum.
-								</p>
-
-								<div class="post-additional-info">
-									<span class="post__author author vcard">
-										 By
-										<a href="#" class="fn">Admin</a>
-									</span>
-
-									<span class="category">
-										In
-										<a href="16_news.html">News</a>
-									</span>
-
-									<span class="post__comments">
-										<a href="#">0 <span>Comments</span></a>
-									</span>
-
-									<a href="17_news_details.html" class="btn-next">
-										<svg class="utouch-icon icon-hover utouch-icon-arrow-right-1"><use xlink:href="#utouch-icon-arrow-right-1"></use></svg>
-										<svg class="utouch-icon utouch-icon-arrow-right1"><use xlink:href="#utouch-icon-arrow-right1"></use></svg>
-									</a>
-
-								</div>
-
-							</div>
-						</div>
-
-					</article>
-
-					<article class="hentry post post-standard has-post-thumbnail link">
-
-						<div class="post-thumb bg-green">
-							<div class="thumb-content">
-								<a href="#" class="h3 thumb-content-title">Utouch - App Startup Soft Material PSD Template</a>
-								<a href="#" class="h6 site-link">www.themeforest.com</a>
-								<a href="#" class="post-link">
-									<img src="{{asset('frontAsset/svg-icons/link%20(2).svg')}}" alt="link">
-								</a>
-							</div>
-						</div>
-
-						<div class="post__content">
-
-							<a href="#" class="social__item main">
-								<svg class="utouch-icon utouch-icon-1496680146-share"><use xlink:href="#utouch-icon-1496680146-share"></use></svg>
-							</a>
-
-							<div class="share-product">
-
-								<ul class="socials">
-									<li>
-										<a href="#" class="social__item facebook">
-											<svg class="utouch-icon" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="1.414"><path d="M15.117 0H.883C.395 0 0 .395 0 .883v14.234c0 .488.395.883.883.883h7.663V9.804H6.46V7.39h2.086V5.607c0-2.066 1.262-3.19 3.106-3.19.883 0 1.642.064 1.863.094v2.16h-1.28c-1 0-1.195.48-1.195 1.18v1.54h2.39l-.31 2.42h-2.08V16h4.077c.488 0 .883-.395.883-.883V.883C16 .395 15.605 0 15.117 0" fill-rule="nonzero"></path></svg>
-										</a>
-									</li>
-
-									<li>
-										<a href="#" class="social__item twitter">
-											<svg class="utouch-icon" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="1.414"><path d="M16 3.038c-.59.26-1.22.437-1.885.517.677-.407 1.198-1.05 1.443-1.816-.634.37-1.337.64-2.085.79-.598-.64-1.45-1.04-2.396-1.04-1.812 0-3.282 1.47-3.282 3.28 0 .26.03.51.085.75-2.728-.13-5.147-1.44-6.766-3.42C.83 2.58.67 3.14.67 3.75c0 1.14.58 2.143 1.46 2.732-.538-.017-1.045-.165-1.487-.41v.04c0 1.59 1.13 2.918 2.633 3.22-.276.074-.566.114-.865.114-.21 0-.41-.02-.61-.058.42 1.304 1.63 2.253 3.07 2.28-1.12.88-2.54 1.404-4.07 1.404-.26 0-.52-.015-.78-.045 1.46.93 3.18 1.474 5.04 1.474 6.04 0 9.34-5 9.34-9.33 0-.14 0-.28-.01-.42.64-.46 1.2-1.04 1.64-1.7z" fill-rule="nonzero"></path></svg>
-										</a>
-									</li>
-
-									<li>
-										<a href="#" class="social__item googlePlus">
-											<svg class="utouch-icon" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="1.414"><path d="M8.16 6.857V9.6h4.537c-.183 1.177-1.37 3.45-4.537 3.45-2.73 0-4.96-2.26-4.96-5.05s2.23-5.05 4.96-5.05c1.554 0 2.594.66 3.19 1.233l2.17-2.092C12.126.79 10.32 0 8.16 0c-4.423 0-8 3.577-8 8s3.577 8 8 8c4.617 0 7.68-3.246 7.68-7.817 0-.526-.057-.926-.126-1.326H8.16z"></path></svg>
-										</a>
-									</li>
-
-									<li>
-										<a href="#" class="social__item rss">
-											<svg class="utouch-icon" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="1.414"><path d="M12.8 16C12.8 8.978 7.022 3.2 0 3.2V0c8.777 0 16 7.223 16 16h-3.2zM2.194 11.61c1.21 0 2.195.985 2.195 2.196 0 1.21-.99 2.194-2.2 2.194C.98 16 0 15.017 0 13.806c0-1.21.983-2.195 2.194-2.195zM10.606 16h-3.11c0-4.113-3.383-7.497-7.496-7.497v-3.11c5.818 0 10.606 4.79 10.606 10.607z"/></svg>
-										</a>
-									</li>
-								</ul>
-
-							</div>
-
-							<div class="post__date">
-
-								<time class="published" datetime="2017-03-20 12:00:00">
-									<a href="#" class="number">31</a>
-									<span class="month">January 2017</span>
-									<span class="day">Monday</span>
-								</time>
-
-							</div>
-
-							<div class="post__content-info">
-
-								<a href="17_news_details.html" class="h5 post__title entry-title">Link Post Format</a>
-
-								<p class="post__text">Eodem modo typi, qui nunc nobis videntur parum clari, fiant sollemnes
-									in futurumlaritas est etiam processus.
-								</p>
-
-								<div class="post-additional-info">
-									<span class="post__author author vcard">
-										 By
-										<a href="#" class="fn">Admin</a>
-									</span>
-
-									<span class="category">
-										In
-										<a href="16_news.html">News</a>
-									</span>
-
-									<span class="post__comments">
-										<a href="#">0 <span>Comments</span></a>
-									</span>
-
-									<a href="17_news_details.html" class="btn-next">
-										<svg class="utouch-icon icon-hover utouch-icon-arrow-right-1"><use xlink:href="#utouch-icon-arrow-right-1"></use></svg>
-										<svg class="utouch-icon utouch-icon-arrow-right1"><use xlink:href="#utouch-icon-arrow-right1"></use></svg>
-									</a>
-
-								</div>
-
-							</div>
-						</div>
-
-					</article>
-
-					<article class="hentry post post-standard has-post-thumbnail">
-
-						<div class="post-thumb">
-							<img src="{{asset('frontAsset/img/blog4.jpg')}}" alt="post">
-							<a href="{{asset('frontAsset/img/blog4.jpg')}}" class="link-image js-zoom-image">
-								<svg class="utouch-icon utouch-icon-zoom-increasing-button-outline"><use xlink:href="#utouch-icon-zoom-increasing-button-outline"></use></svg>
-							</a>
-							<a href="#" class="link-post">
-								<svg class="utouch-icon utouch-icon-link-chain"><use xlink:href="#utouch-icon-link-chain"></use></svg>
-							</a>
-							<div class="overlay-standard overlay--blue-dark"></div>
-						</div>
-
-						<div class="post__content">
-
-							<a href="#" class="social__item main">
-								<svg class="utouch-icon utouch-icon-1496680146-share"><use xlink:href="#utouch-icon-1496680146-share"></use></svg>
-							</a>
-
-							<div class="share-product">
-
-								<ul class="socials">
-									<li>
-										<a href="#" class="social__item facebook">
-											<svg class="utouch-icon" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="1.414"><path d="M15.117 0H.883C.395 0 0 .395 0 .883v14.234c0 .488.395.883.883.883h7.663V9.804H6.46V7.39h2.086V5.607c0-2.066 1.262-3.19 3.106-3.19.883 0 1.642.064 1.863.094v2.16h-1.28c-1 0-1.195.48-1.195 1.18v1.54h2.39l-.31 2.42h-2.08V16h4.077c.488 0 .883-.395.883-.883V.883C16 .395 15.605 0 15.117 0" fill-rule="nonzero"></path></svg>
-										</a>
-									</li>
-
-									<li>
-										<a href="#" class="social__item twitter">
-											<svg class="utouch-icon" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="1.414"><path d="M16 3.038c-.59.26-1.22.437-1.885.517.677-.407 1.198-1.05 1.443-1.816-.634.37-1.337.64-2.085.79-.598-.64-1.45-1.04-2.396-1.04-1.812 0-3.282 1.47-3.282 3.28 0 .26.03.51.085.75-2.728-.13-5.147-1.44-6.766-3.42C.83 2.58.67 3.14.67 3.75c0 1.14.58 2.143 1.46 2.732-.538-.017-1.045-.165-1.487-.41v.04c0 1.59 1.13 2.918 2.633 3.22-.276.074-.566.114-.865.114-.21 0-.41-.02-.61-.058.42 1.304 1.63 2.253 3.07 2.28-1.12.88-2.54 1.404-4.07 1.404-.26 0-.52-.015-.78-.045 1.46.93 3.18 1.474 5.04 1.474 6.04 0 9.34-5 9.34-9.33 0-.14 0-.28-.01-.42.64-.46 1.2-1.04 1.64-1.7z" fill-rule="nonzero"></path></svg>
-										</a>
-									</li>
-
-									<li>
-										<a href="#" class="social__item googlePlus">
-											<svg class="utouch-icon" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="1.414"><path d="M8.16 6.857V9.6h4.537c-.183 1.177-1.37 3.45-4.537 3.45-2.73 0-4.96-2.26-4.96-5.05s2.23-5.05 4.96-5.05c1.554 0 2.594.66 3.19 1.233l2.17-2.092C12.126.79 10.32 0 8.16 0c-4.423 0-8 3.577-8 8s3.577 8 8 8c4.617 0 7.68-3.246 7.68-7.817 0-.526-.057-.926-.126-1.326H8.16z"></path></svg>
-										</a>
-									</li>
-
-									<li>
-										<a href="#" class="social__item rss">
-											<svg class="utouch-icon" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="1.414"><path d="M12.8 16C12.8 8.978 7.022 3.2 0 3.2V0c8.777 0 16 7.223 16 16h-3.2zM2.194 11.61c1.21 0 2.195.985 2.195 2.196 0 1.21-.99 2.194-2.2 2.194C.98 16 0 15.017 0 13.806c0-1.21.983-2.195 2.194-2.195zM10.606 16h-3.11c0-4.113-3.383-7.497-7.496-7.497v-3.11c5.818 0 10.606 4.79 10.606 10.607z"/></svg>
-										</a>
-									</li>
-								</ul>
-
-							</div>
-
-							<div class="post__date">
-
-								<time class="published" datetime="2017-03-20 12:00:00">
-									<a href="#" class="number">22</a>
-									<span class="month">January 2017</span>
-									<span class="day">Thursday</span>
-								</time>
-
-							</div>
-
-							<div class="post__content-info">
-
-								<a href="17_news_details.html" class="h5 post__title entry-title">Standard Post Format</a>
-
-								<p class="post__text">Investigationes demonstraverunt lectores legere me lius quod ii legunt
-									saepius est etiam processus dynamicu.
-								</p>
-
-								<div class="post-additional-info">
-									<span class="post__author author vcard">
-										 By
-										<a href="#" class="fn">Admin</a>
-
-									</span>
-
-									<span class="category">
-										In
-										<a href="16_news.html">News</a>
-									</span>
-
-									<span class="post__comments">
-										<a href="#">0 <span>Comments</span></a>
-									</span>
-
-									<a href="17_news_details.html" class="btn-next">
-										<svg class="utouch-icon icon-hover utouch-icon-arrow-right-1"><use xlink:href="#utouch-icon-arrow-right-1"></use></svg>
-										<svg class="utouch-icon utouch-icon-arrow-right1"><use xlink:href="#utouch-icon-arrow-right1"></use></svg>
-									</a>
-
-								</div>
-
-							</div>
-						</div>
-
-					</article>
-
-					<article class="hentry post post-standard has-post-thumbnail audio">
-
-						<div class="post-thumb">
-							<!--<iframe width="100%" height="166" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/205462171&amp;color=ff5500&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false"></iframe>-->
-						</div>
-
-						<div class="post__content">
-
-							<a href="#" class="social__item main">
-								<svg class="utouch-icon utouch-icon-1496680146-share"><use xlink:href="#utouch-icon-1496680146-share"></use></svg>
-							</a>
-
-							<div class="share-product">
-
-								<ul class="socials">
-									<li>
-										<a href="#" class="social__item facebook">
-											<svg class="utouch-icon" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="1.414"><path d="M15.117 0H.883C.395 0 0 .395 0 .883v14.234c0 .488.395.883.883.883h7.663V9.804H6.46V7.39h2.086V5.607c0-2.066 1.262-3.19 3.106-3.19.883 0 1.642.064 1.863.094v2.16h-1.28c-1 0-1.195.48-1.195 1.18v1.54h2.39l-.31 2.42h-2.08V16h4.077c.488 0 .883-.395.883-.883V.883C16 .395 15.605 0 15.117 0" fill-rule="nonzero"></path></svg>
-										</a>
-									</li>
-
-									<li>
-										<a href="#" class="social__item twitter">
-											<svg class="utouch-icon" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="1.414"><path d="M16 3.038c-.59.26-1.22.437-1.885.517.677-.407 1.198-1.05 1.443-1.816-.634.37-1.337.64-2.085.79-.598-.64-1.45-1.04-2.396-1.04-1.812 0-3.282 1.47-3.282 3.28 0 .26.03.51.085.75-2.728-.13-5.147-1.44-6.766-3.42C.83 2.58.67 3.14.67 3.75c0 1.14.58 2.143 1.46 2.732-.538-.017-1.045-.165-1.487-.41v.04c0 1.59 1.13 2.918 2.633 3.22-.276.074-.566.114-.865.114-.21 0-.41-.02-.61-.058.42 1.304 1.63 2.253 3.07 2.28-1.12.88-2.54 1.404-4.07 1.404-.26 0-.52-.015-.78-.045 1.46.93 3.18 1.474 5.04 1.474 6.04 0 9.34-5 9.34-9.33 0-.14 0-.28-.01-.42.64-.46 1.2-1.04 1.64-1.7z" fill-rule="nonzero"></path></svg>
-										</a>
-									</li>
-
-									<li>
-										<a href="#" class="social__item googlePlus">
-											<svg class="utouch-icon" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="1.414"><path d="M8.16 6.857V9.6h4.537c-.183 1.177-1.37 3.45-4.537 3.45-2.73 0-4.96-2.26-4.96-5.05s2.23-5.05 4.96-5.05c1.554 0 2.594.66 3.19 1.233l2.17-2.092C12.126.79 10.32 0 8.16 0c-4.423 0-8 3.577-8 8s3.577 8 8 8c4.617 0 7.68-3.246 7.68-7.817 0-.526-.057-.926-.126-1.326H8.16z"></path></svg>
-										</a>
-									</li>
-
-									<li>
-										<a href="#" class="social__item rss">
-											<svg class="utouch-icon" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="1.414"><path d="M12.8 16C12.8 8.978 7.022 3.2 0 3.2V0c8.777 0 16 7.223 16 16h-3.2zM2.194 11.61c1.21 0 2.195.985 2.195 2.196 0 1.21-.99 2.194-2.2 2.194C.98 16 0 15.017 0 13.806c0-1.21.983-2.195 2.194-2.195zM10.606 16h-3.11c0-4.113-3.383-7.497-7.496-7.497v-3.11c5.818 0 10.606 4.79 10.606 10.607z"/></svg>
-										</a>
-									</li>
-								</ul>
-
-							</div>
-
-							<div class="post__date">
-
-								<time class="published" datetime="2017-03-20 12:00:00">
-									<a href="#" class="number">18</a>
-									<span class="month">January 2017</span>
-									<span class="day">Sunday</span>
-								</time>
-
-							</div>
-
-							<div class="post__content-info">
-
-								<a href="17_news_details.html" class="h5 post__title entry-title">Standard Post Format</a>
-
-								<p class="post__text">Nam liber tempor cum soluta nobis eleifend option congue nihil
-									imperdiet doming quod mazim placerat facer possim assum.
-								</p>
-
-								<div class="post-additional-info">
-									<span class="post__author author vcard">
-										 By
-										<a href="#" class="fn">Admin</a>
-
-									</span>
-
-									<span class="category">
-										In
-										<a href="16_news.html">News</a>
-									</span>
-
-									<span class="post__comments">
-										<a href="#">368 <span>Comments</span></a>
-									</span>
-
-									<a href="17_news_details.html" class="btn-next">
-										<svg class="utouch-icon icon-hover utouch-icon-arrow-right-1"><use xlink:href="#utouch-icon-arrow-right-1"></use></svg>
-										<svg class="utouch-icon utouch-icon-arrow-right1"><use xlink:href="#utouch-icon-arrow-right1"></use></svg>
-									</a>
-
-								</div>
-
-							</div>
-						</div>
-
-					</article>
-
-					<article class="hentry post post-standard has-post-thumbnail">
-
-						<div class="post-thumb">
-							<img src="{{asset('frontAsset/img/blog5.jpg')}}" alt="post">
-							<a href="{{asset('frontAsset/img/blog5.jpg')}}" class="link-image js-zoom-image">
-								<svg class="utouch-icon utouch-icon-zoom-increasing-button-outline"><use xlink:href="#utouch-icon-zoom-increasing-button-outline"></use></svg>
-							</a>
-							<a href="#" class="link-post">
-								<svg class="utouch-icon utouch-icon-link-chain"><use xlink:href="#utouch-icon-link-chain"></use></svg>
-							</a>
-							<div class="overlay-standard overlay--blue-dark"></div>
-						</div>
-
-						<div class="post__content">
-
-							<a href="#" class="social__item main">
-								<svg class="utouch-icon utouch-icon-1496680146-share"><use xlink:href="#utouch-icon-1496680146-share"></use></svg>
-							</a>
-
-							<div class="share-product">
-
-								<ul class="socials">
-									<li>
-										<a href="#" class="social__item facebook">
-											<svg class="utouch-icon" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="1.414"><path d="M15.117 0H.883C.395 0 0 .395 0 .883v14.234c0 .488.395.883.883.883h7.663V9.804H6.46V7.39h2.086V5.607c0-2.066 1.262-3.19 3.106-3.19.883 0 1.642.064 1.863.094v2.16h-1.28c-1 0-1.195.48-1.195 1.18v1.54h2.39l-.31 2.42h-2.08V16h4.077c.488 0 .883-.395.883-.883V.883C16 .395 15.605 0 15.117 0" fill-rule="nonzero"></path></svg>
-										</a>
-									</li>
-
-									<li>
-										<a href="#" class="social__item twitter">
-											<svg class="utouch-icon" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="1.414"><path d="M16 3.038c-.59.26-1.22.437-1.885.517.677-.407 1.198-1.05 1.443-1.816-.634.37-1.337.64-2.085.79-.598-.64-1.45-1.04-2.396-1.04-1.812 0-3.282 1.47-3.282 3.28 0 .26.03.51.085.75-2.728-.13-5.147-1.44-6.766-3.42C.83 2.58.67 3.14.67 3.75c0 1.14.58 2.143 1.46 2.732-.538-.017-1.045-.165-1.487-.41v.04c0 1.59 1.13 2.918 2.633 3.22-.276.074-.566.114-.865.114-.21 0-.41-.02-.61-.058.42 1.304 1.63 2.253 3.07 2.28-1.12.88-2.54 1.404-4.07 1.404-.26 0-.52-.015-.78-.045 1.46.93 3.18 1.474 5.04 1.474 6.04 0 9.34-5 9.34-9.33 0-.14 0-.28-.01-.42.64-.46 1.2-1.04 1.64-1.7z" fill-rule="nonzero"></path></svg>
-										</a>
-									</li>
-
-									<li>
-										<a href="#" class="social__item googlePlus">
-											<svg class="utouch-icon" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="1.414"><path d="M8.16 6.857V9.6h4.537c-.183 1.177-1.37 3.45-4.537 3.45-2.73 0-4.96-2.26-4.96-5.05s2.23-5.05 4.96-5.05c1.554 0 2.594.66 3.19 1.233l2.17-2.092C12.126.79 10.32 0 8.16 0c-4.423 0-8 3.577-8 8s3.577 8 8 8c4.617 0 7.68-3.246 7.68-7.817 0-.526-.057-.926-.126-1.326H8.16z"></path></svg>
-										</a>
-									</li>
-
-									<li>
-										<a href="#" class="social__item rss">
-											<svg class="utouch-icon" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="1.414"><path d="M12.8 16C12.8 8.978 7.022 3.2 0 3.2V0c8.777 0 16 7.223 16 16h-3.2zM2.194 11.61c1.21 0 2.195.985 2.195 2.196 0 1.21-.99 2.194-2.2 2.194C.98 16 0 15.017 0 13.806c0-1.21.983-2.195 2.194-2.195zM10.606 16h-3.11c0-4.113-3.383-7.497-7.496-7.497v-3.11c5.818 0 10.606 4.79 10.606 10.607z"/></svg>
-										</a>
-									</li>
-								</ul>
-
-							</div>
-
-							<div class="post__date">
-
-								<time class="published" datetime="2017-03-20 12:00:00">
-									<a href="#" class="number">4</a>
-									<span class="month">January 2017</span>
-									<span class="day">Monday</span>
-								</time>
-
-							</div>
-
-							<div class="post__content-info">
-
-								<a href="17_news_details.html" class="h5 post__title entry-title">Standard Post Format</a>
-
-								<p class="post__text">Eodem modo typi, qui nunc nobis videntur parum clari, fiant sollemnes
-									in futurumlaritas est etiam processus.
-								</p>
-
-								<div class="post-additional-info">
-									<span class="post__author author vcard">
-										 By
-										<a href="#" class="fn">Admin</a>
-
-									</span>
-
-									<span class="category">
-										In
-										<a href="16_news.html">News</a>
-									</span>
-
-									<span class="post__comments">
-										<a href="#">0 <span>Comments</span></a>
-									</span>
-
-									<a href="17_news_details.html" class="btn-next">
-										<svg class="utouch-icon icon-hover utouch-icon-arrow-right-1"><use xlink:href="#utouch-icon-arrow-right-1"></use></svg>
-										<svg class="utouch-icon utouch-icon-arrow-right1"><use xlink:href="#utouch-icon-arrow-right1"></use></svg>
-									</a>
-
-								</div>
-
-							</div>
-						</div>
-
-					</article>
+					@endforeach
 
 				</main>
-
+				{{ $data['posts']->links() }}
 				<div class="row mb60">
 					<div class="col-lg-12">
 						<nav class="navigation">
@@ -944,41 +179,24 @@
 					<aside class="widget w-category">
 						<h5 class="widget-title">Categories</h5>
 						<ul class="category-list">
+							@foreach ($data['categories'] as $category)
 							<li>
-								<a href="#">Entrepreneur
-									<span class="cat-count">39</span>
+								<a href="#">{{ $category->name }}
+									<span class="cat-count">{{ $category->posts->count() }}</span>
 								</a>
 							</li>
+							@endforeach
+						</ul>
+					</aside>
+
+					<aside class="widget w-tags">
+						<h5 class="widget-title">Tags</h5>
+						<ul class="tags-list">
+							@foreach ($data['tags'] as $tag)
 							<li>
-								<a href="#">Innovation
-									<span class="cat-count">632</span>
-								</a>
+								<a href="#">{{ $tag->name }}</a>
 							</li>
-							<li>
-								<a href="#">Startup
-									<span class="cat-count">8</span>
-								</a>
-							</li>
-							<li>
-								<a href="#">Strategy
-									<span class="cat-count">24</span>
-								</a>
-							</li>
-							<li>
-								<a href="#">Tech
-									<span class="cat-count">2</span>
-								</a>
-							</li>
-							<li>
-								<a href="#">Marketing
-									<span class="cat-count">16</span>
-								</a>
-							</li>
-							<li>
-								<a href="#">Trends
-									<span class="cat-count">9</span>
-								</a>
-							</li>
+							@endforeach
 						</ul>
 					</aside>
 
@@ -1388,37 +606,6 @@
 						</ul>
 
 					</aside>
-
-					<aside class="widget w-tags">
-						<h5 class="widget-title">Categories</h5>
-						<ul class="tags-list">
-							<li>
-								<a href="#">App</a>
-							</li>
-							<li>
-								<a href="#">WordPress</a>
-							</li>
-							<li>
-								<a href="#">UI Kit</a>
-							</li>
-							<li>
-								<a href="#">Innovation</a>
-							</li>
-							<li>
-								<a href="#">Trends</a>
-							</li>
-							<li>
-								<a href="#">Startup</a>
-							</li>
-							<li>
-								<a href="#">Marketing</a>
-							</li>
-							<li>
-								<a href="#">WordPress Themes</a>
-							</li>
-						</ul>
-					</aside>
-
 
 				</aside>
 			</div>

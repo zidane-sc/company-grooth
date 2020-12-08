@@ -14,7 +14,9 @@
 	<!--External fonts-->
 
 	<link href="https://fonts.googleapis.com/css?family=Nunito:300,400,700,900" rel="stylesheet">
-	<link href="https://fonts.googleapis.com/css?family=Baloo+Paaji" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Baloo+Paaji" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam:wght@400&display=swap" rel="stylesheet">
 
 	<!-- Styles for Plugins -->
 	<link rel="stylesheet" type="text/css" href="{{asset('frontAsset/css/plugins/swiper.min.css')}}">
