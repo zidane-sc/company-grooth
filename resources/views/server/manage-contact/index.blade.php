@@ -90,6 +90,17 @@
                                 </div>
 
                                 <div class="form-group">
+                                    <label for="whatsapp">Whatsapp</label>
+                                    <input type="text" class="form-control @error('whatsapp') is-invalid @enderror" id="whatsapp" name="whatsapp" value="{{ old('whatsapp') ?? ($data->whatsapp ?? "") }}"  placeholder="Enter whatsapp">
+
+                                     @error('whatsapp')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+
+                                <div class="form-group">
                                     <label for="email">Email</label>
                                     <input type="email" class="form-control @error('email') is-invalid @enderror" id="email" name="email" value="{{ old('email') ?? ($data->email ?? "") }}"  placeholder="Enter Email">
 

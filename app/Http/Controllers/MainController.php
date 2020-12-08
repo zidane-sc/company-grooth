@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Banner;
 use App\Category;
+use App\Contact;
 use App\Portfolio;
 use App\Post;
 use App\SectionOne;
@@ -47,15 +48,44 @@ class MainController extends Controller
         $data['tags'] = Tag::all();
         return view('client.content.article', ['data' => $data]);
     }
-
-    public function contact()
-    {
-        return view('client.content.contact-us');
-    }
+    
     public function detail($slug)
     {
         // dd($slug);
-        $data['post'] = Post::where('slug', $slug)->first();
+        $data['post'] = Post::where('slug', $slug)->firstOrFail();
+        $data['post']->view += 1;
+        $data['post']->save();
         return view('client.content.detail', ['data' => $data]);
     }
+
+    public function tag($slug)
+    {
+        $data['posts'] = Post::whereHas('tags', function($q) use($slug) {
+            $q->where('slug', $slug);
+        })
+        ->where('status', 'PUBLISHED')
+        ->paginate(10);
+        $data['categories'] = Category::all();
+        $data['tags'] = Tag::all();
+        return view('client.content.article', ['data' => $data]);
+    }
+
+    public function category($slug)
+    {
+        $data['posts'] = Post::whereHas('category', function($q) use($slug) {
+            $q->where('slug', $slug);
+        })
+        ->where('status', 'PUBLISHED')
+        ->paginate(10);
+        $data['categories'] = Category::all();
+        $data['tags'] = Tag::all();
+        return view('client.content.article', ['data' => $data]);
+    }
+
+    public function contact()
+    {
+        $data['contact'] = Contact::first();
+        return view('client.content.contact-us', ['data' => $data]);
+    }
+    
 }
