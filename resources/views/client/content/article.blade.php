@@ -39,7 +39,8 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-lg-8 col-md-12 col-sm-12 col-xs-12">
-				<main class="main">
+				@if($data['posts'] != null)
+					<main class="main">
 
                     @foreach ($data['posts'] as $post)
 
@@ -135,22 +136,24 @@
 						</div>
 
 					</article>
-                    @endforeach
-				</main>
-                {{$data['posts']->links()}}
-				<div class="row mb60">
-					<div class="col-lg-12">
-						<nav class="navigation">
-							<a href="#" class="page-numbers current"><span>1</span></a>
-							<a href="#" class="page-numbers"><span>2</span></a>
-							<a href="#" class="page-numbers"><span>3</span></a>
-							<a href="#" class="page-numbers"><span>4</span></a>
-							<a href="#" class="page-numbers"><span>...</span></a>
-							<a href="#" class="page-numbers"><span>26</span></a>
-							<a href="#" class="page-numbers"><span>27</span></a>
-						</nav>
-					</div>
-				</div>
+					@endforeach
+
+					</main>
+					{{-- {{ $data['posts']->links() }} --}}
+					{{-- <div class="row mb60">
+						<div class="col-lg-12">
+							<nav class="navigation">
+								<a href="#" class="page-numbers current"><span>1</span></a>
+								<a href="#" class="page-numbers"><span>2</span></a>
+								<a href="#" class="page-numbers"><span>3</span></a>
+								<a href="#" class="page-numbers"><span>4</span></a>
+								<a href="#" class="page-numbers"><span>...</span></a>
+								<a href="#" class="page-numbers"><span>26</span></a>
+								<a href="#" class="page-numbers"><span>27</span></a>
+							</nav>
+						</div>
+					</div> --}}
+				@endif
 			</div>
 
 
@@ -160,233 +163,92 @@
 				<aside aria-label="sidebar" class="sidebar sidebar-right">
 
 					<aside class="widget w-search">
-						<h5 class="widget-title">Search form</h5>
-						<form method="get">
+						<h5 class="widget-title">Search Form</h5>
+						<form action="" method="get">
 							<div class="with-icon">
-								<input name="name" placeholder="Type and hit Enter..." type="text">
+								<input type="text" name="keyword" id="keyword" placeholder="Type and hit enter" value="{{ Request::get('keyword') }}"  onkeypress="handle(event)"">
 								<svg class="utouch-icon utouch-icon-search"><use xlink:href="#utouch-icon-search"></use></svg>
 							</div>
 						</form>
-                    </aside>
+					</aside>
 
-                    {{-- <aside class="widget w-category">
+             <aside class="widget w-category">
 						<h5 class="widget-title">Categories</h5>
 						<ul class="category-list">
-                            @foreach ($data['categories'] as $category)
+                 @foreach ($data['categories'] as $category)
 							<li>
-                            <a href="{{route('main.category', $category->slug)}}">{{$category->name}}
-                            <span class="cat-count">{{$category->totalPost}}</span>
+                    <a href="{{route('main.category', $category->slug)}}">{{$category->name}}
+										<span class="cat-count">{{$category->totalPost}}</span>
 								</a>
 							</li>
-                            @endforeach
+										@endforeach
 						</ul>
 					</aside>
 
                     <aside class="widget w-tags">
 						<h5 class="widget-title">Tags</h5>
 						<ul class="tags-list">
-                            @foreach ($data['tags'] as $tag)
 
+							@foreach ($data['tags'] as $tag)
 							<li>
-                            <a href="{{route('main.tags', $tag->slug)}}">{{$tag->name}}</a>
+								<a href="{{ route('main.tags', $tag->slug) }}">{{ $tag->name }}</a>
 							</li>
-                            @endforeach
+							@endforeach
 						</ul>
-					</aside> --}}
+					</aside>
 
-                    {{-- <aside class="widget w-latest-news">
-                        <h5 class="widget-title">Latest News</h5>
-                        <hr >
-                        <br>
-						<div class="tab-content">
-							<div role="tabpanel" class="tab-pane fade show active" id="latest" aria-labelledby="latest-tab">
-								<ul class="latest-news-list">
-									<li>
-										<article itemscope="" itemtype="http://schema.org/NewsArticle" class="latest-news-item">
-											<header>
-												<div class="post-thumb">
-													<img src="{{asset('frontAsset/img/l-news1.jpg')}}" alt="news">
-												</div>
-												<div class="post-additional-info">
-													<h6 class="post__title entry-title" itemprop="name">
-														<a href="17_news_details.html">Video Post Format</a>
-													</h6>
-													<span class="post__date">
-														<time class="entry-date published updated" datetime="2017-03-23T16:31:34+00:00">23 March 2017</time>
-													</span>
-												</div>
-											</header>
-										</article>
-									</li>
-									<li>
-										<article itemscope="" itemtype="http://schema.org/NewsArticle" class="latest-news-item">
-											<header>
-												<div class="post-thumb">
-													<img src="{{asset('frontAsset/img/l-news2.jpg')}}" alt="news">
-												</div>
-												<div class="post-additional-info">
-													<h6 class="post__title entry-title" itemprop="name">
-														<a href="17_news_details.html">The Important Standard Post Format</a>
-													</h6>
-													<span class="post__date">
-														<time class="entry-date published updated" datetime="2017-03-16T16:31:34+00:00">16 March 2017</time>
-													</span>
-												</div>
-											</header>
-										</article>
-									</li>
-									<li>
-										<article itemscope="" itemtype="http://schema.org/NewsArticle" class="latest-news-item">
-											<header>
-												<div class="post-thumb">
-													<img src="{{asset('frontAsset/img/l-news3.png')}}" alt="news">
-												</div>
-												<div class="post-additional-info">
-													<h6 class="post__title entry-title" itemprop="name">
-														<a href="17_news_details.html">Quote Post Format</a>
-													</h6>
-													<span class="post__date">
-														<time class="entry-date published updated" datetime="2017-02-28T16:31:34+00:00">28 February 2017</time>
-													</span>
-												</div>
-											</header>
-										</article>
-									</li>
-									<li>
-										<article itemscope="" itemtype="http://schema.org/NewsArticle" class="latest-news-item">
-											<header>
-												<div class="post-thumb">
-													<img src="{{asset('frontAsset/img/l-news4.jpg')}}" alt="news">
-												</div>
-												<div class="post-additional-info">
-													<h6 class="post__title entry-title" itemprop="name">
-														<a href="17_news_details.html">Photo with Slider Post Format</a>
-													</h6>
-													<span class="post__date">
-														<time class="entry-date published updated" datetime="2017-02-02T16:31:34+00:00">2 February 2017</time>
-													</span>
-												</div>
-											</header>
-										</article>
-									</li>
-									<li>
-										<article itemscope="" itemtype="http://schema.org/NewsArticle" class="latest-news-item">
-											<header>
-												<div class="post-thumb">
-													<img src="{{asset('frontAsset/img/l-news5.png')}}" alt="news">
-												</div>
-												<div class="post-additional-info">
-													<h6 class="post__title entry-title" itemprop="name">
-														<a href="17_news_details.html">Link Post Format</a>
-													</h6>
-													<span class="post__date">
-														<time class="entry-date published updated" datetime="2017-01-18T16:31:34+00:00">18 January 2017</time>
-													</span>
-												</div>
-											</header>
-										</article>
-									</li>
 
-								</ul>
-							</div>
-						</div>
-                    </aside>
-                    <aside class="widget w-latest-news">
-                        <h5 class="widget-title">Popular</h5>
-                        <hr >
-                        <br>
-						<div class="tab-content">
-							<div   id="popular" aria-labelledby="popular-tab">
-								<ul class="latest-news-list">
-									<li>
-										<article itemscope="" itemtype="http://schema.org/NewsArticle" class="latest-news-item">
-											<header>
-												<div class="post-thumb">
-													<img src="{{asset('frontAsset/img/l-news2.jpg')}}" alt="news">
-												</div>
-												<div class="post-additional-info">
-													<h6 class="post__title entry-title" itemprop="name">
-														<a href="17_news_details.html">The Important Standard Post Format</a>
-													</h6>
-													<span class="post__date">
-														<time class="entry-date published updated" datetime="2017-03-16T16:31:34+00:00">16 March 2017</time>
-													</span>
-												</div>
-											</header>
-										</article>
-									</li>
-									<li>
-										<article itemscope="" itemtype="http://schema.org/NewsArticle" class="latest-news-item">
-											<header>
-												<div class="post-thumb">
-													<img src="{{asset('frontAsset/img/l-news3.png')}}" alt="news">
-												</div>
-												<div class="post-additional-info">
-													<h6 class="post__title entry-title" itemprop="name">
-														<a href="17_news_details.html">Quote Post Format</a>
-													</h6>
-													<span class="post__date">
-														<time class="entry-date published updated" datetime="2017-02-28T16:31:34+00:00">28 February 2017</time>
-													</span>
-												</div>
-											</header>
-										</article>
-									</li>
-									<li>
-										<article itemscope="" itemtype="http://schema.org/NewsArticle" class="latest-news-item">
-											<header>
-												<div class="post-thumb">
-													<img src="{{asset('frontAsset/img/l-news1.jpg')}}" alt="news">
-												</div>
-												<div class="post-additional-info">
-													<h6 class="post__title entry-title" itemprop="name">
-														<a href="17_news_details.html">Video Post Format</a>
-													</h6>
-													<span class="post__date">
-														<time class="entry-date published updated" datetime="2017-03-23T16:31:34+00:00">23 March 2017</time>
-													</span>
-												</div>
-											</header>
-										</article>
-									</li>
-									<li>
-										<article itemscope="" itemtype="http://schema.org/NewsArticle" class="latest-news-item">
-											<header>
-												<div class="post-thumb">
-													<img src="{{asset('frontAsset/img/l-news4.jpg')}}" alt="news">
-												</div>
-												<div class="post-additional-info">
-													<h6 class="post__title entry-title" itemprop="name">
-														<a href="17_news_details.html">Photo with Slider Post Format</a>
-													</h6>
-													<span class="post__date">
-														<time class="entry-date published updated" datetime="2017-02-02T16:31:34+00:00">2 February 2017</time>
-													</span>
-												</div>
-											</header>
-										</article>
-									</li>
-									<li>
-										<article itemscope="" itemtype="http://schema.org/NewsArticle" class="latest-news-item">
-											<header>
-												<div class="post-thumb">
-													<img src="{{asset('frontAsset/img/l-news5.png')}}" alt="news">
-												</div>
-												<div class="post-additional-info">
-													<h6 class="post__title entry-title" itemprop="name">
-														<a href="17_news_details.html">Link Post Format</a>
-													</h6>
-													<span class="post__date">
-														<time class="entry-date published updated" datetime="2017-01-18T16:31:34+00:00">18 January 2017</time>
-													</span>
-												</div>
-											</header>
-										</article>
-									</li>
-								</ul>
-							</div>
-						</div>
-					</aside> --}}
+					<aside class="widget w-latest-news">
+						<h5 class="widget-title">Latest News</h5>
+
+						<ul class="latest-news-list">
+							@foreach ($data['latest'] as $latest)
+							<li>
+								<article itemscope="" itemtype="http://schema.org/NewsArticle" class="latest-news-item">
+									<header>
+										<div class="post-thumb">
+											<img src="{{asset('storage/'.$latest->thumbnail)}}">
+										</div>
+										<div class="post-additional-info">
+											<h6 class="post__title entry-title" itemprop="name">
+												<a href="{{ route('main.detail', $latest->slug) }}">{{ $latest->title }}</a>
+											</h6>
+											<span class="post__date">
+												<time class="entry-date published updated" datetime="{{ $latest->created_at }}">{{ date('d F Y', strtotime($latest->created_at)) }}</time>
+											</span>
+										</div>
+									</header>
+								</article>
+							</li>
+							@endforeach
+						</ul>
+					</aside>
+
+					<aside class="widget w-latest-news">
+						<h5 class="widget-title">Popular</h5>
+
+						<ul class="latest-news-list">
+							@foreach ($data['popular'] as $popular)
+							<li>
+								<article itemscope="" itemtype="http://schema.org/NewsArticle" class="latest-news-item">
+									<header>
+										<div class="post-thumb">
+											<img src="{{asset('storage/'.$popular->thumbnail)}}">
+										</div>
+										<div class="post-additional-info">
+											<h6 class="post__title entry-title" itemprop="name">
+												<a href="{{ route('main.detail', $popular->slug) }}">{{ $popular->title }}</a>
+											</h6>
+											<span class="post__date">
+												<time class="entry-date published updated" datetime="{{ $popular->created_at }}">{{ date('d F Y', strtotime($popular->created_at)) }}</time>
+											</span>
+										</div>
+									</header>
+								</article>
+							</li>
+							@endforeach
+						</ul>
+					</aside>
 				</aside>
 			</div>
 
@@ -398,4 +260,15 @@
 	<!-- End Blog posts-->
 
 </div>
+
+<script>
+	function handle(e){
+	var key=e.keyCode || e.which;
+		if (key == 13){
+			keyword = $( "#keyword" ).val();
+			// alert(keyword);
+			// window.location.href = 'create?search=' + search  + '&id_spp';
+		}
+	}
+</script>
 @endsection
