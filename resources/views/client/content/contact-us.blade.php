@@ -1,14 +1,13 @@
 @extends('client.layout.app')
 @section('content')
 
-
 <section>
     <div class="container-fluid bg-rounded2  background-cover">
 
         <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 pt100 pb100">
             <!-- Leaflet map -->
             <div class="map" style="border:2px solid black; border-radius:7px;">
-                <iframe style="width:100%; height: 500px; border-radius:7px;" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3965.71211520107!2d107.0010155560105!3d-6.301506688399479!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e6992049d4e85bd%3A0xe276edb888ee431c!2sWorkshop%20JPA!5e0!3m2!1sid!2sid!4v1606724438173!5m2!1sid!2sid" width="600" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+                <div id="mapContainer" style="height: 25rem"></div>
             </div>
             <!-- End Leaflet map -->
         </div>
@@ -61,4 +60,10 @@
 </section>
 <br>
 <!-- ... end Contacts -->
+<script>
+    window.hereApiKey = "{{ env('HERE_API_KEY') }}";
+    window.lat = "{{ $data['contact']->latitude  }}";
+    window.lng = "{{ $data['contact']->longitude  }}";
+</script>
+<script src="{{ asset('backend/dist/js/here.js') }}"></script>
 @endsection

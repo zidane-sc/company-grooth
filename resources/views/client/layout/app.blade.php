@@ -20,7 +20,13 @@
 
 	<!-- Styles for Plugins -->
 	<link rel="stylesheet" type="text/css" href="{{asset('frontAsset/css/plugins/swiper.min.css')}}">
-    <!--Styles for RTL-->
+	<!--Styles for RTL-->
+	
+	<script src="https://js.api.here.com/v3/3.1/mapsjs-core.js" type="text/javascript" charset="utf-8"></script>
+    <script src="https://js.api.here.com/v3/3.1/mapsjs-service.js" type="text/javascript" charset="utf-8"></script>
+    <script src="https://js.api.here.com/v3/3.1/mapsjs-ui.js" type="text/javascript" charset="utf-8"></script>
+    <link rel="stylesheet" type="text/css" href="https://js.api.here.com/v3/3.1/mapsjs-ui.css" />
+    <script src="https://js.api.here.com/v3/3.1/mapsjs-mapevents.js" type="text/javascript" charset="utf-8"></script>
 @yield('css')
 
 </head>

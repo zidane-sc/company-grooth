@@ -84,31 +84,17 @@
 
 						</div>
 
-						<div class="post__date">
-
-							<time class="published" datetime="{{ $data['post']->created_at }}">
-								<a href="#" class="number">{{ date('d', strtotime($data['post']->created_at)) }}</a>
-								<span class="month">{{ date('F Y', strtotime($data['post']->created_at)) }}</span>
-								<span class="day">{{ date('l', strtotime($data['post']->created_at)) }}</span>
-							</time>
-
-						</div>
-
 						<div class="post__content-info">
 
 							<h3 class="post__title entry-title">{{ $data['post']->title }}</h3>
 
 							<div class="post-additional-info">
-								<span class="post__author author vcard">
-									By
-									<a href="#" class="fn">{{ $data['post']->user->name }}</a>
-								</span>
 								<span class="category">
-									In
+									Category:
 									<a href="16_news.html">{{ $data['post']->category->name }}</a>
 								</span>
 								<span class="post__comments">
-									<a href="#">6 <span>Comments</span></a>
+									<a href="#"><span>Read By</span> {{ $data['post']->view }} <span>People</span></a>
 								</span>
 							</div>
 
@@ -118,7 +104,7 @@
 
 						<div class="post-details-shared">
 							<ul class="tags-inline">
-								<li>Tags:</li>
+								<li>Tags: </li>
 								@foreach ($data['post']->tags as $tag)
 								@if($loop->last)
 								<li>
@@ -136,6 +122,20 @@
 								</li>
 								@endforeach
 							</ul>
+
+							<div class="widget w-follow">
+								<ul class="tags-inline">
+									<li>Published:</li>
+									{{ date('d F Y', strtotime($data['post']->created_at))}}
+								</ul>
+							</div>
+
+							<div class="widget w-follow">
+								<ul class="tags-inline">
+									<li>Author:</li>
+									{{ $data['post']->user->name  }}
+								</ul>
+							</div>
 
 							<div class="widget w-follow">
 								<ul class="socials socials--round">
@@ -180,92 +180,25 @@
 						<div class="tab-content">
 							<div role="tabpanel" class="tab-pane fade show active" id="latest" aria-labelledby="latest-tab">
 								<ul class="latest-news-list">
+									@foreach ($data['latest'] as $latest)
 									<li>
 										<article itemscope="" itemtype="http://schema.org/NewsArticle" class="latest-news-item">
 											<header>
 												<div class="post-thumb">
-													<img src="{{asset('frontAsset/img/l-news1.jpg')}}" alt="news">
+													<img src="{{asset('storage/'.$latest->thumbnail)}}">
 												</div>
 												<div class="post-additional-info">
 													<h6 class="post__title entry-title" itemprop="name">
-														<a href="17_news_details.html">Video Post Format</a>
+														<a href="{{ route('main.detail', $latest->slug) }}">{{ $latest->title }}</a>
 													</h6>
 													<span class="post__date">
-														<time class="entry-date published updated" datetime="2017-03-23T16:31:34+00:00">23 March 2017</time>
+														<time class="entry-date published updated" datetime="{{ $latest->created_at }}">{{ date('d F Y', strtotime($latest->created_at))}}</time>
 													</span>
 												</div>
 											</header>
 										</article>
 									</li>
-									<li>
-										<article itemscope="" itemtype="http://schema.org/NewsArticle" class="latest-news-item">
-											<header>
-												<div class="post-thumb">
-													<img src="{{asset('frontAsset/img/l-news2.jpg')}}" alt="news">
-												</div>
-												<div class="post-additional-info">
-													<h6 class="post__title entry-title" itemprop="name">
-														<a href="17_news_details.html">The Important Standard Post Format</a>
-													</h6>
-													<span class="post__date">
-														<time class="entry-date published updated" datetime="2017-03-16T16:31:34+00:00">16 March 2017</time>
-													</span>
-												</div>
-											</header>
-										</article>
-									</li>
-									<li>
-										<article itemscope="" itemtype="http://schema.org/NewsArticle" class="latest-news-item">
-											<header>
-												<div class="post-thumb">
-													<img src="{{asset('frontAsset/img/l-news3.png')}}" alt="news">
-												</div>
-												<div class="post-additional-info">
-													<h6 class="post__title entry-title" itemprop="name">
-														<a href="17_news_details.html">Quote Post Format</a>
-													</h6>
-													<span class="post__date">
-														<time class="entry-date published updated" datetime="2017-02-28T16:31:34+00:00">28 February 2017</time>
-													</span>
-												</div>
-											</header>
-										</article>
-									</li>
-									<li>
-										<article itemscope="" itemtype="http://schema.org/NewsArticle" class="latest-news-item">
-											<header>
-												<div class="post-thumb">
-													<img src="{{asset('frontAsset/img/l-news4.jpg')}}" alt="news">
-												</div>
-												<div class="post-additional-info">
-													<h6 class="post__title entry-title" itemprop="name">
-														<a href="17_news_details.html">Photo with Slider Post Format</a>
-													</h6>
-													<span class="post__date">
-														<time class="entry-date published updated" datetime="2017-02-02T16:31:34+00:00">2 February 2017</time>
-													</span>
-												</div>
-											</header>
-										</article>
-									</li>
-									<li>
-										<article itemscope="" itemtype="http://schema.org/NewsArticle" class="latest-news-item">
-											<header>
-												<div class="post-thumb">
-													<img src="{{asset('frontAsset/img/l-news5.png')}}" alt="news">
-												</div>
-												<div class="post-additional-info">
-													<h6 class="post__title entry-title" itemprop="name">
-														<a href="17_news_details.html">Link Post Format</a>
-													</h6>
-													<span class="post__date">
-														<time class="entry-date published updated" datetime="2017-01-18T16:31:34+00:00">18 January 2017</time>
-													</span>
-												</div>
-											</header>
-										</article>
-									</li>
-
+									@endforeach
 								</ul>
 							</div>
 						</div>
@@ -283,91 +216,25 @@
 						<div class="tab-content">
 							<div   id="popular" aria-labelledby="popular-tab">
 								<ul class="latest-news-list">
+									@foreach ($data['popular'] as $popular)
 									<li>
 										<article itemscope="" itemtype="http://schema.org/NewsArticle" class="latest-news-item">
 											<header>
 												<div class="post-thumb">
-													<img src="{{asset('frontAsset/img/l-news2.jpg')}}" alt="news">
+													<img src="{{asset('storage/'.$popular->thumbnail)}}" alt="news">
 												</div>
 												<div class="post-additional-info">
 													<h6 class="post__title entry-title" itemprop="name">
-														<a href="17_news_details.html">The Important Standard Post Format</a>
+														<a href="{{ route('main.detail', $popular->slug) }}">{{ $popular->title }}</a>
 													</h6>
 													<span class="post__date">
-														<time class="entry-date published updated" datetime="2017-03-16T16:31:34+00:00">16 March 2017</time>
+														<time class="entry-date published updated" datetime="{{ $popular->created_at }}">{{ date('d F Y', strtotime($popular->created_at))}}</time>
 													</span>
 												</div>
 											</header>
 										</article>
 									</li>
-									<li>
-										<article itemscope="" itemtype="http://schema.org/NewsArticle" class="latest-news-item">
-											<header>
-												<div class="post-thumb">
-													<img src="{{asset('frontAsset/img/l-news3.png')}}" alt="news">
-												</div>
-												<div class="post-additional-info">
-													<h6 class="post__title entry-title" itemprop="name">
-														<a href="17_news_details.html">Quote Post Format</a>
-													</h6>
-													<span class="post__date">
-														<time class="entry-date published updated" datetime="2017-02-28T16:31:34+00:00">28 February 2017</time>
-													</span>
-												</div>
-											</header>
-										</article>
-									</li>
-									<li>
-										<article itemscope="" itemtype="http://schema.org/NewsArticle" class="latest-news-item">
-											<header>
-												<div class="post-thumb">
-													<img src="{{asset('frontAsset/img/l-news1.jpg')}}" alt="news">
-												</div>
-												<div class="post-additional-info">
-													<h6 class="post__title entry-title" itemprop="name">
-														<a href="17_news_details.html">Video Post Format</a>
-													</h6>
-													<span class="post__date">
-														<time class="entry-date published updated" datetime="2017-03-23T16:31:34+00:00">23 March 2017</time>
-													</span>
-												</div>
-											</header>
-										</article>
-									</li>
-									<li>
-										<article itemscope="" itemtype="http://schema.org/NewsArticle" class="latest-news-item">
-											<header>
-												<div class="post-thumb">
-													<img src="{{asset('frontAsset/img/l-news4.jpg')}}" alt="news">
-												</div>
-												<div class="post-additional-info">
-													<h6 class="post__title entry-title" itemprop="name">
-														<a href="17_news_details.html">Photo with Slider Post Format</a>
-													</h6>
-													<span class="post__date">
-														<time class="entry-date published updated" datetime="2017-02-02T16:31:34+00:00">2 February 2017</time>
-													</span>
-												</div>
-											</header>
-										</article>
-									</li>
-									<li>
-										<article itemscope="" itemtype="http://schema.org/NewsArticle" class="latest-news-item">
-											<header>
-												<div class="post-thumb">
-													<img src="{{asset('frontAsset/img/l-news5.png')}}" alt="news">
-												</div>
-												<div class="post-additional-info">
-													<h6 class="post__title entry-title" itemprop="name">
-														<a href="17_news_details.html">Link Post Format</a>
-													</h6>
-													<span class="post__date">
-														<time class="entry-date published updated" datetime="2017-01-18T16:31:34+00:00">18 January 2017</time>
-													</span>
-												</div>
-											</header>
-										</article>
-									</li>
+									@endforeach
 								</ul>
 							</div>
 						</div>

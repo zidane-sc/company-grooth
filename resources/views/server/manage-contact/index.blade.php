@@ -15,6 +15,11 @@
 
 @section('style')
     <link rel="stylesheet" href="{{ asset('backend/plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css') }}">
+    <script src="https://js.api.here.com/v3/3.1/mapsjs-core.js" type="text/javascript" charset="utf-8"></script>
+    <script src="https://js.api.here.com/v3/3.1/mapsjs-service.js" type="text/javascript" charset="utf-8"></script>
+    <script src="https://js.api.here.com/v3/3.1/mapsjs-ui.js" type="text/javascript" charset="utf-8"></script>
+    <link rel="stylesheet" type="text/css" href="https://js.api.here.com/v3/3.1/mapsjs-ui.css" />
+    <script src="https://js.api.here.com/v3/3.1/mapsjs-mapevents.js" type="text/javascript" charset="utf-8"></script>
 
     <style>
         .btn-footer{
@@ -29,7 +34,7 @@
         <div class="container-fluid">
             <div class="row">
                 <!-- left column -->
-                <div class="col-md-6">
+                <div class="col-md-8">
                     <!-- general form elements -->
                     <div class="card card-primary">
                         <div class="card-header">
@@ -56,48 +61,63 @@
                                     @enderror
                                 </div>
 
-                                <div class="form-group">
-                                    <label for="latitude">Latitude</label>
-                                    <input type="text" class="form-control @error('latitude') is-invalid @enderror" id="latitude" name="latitude" value="{{ old('latitude') ?? ($data->latitude ?? "") }}"  placeholder="Enter Latitude">
-
-                                     @error('latitude')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
+                                <div id="here-maps">
+                                    <label for="">Choose Location</label>
+                                    <div id="mapContainer" class="h-100" style="height: 500px!important; margin-bottom: 2rem;"></div>
                                 </div>
 
-                                <div class="form-group">
-                                    <label for="longitude">Longitude</label>
-                                    <input type="text" class="form-control @error('longitude') is-invalid @enderror" id="longitude" name="longitude" value="{{ old('longitude') ?? ($data->longitude ?? "") }}"  placeholder="Enter Longitude">
-
-                                     @error('longitude')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="latitude">Latitude</label>
+                                            <input type="text" class="form-control @error('latitude') is-invalid @enderror" id="latitude" name="latitude" value="{{ old('latitude') ?? ($data->latitude ?? "") }}"  placeholder="Enter Latitude">
+        
+                                             @error('latitude')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="longitude">Longitude</label>
+                                            <input type="text" class="form-control @error('longitude') is-invalid @enderror" id="longitude" name="longitude" value="{{ old('longitude') ?? ($data->longitude ?? "") }}"  placeholder="Enter Longitude">
+        
+                                             @error('longitude')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                            @enderror
+                                        </div>
+                                    </div>
                                 </div>
 
-                                <div class="form-group">
-                                    <label for="phone">Phone</label>
-                                    <input type="text" class="form-control @error('phone') is-invalid @enderror" id="phone" name="phone" value="{{ old('phone') ?? ($data->phone ?? "") }}"  placeholder="Enter Phone">
-
-                                     @error('phone')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
-                                </div>
-
-                                <div class="form-group">
-                                    <label for="whatsapp">Whatsapp</label>
-                                    <input type="text" class="form-control @error('whatsapp') is-invalid @enderror" id="whatsapp" name="whatsapp" value="{{ old('whatsapp') ?? ($data->whatsapp ?? "") }}"  placeholder="Enter whatsapp">
-
-                                     @error('whatsapp')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="phone">Phone</label>
+                                            <input type="text" class="form-control @error('phone') is-invalid @enderror" id="phone" name="phone" value="{{ old('phone') ?? ($data->phone ?? "") }}"  placeholder="Enter Phone">
+        
+                                             @error('phone')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="whatsapp">Whatsapp</label>
+                                            <input type="text" class="form-control @error('whatsapp') is-invalid @enderror" id="whatsapp" name="whatsapp" value="{{ old('whatsapp') ?? ($data->whatsapp ?? "") }}"  placeholder="Enter whatsapp">
+        
+                                             @error('whatsapp')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                            @enderror
+                                        </div>
+                                    </div>
                                 </div>
 
                                 <div class="form-group">
@@ -128,6 +148,11 @@
 @section('script')
 <script src="{{ asset('backend/plugins/sweetalert2/sweetalert2.min.js') }}"></script>
 <script src="{{ asset('backend/plugins/bs-custom-file-input/bs-custom-file-input.min.js') }}"></script>
+<script>
+    window.hereApiKey = "{{ env('HERE_API_KEY') }}";
+    window.action = "submit";
+</script>
+<script src="{{ asset('backend/dist/js/here.js') }}"></script>
 
 <script>
     $(function () {
