@@ -60,6 +60,18 @@
                 <li class="menu-item-has-children">
                    <a href="{{route('main.portfolio')}}">Portfolio</a>
                </li>
+               <li class="">
+                <a href="#">Product</a>
+                <ul class="sub-menu">
+                    @foreach ($products as $product)
+
+                    <li>
+                        <a href="02_company.html">
+                            {{$product->name}}
+                        </a>
+                    </li>
+                    @endforeach
+                </ul>
                  <li class="menu-item-has-children">
                     <a href="{{route('main.about')}}">About us</a>
                 </li>

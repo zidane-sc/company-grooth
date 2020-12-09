@@ -2,81 +2,31 @@
 
  @section('content')
 <style>
-
-
-    .card__one {
-        transition: transform .5s;
-        text-align: center;
-        margin-top:40px;
-    }
-
-    .card__one::after {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        transition: opacity 2s cubic-bezier(.165, .84, .44, 1);
-        box-shadow: 0 8px 17px 0 rgba(0, 0, 0, .2), 0 6px 20px 0 rgba(0, 0, 0, .15);
-        content: '';
-        opacity: 0;
-        z-index: -1;
-    }
-
-    .card__one:hover,
-    .card__one:focus {
-        transform: scale3d(1.036, 1.036, 1);
-        -webkit-box-shadow: -1px -1px 16px -4px rgba(0, 0, 0, 0.53);
-        -moz-box-shadow: -1px -1px 16px -4px rgba(0, 0, 0, 0.53);
-        box-shadow: -1px -1px 16px -4px rgba(0, 0, 0, 0.53);
-
-
-    }
     .img-banner{
         height: 680px;
         background-size: cover;
 
     }
-
-    .member-content {
-    margin-bottom: 30px;
-}
-
-.member-content .member-text {
-    padding: 20px;
-}
-
-.member-content .member-text .member-name {
-    margin-bottom: 7px;
-}
-
-.member-content .member-text .member-tag {
-
-    font-weight: 500;
-}
-.slider-thumb{
-    padding: 0 !important;
-}
+    .slider-thumb{
+        padding: 0 !important;
+    }
 
 </style>
 
+{{-- Banner --}}
 <div class="crumina-module crumina-module-slider container-full-width">
     <div class="swiper-container main-slider navigation-center-both-sides" data-effect="fade">
-        <!-- Additional required wrapper -->
         <div class="swiper-wrapper">
-            <!-- Slides -->
             @foreach ($data['banners'] as $banner)
-            <div class="swiper-slide  main-slider-bg-light">
-                <div class="slider-thumb img-banner">
-                    <img width="1400px;" src="{{ asset('storage/'.$banner->image) }}" alt="slider">
+                <div class="swiper-slide  main-slider-bg-light">
+                    <div class="slider-thumb img-banner">
+                        <img width="1400px;" src="{{ asset('storage/'.$banner->image) }}" alt="slider">
+                    </div>
                 </div>
-            </div>
             @endforeach
-
         </div>
 
         <!--Prev next buttons-->
-
         <div class="btn-prev with-bg">
             <svg class="utouch-icon icon-hover utouch-icon-arrow-left-1">
                 <use xlink:href="#utouch-icon-arrow-left-1"></use>
@@ -94,11 +44,79 @@
                 <use xlink:href="#utouch-icon-arrow-right1"></use>
             </svg>
         </div>
+        <!-- end prev next button -->
     </div>
 </div>
+{{-- End Banner --}}
+<section class="bg-primary">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="course-details">
+                    <div class="tab-content">
+                        <div class="row">
+                            <div class="col-lg-8 col-md-12 col-sm-12 col-xs-12">
+                                <h3>Description</h3>
+                                <p class="weight-bold">Quam nunc putamus parum claram, anteposuerit litterarum formas
+                                    humanitatis per seacula quarta decima et quinta decima modo typi, qui nunc.</p>
+                                <p>Mirum est notare quam littera gothica, quam nunc putamus parum claram,
+                                    anteposuerit litterarum formas humanitatis per seacula quarta decima et quinta decima.
+                                    Eodem modo typi, qui nunc nobis videntur parum clari, fiant sollemnes in futurum.
+                                    Claritas est etiam processus dynamicus, qui sequitur mutationem consuetudium lectorum
+                                    eleifend option congue nihil imperdiet.
+                                </p>
 
-    <!-- Our Video -->
-    <!-- Slider with vertical tabs -->
+                                <h5>Sertification</h5>
+                                <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod
+                                    tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam,
+                                    quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo
+                                    consequat. Claritas est etiam processus dynamicus, qui sequitur mutationem consuetudium lectorum.
+                                </p>
+
+                                <h5>Learning Outcomes</h5>
+                                <p>Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis
+                                    nisl ut aliquip ex ea commodo consequat est etiam processus dynamicus.
+                                </p>
+                                <ul class="list list--standard">
+                                    <li>
+                                        <svg class="utouch-icon utouch-icon-correct-symbol-1"><use xlink:href="#utouch-icon-correct-symbol-1"></use></svg>
+                                        <a href="#">Over 37 lectures and 55.5 hours of content!</a>
+                                    </li>
+                                    <li>
+                                        <svg class="utouch-icon utouch-icon-correct-symbol-1"><use xlink:href="#utouch-icon-correct-symbol-1"></use></svg>
+                                        <a href="#">Testing Training Included.</a>
+                                    </li>
+                                    <li>
+                                        <svg class="utouch-icon utouch-icon-correct-symbol-1"><use xlink:href="#utouch-icon-correct-symbol-1"></use></svg>
+                                        <a href="#">Learn Software Testing and Automation basics from a professional trainer
+                                            from your own desk.</a>
+                                    </li>
+                                    <li>
+                                        <svg class="utouch-icon utouch-icon-correct-symbol-1"><use xlink:href="#utouch-icon-correct-symbol-1"></use></svg>
+                                        <a href="#">Practical learning experience with live project work and examples.</a>
+                                    </li>
+                                    <li>
+                                        <svg class="utouch-icon utouch-icon-correct-symbol-1"><use xlink:href="#utouch-icon-correct-symbol-1"></use></svg>
+                                        <a href="#">Testing Training Included.</a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="col-lg-4 col-md-12 col-sm-12 col-xs-12">
+                                <div class="course-features">
+                                    <h5 class="title">Course Features</h5>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ... end Course Details -->
+<!--Information -->
 <div class="bg-22 background-cover pt100">
     <section class="crumina-module crumina-module-slider slider-tabs-vertical-line ">
         <div class="bg-22 background-cover ">
@@ -146,145 +164,81 @@
             </section>
         </div>
     </section>
+<!-- ... End information -->
 
-<!-- ... Slider with vertical tabs -->
     <hr style="width: 70%; height:6px; opacity:0.8; background-color:black; border-radius:5px;">
-    <!-- Info Boxes -->
 
-    <!-- Info Boxes -->
-
-    <section class="medium-padding120">
-        <div class="container">
-            <div class="row">
-                @foreach ($data['section_two'] as $section)
-                <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
-                    <div class="crumina-module crumina-info-box info-box--classic" data-mh="box--classic">
-                        <div class="info-box-image">
-                            <img class="utouch-icon" src="{{asset('storage/'.$section->image)}}" alt="smartphone">
-                        </div>
-                        <div class="info-box-content">
-                            <h5 class="info-box-title">{{$section->title}}</h5>
-                        <p class="info-box-text">{{$section->description}}</p>
-                        </div>
-                    </div>
-                </div>
-                @endforeach
-            </div>
-        </div>
-    </section>
-</div>
-<!-- ... Info Boxes -->
-
-    <section class="bg-blue-lighteen medium-padding120">
-        <div class="container bg-11 background-cover">
-            <div class="row">
-                {{-- <div class="row"> --}}
-                    <div class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 col-sm-12 col-sm-offset-0 col-xs-12" style="margin-top: -50px;">
-
-                        <div class=" align-center">
-
-                            <h1 class="slider-content-title with-decoration" style="margin-top: 50px; color:black; font-size:40px;"  >
-                                VISI <span class="c-primary">&</span> MISI
-
-                                <svg class="first-decoration utouch-icon utouch-icon-arrow-left">
-                                    <use xlink:href="#utouch-icon-arrow-left"></use>
-                                </svg>
-
-                                <svg class="second-decoration utouch-icon utouch-icon-arrow-left">
-                                    <use xlink:href="#utouch-icon-arrow-left"></use>
-                                </svg>
-
-                            </h1>
-                            <span>Informasi tentang kami</span>
-                        </div>
-                    </div>
-                {{-- </div> --}}
-                <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 " style="margin-top: 50px">
-                    <h6 class="heading-sup-title c-black" style="font-size: 28px; text-align:center;">Visi</h6>
-                    <div class="heading-text c-black"><p style="font-size: 18px;">{{$data['visi_misi']->visi}} </p>
-                    </div>
-                    <div class="video-thumb">
-                        <img  style="margin-top: 0px; width:500px; height:300px;" src="{{asset('storage/'.$data['visi_misi']->image)}}" alt="visi">
-                    </div>
-                </div>
-                <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 " style="margin-top: 50px">
-                    <div class="crumina-module crumina-heading">
-
-
-                        <h6 class="heading-sup-title  c-black"style="font-size: 28px; text-align:center;">Misi</h6>
-                        <ul class="" style="list-style-type:decimal; padding-left:30px;">
-                            @foreach ($data['misi'] as $misi)
-                            @if ($misi != null)
-
-                            <li>
-                                {{-- <svg class="utouch-icon utouch-icon-correct-symbol-1"><use xlink:href="#utouch-icon-correct-symbol-1"></use></svg> --}}
-                            <span href="#" style="font-size: 19px;">{{$misi}}</span>
-                            </li>
-                            @endif
-                            @endforeach
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-
-	<!-- ... end Our Video -->
-
-
-
- <!-- FAQS Slider -->
- {{-- <section class="crumina-module crumina-module-slider pt100  bg-light-color  bg-13 background-cover">
+<!-- Info Boxes -->
+<section class="medium-padding100">
     <div class="container">
         <div class="row">
-            <div class="col-lg-12 col-md-6 col-sm-12 mb30"style="margin-top: -60px; text-align:center; ">
+            @foreach ($data['section_two'] as $section)
+            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                <div class="crumina-module crumina-info-box info-box--standard-hover">
 
-                    <h3 class="spr" style="background: url('https://nidhacenter.com/assets_client/images/geo-1.png'); background-size: 59px; background-repeat: no-repeat; background-position: 60%; line-height: 77px;">Our Project</h3>
-                    <hr style="text-align:center; width: 12%; height:7px; background-color: #273f5b; border-radius:4px; margin-top:-25px;">
-
+                    <div class="info-box-image">
+                        <img class="utouch-icon" src="{{asset('storage/'.$section->image)}}" >
+                    </div>
+                    <div class="info-box-content " style="margin-top: -2rem;">
+                        <a href="#" class="h5 info-box-title">{{$section->title}}</a>
+                        <p class="info-box-text" style=" text-align:justify;">{{$section->description}}
+                        </p>
+                    </div>
+                </div>
             </div>
+            @endforeach
         </div>
+    </div>
+</section>
+<!-- ... end Info Boxes -->
 
+{{-- Visi & Misi --}}
+<section class="bg-blue-lighteen medium-padding120">
+    <div class="container bg-11 background-cover">
         <div class="row">
-            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                <div class="swiper-container navigation-bottom" data-effect="fade">
-                    <div class="slider-slides" >
-                        @foreach ($data['portfolios'] as $portfolio)
+            <div class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 col-sm-12 col-sm-offset-0 col-xs-12" style="margin-top: -50px;">
+                <div class=" align-center">
+                    <h1 class="slider-content-title with-decoration" style="margin-top: 50px; color:black; font-size:40px;"  >
+                        VISI <span class="c-primary">&</span> MISI
 
-                        <a href="#" class="slides-item">
-                            {{$loop->iteration}}
-                        </a>
+                        <svg class="first-decoration utouch-icon utouch-icon-arrow-left">
+                            <use xlink:href="#utouch-icon-arrow-left"></use>
+                        </svg>
+
+                        <svg class="second-decoration utouch-icon utouch-icon-arrow-left">
+                            <use xlink:href="#utouch-icon-arrow-left"></use>
+                        </svg>
+
+                    </h1>
+                    <span>Informasi tentang kami</span>
+                </div>
+            </div>
+
+            <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 " style="margin-top: 50px">
+                <h6 class="heading-sup-title c-black" style="font-size: 28px; text-align:center;">Visi</h6>
+                <div class="heading-text c-black"><p style="font-size: 18px;">{{$data['visi_misi']->visi}} </p></div>
+                <div class="video-thumb">
+                    <img  style="margin-top: 0px; width:500px; height:300px;" src="{{asset('storage/'.$data['visi_misi']->image)}}" alt="visi">
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 " style="margin-top: 50px">
+                <div class="crumina-module crumina-heading">
+                    <h6 class="heading-sup-title  c-black"style="font-size: 28px; text-align:center;">Misi</h6>
+                    <ul class="" style="list-style-type:decimal; padding-left:30px;">
+                        @foreach ($data['misi'] as $misi)
+                             @if ($misi != null)
+                                <li>
+                                    <span href="#" style="font-size: 19px;">{{$misi}}</span>
+                                </li>
+                             @endif
                         @endforeach
-
-                    </div>
-                    <div class="swiper-wrapper">
-                        @foreach ($data['portfolios'] as $portfolio)
-
-                        <div class="swiper-slide">
-                            <div class="col-lg-4 col-md-12 col-sm-12" data-swiper-parallax="-100">
-                                <div class="slider-faqs-thumb">
-                                    <img class="utouch-icon" src="{{asset('storage/'.$portfolio->image)}}" alt="image">
-                                </div>
-                            </div>
-
-                            <div class="col-lg-8 col-md-12 col-sm-12" data-swiper-parallax="-300">
-                                <h5 class="slider-faqs-title">{{$portfolio->name}}</h5>
-                                <p>{{$portfolio->description}} </p>
-
-                                <p></p>
-                            </div>
-                        </div>
-                        @endforeach
-                    </div>
-
-
+                    </ul>
                 </div>
             </div>
         </div>
     </div>
-</section> --}}
+</section>
+{{-- End Visi & Misi --}}
 
-<!-- ... end FAQS Slider -->
 
 @endsection

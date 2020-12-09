@@ -16,6 +16,11 @@ use Illuminate\Http\Request;
 
 class MainController extends Controller
 {
+    public function __construct()
+    {
+        $products = Portfolio::all();
+        view()->share('products', $products);
+    }
     public function home()
     {
         $data['banners'] = Banner::all();
@@ -36,7 +41,6 @@ class MainController extends Controller
 
     public function about()
     {
-
         $data['teams'] = Team::all();
         return view('client.content.about', ['data' => $data]);
     }
@@ -99,5 +103,10 @@ class MainController extends Controller
     {
         $data['contact'] = Contact::first();
         return view('client.content.contact-us', ['data' => $data]);
+    }
+    public function product()
+    {
+        $data['portfolios'] = Portfolio::all();
+        return view('client.iot-solution.product', ['data' => $data]);
     }
 }
