@@ -7,6 +7,7 @@ use App\Category;
 use App\Contact;
 use App\Portfolio;
 use App\Post;
+use App\Product;
 use App\SectionOne;
 use App\SectionTwo;
 use App\Tag;
@@ -18,7 +19,7 @@ class MainController extends Controller
 {
     public function __construct()
     {
-        $products = Portfolio::all();
+        $products = Product::all();
         view()->share('products', $products);
     }
     public function home()
@@ -104,9 +105,10 @@ class MainController extends Controller
         $data['contact'] = Contact::first();
         return view('client.content.contact-us', ['data' => $data]);
     }
-    public function product()
+
+    public function solution($product)
     {
-        $data['portfolios'] = Portfolio::all();
+        $data['product'] = Product::where('name', $product)->with(['advantages', 'features', 'faqs'])->first();
         return view('client.iot-solution.product', ['data' => $data]);
     }
 }

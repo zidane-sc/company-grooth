@@ -29,7 +29,7 @@ class ProductController extends Controller
         $validateData = $request->validate([
             'banner' => 'required|image|mimes:jpeg,png,jpg,gif,svg',
             'image_description' => 'required|image|mimes:jpeg,png,jpg,gif,svg',
-            'name' => 'required',
+            'name' => 'required|unique:products,name',
             'description' => 'required',
             'link' => 'required|regex:/^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/',
         ]);
@@ -64,7 +64,7 @@ class ProductController extends Controller
         $validateData = $request->validate([
             'banner' => 'image|mimes:jpeg,png,jpg,gif,svg',
             'image_description' => 'image|mimes:jpeg,png,jpg,gif,svg',
-            'name' => 'required',
+            'name'   => 'required|unique:products,name,'.$id,
             'description' => 'required',
             'link' => 'required|regex:/^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/',
         ]);

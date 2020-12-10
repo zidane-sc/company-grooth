@@ -166,4 +166,4 @@ Route::get('/article', 'MainController@article')->name('main.article');
 Route::get('aricle/detail/{slug}', 'MainController@detail')->name('main.detail');
 Route::get('aricle/category/{slug}', 'MainController@category')->name('main.category');
 Route::get('aricle/tag/{slug}', 'MainController@tag')->name('main.tags');
-Route::get('/product', 'MainController@product')->name('main.product');
+Route::get('/solution/{product}', 'MainController@solution')->name('main.solution');

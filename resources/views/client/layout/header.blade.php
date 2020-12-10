@@ -66,7 +66,7 @@
                     @foreach ($products as $product)
 
                     <li>
-                        <a href="02_company.html">
+                        <a href="{{ route('main.solution', $product->name) }}">
                             {{$product->name}}
                         </a>
                     </li>
