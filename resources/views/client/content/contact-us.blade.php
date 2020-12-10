@@ -60,10 +60,10 @@
 </section>
 <br>
 <!-- ... end Contacts -->
-<script>
+{{-- <script>
     window.hereApiKey = "{{ env('HERE_API_KEY') }}";
     window.lat = "{{ $data['contact']->latitude  }}";
     window.lng = "{{ $data['contact']->longitude  }}";
 </script>
-<script src="{{ asset('backend/dist/js/here.js') }}"></script>
+<script src="{{ asset('backend/dist/js/here.js') }}"></script> --}}
 @endsection

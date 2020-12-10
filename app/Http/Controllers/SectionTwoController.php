@@ -8,6 +8,11 @@ use Illuminate\Support\Facades\Storage;
 
 class SectionTwoController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    
     public function index()
     {
         $data['section_twos'] = SectionTwo::all();

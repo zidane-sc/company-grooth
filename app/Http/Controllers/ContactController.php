@@ -7,6 +7,11 @@ use Illuminate\Http\Request;
 
 class ContactController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    
     public function index()
     {
         $data = Contact::first();
@@ -17,19 +22,17 @@ class ContactController extends Controller
     {
         $validateData = $request->validate([
             'address' => 'required|min:10',
-            'latitude' => ['required','regex:/^[-]?(([0-8]?[0-9])\.(\d+))|(90(\.0+)?)$/'],
-            'longitude' => ['required','regex:/^[-]?((((1[0-7][0-9])|([0-9]?[0-9]))\.(\d+))|180(\.0+)?)$/'],
             'phone' => 'required|regex:/(0)[0-9]{11}/',
-            'email' => 'required'
+            'email' => 'required',
+            'link_maps' => 'required|regex:/^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/',
         ]);
 
         $contact = new Contact();
 
         $contact->address = $validateData['address'];
-        $contact->latitude = $validateData['latitude'];
-        $contact->longitude = $validateData['longitude'];
         $contact->phone = $validateData['phone'];
         $contact->email = $validateData['email'];
+        $contact->link_maps = $validateData['link_maps'];
 
         $contact->save();
 
@@ -40,21 +43,19 @@ class ContactController extends Controller
     {
         $validateData = $request->validate([
             'address' => 'required|min:10',
-            'latitude' => ['required','regex:/^[-]?(([0-8]?[0-9])\.(\d+))|(90(\.0+)?)$/'],
-            'longitude' => ['required','regex:/^[-]?((((1[0-7][0-9])|([0-9]?[0-9]))\.(\d+))|180(\.0+)?)$/'],
             'phone' => 'required|regex:/(0)[0-9]{11}/',
             'whatsapp' => 'required|regex:/(0)[0-9]{11}/',
-            'email' => 'required'
+            'email' => 'required',
+            'link_maps' => 'required|regex:/^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/',
         ]);
 
         $contact = Contact::findOrFail($id);
 
         $contact->address = $validateData['address'];
-        $contact->latitude = $validateData['latitude'];
-        $contact->longitude = $validateData['longitude'];
         $contact->phone = $validateData['phone'];
         $contact->whatsapp = $validateData['whatsapp'];
         $contact->email = $validateData['email'];
+        $contact->link_maps = $validateData['link_maps'];
 
         $contact->save();
 
