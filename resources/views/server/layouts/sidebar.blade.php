@@ -63,16 +63,58 @@
                             <p>Section Two</p>
                         </a>
                     </li>
-                    <li class="nav-item">
+                    {{-- <li class="nav-item">
                         <a href="{{ route('portfolios.index') }}" class="nav-link {{ (request()->segment(3) == 'portfolios') ? 'active' : ''}}">
                             <i class="far fa-circle nav-icon"></i>
                             <p>Portfolio</p>
                         </a>
+                    </li> --}}
+                </ul>
+            </li>
+
+            <li class="nav-item {{ (request()->segment(2) == 'manage-product') ? 'menu-open' : ''}}">
+                <a href="#" class="nav-link {{ (request()->segment(2) == 'manage-product') ? 'active' : ''}}">
+                    <i class="nav-icon fas fa-archive mr-2"></i>
+                    <p>Manage Product<i class="right fas fa-angle-left"></i></p>
+                </a>
+                <ul class="nav nav-treeview">
+                    <li class="nav-item">
+                        <a href="{{ route('products.index') }}" class="nav-link {{ (request()->segment(3) == 'products') ? 'active' : ''}}">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>Products</p>
+                        </a>
                     </li>
+                    <li class="nav-item">
+                        <a href="{{ route('advantages.index') }}" class="nav-link {{ (request()->segment(3) == 'advantages') ? 'active' : ''}}">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>Advantages</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ route('features.index') }}" class="nav-link {{ (request()->segment(3) == 'features') ? 'active' : ''}}">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>Features</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ route('faqs.index') }}" class="nav-link {{ (request()->segment(3) == 'faqs') ? 'active' : ''}}">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>Faqs</p>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+
+            <li class="nav-item {{ (request()->segment(2) == 'manage-about') ? 'menu-open' : ''}}">
+                <a href="#" class="nav-link {{ (request()->segment(2) == 'manage-about') ? 'active' : ''}}">
+                    <i class="nav-icon fas fa-question mr-2"></i>
+                    <p>Manage About<i class="right fas fa-angle-left"></i></p>
+                </a>
+                <ul class="nav nav-treeview">
                     <li class="nav-item">
                         <a href="{{ route('teams.index') }}" class="nav-link {{ (request()->segment(3) == 'teams') ? 'active' : ''}}">
                             <i class="far fa-circle nav-icon"></i>
-                            <p>Team</p>
+                            <p>Teams</p>
                         </a>
                     </li>
                 </ul>

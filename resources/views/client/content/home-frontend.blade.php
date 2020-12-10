@@ -57,6 +57,7 @@
 </div>
 {{-- End Banner --}}
 
+{{-- deskripsi --}}
 <section class=" bg-primary-color" style="padding-bottom: 20px;">
     <div class="container">
         <div class="row">
@@ -88,7 +89,8 @@
     </div>
 </section>
 
-<!-- ... end Course Details -->
+<!-- ... End Deskripsi -->
+
 <!--Information -->
 <div class="bg-blue-lighteen ">
     <section class="crumina-module crumina-module-slider slider-tabs-vertical-line ">
@@ -108,7 +110,7 @@
                             </svg>
 
                         </h1>
-                        <span>Informasi tentang kami</span>
+                        <span>Why choose us?</span>
                     </div>
                 </div><br>
                 <div style="padding: 20px; margin-top:20px;" >
@@ -182,7 +184,7 @@
                         </svg>
 
                     </h1>
-                    <span>Informasi tentang kami</span>
+                    <span>Information about us</span>
                 </div>
             </div>
 

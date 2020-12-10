@@ -61,13 +61,56 @@ Route::group(['prefix' => 'admin'], function () {
         Route::delete('section-two/{id}', 'SectionTwoController@destroy')->name('section-two.destroy');
 
         // -- Portfolio
-        Route::get('portfolios', 'PortfolioController@index')->name('portfolios.index');
-        Route::get('portfolios/create', 'PortfolioController@create')->name('portfolios.create');
-        Route::post('portfolios', 'PortfolioController@store')->name('portfolios.store');
-        Route::get('portfolios/{id}/edit', 'PortfolioController@edit')->name('portfolios.edit');
-        Route::patch('portfolios/{id}', 'PortfolioController@update')->name('portfolios.update');
-        Route::delete('portfolios/{id}', 'PortfolioController@destroy')->name('portfolios.destroy');
+        // Route::get('portfolios', 'PortfolioController@index')->name('portfolios.index');
+        // Route::get('portfolios/create', 'PortfolioController@create')->name('portfolios.create');
+        // Route::post('portfolios', 'PortfolioController@store')->name('portfolios.store');
+        // Route::get('portfolios/{id}/edit', 'PortfolioController@edit')->name('portfolios.edit');
+        // Route::patch('portfolios/{id}', 'PortfolioController@update')->name('portfolios.update');
+        // Route::delete('portfolios/{id}', 'PortfolioController@destroy')->name('portfolios.destroy');
+    });
 
+    // Manage Contact Us
+    Route::get('contact', 'ContactController@index')->name('contact.index');
+    Route::post('contact', 'ContactController@store')->name('contact.store');
+    Route::patch('contact/{id}', 'ContactController@update')->name('contact.update');
+
+    // Manage Product
+    Route::group(['prefix' => 'manage-product'], function () {
+        // -- Products
+        Route::get('products', 'ProductController@index')->name('products.index');
+        Route::get('products/create', 'ProductController@create')->name('products.create');
+        Route::post('products', 'ProductController@store')->name('products.store');
+        Route::get('products/{id}/edit', 'ProductController@edit')->name('products.edit');
+        Route::patch('products/{id}', 'ProductController@update')->name('products.update');
+        Route::delete('products/{id}', 'ProductController@destroy')->name('products.destroy');
+
+        // -- Faqs
+        Route::get('advantages', 'AdvantageController@index')->name('advantages.index');
+        Route::get('advantages/create', 'AdvantageController@create')->name('advantages.create');
+        Route::post('advantages', 'AdvantageController@store')->name('advantages.store');
+        Route::get('advantages/{id}/edit', 'AdvantageController@edit')->name('advantages.edit');
+        Route::patch('advantages/{id}', 'AdvantageController@update')->name('advantages.update');
+        Route::delete('advantages/{id}', 'AdvantageController@destroy')->name('advantages.destroy');
+
+        // -- Features
+        Route::get('features', 'ProductFeatureController@index')->name('features.index');
+        Route::get('features/create', 'ProductFeatureController@create')->name('features.create');
+        Route::post('features', 'ProductFeatureController@store')->name('features.store');
+        Route::get('features/{id}/edit', 'ProductFeatureController@edit')->name('features.edit');
+        Route::patch('features/{id}', 'ProductFeatureController@update')->name('features.update');
+        Route::delete('features/{id}', 'ProductFeatureController@destroy')->name('features.destroy');
+
+        // -- Faqs
+        Route::get('faqs', 'FaqController@index')->name('faqs.index');
+        Route::get('faqs/create', 'FaqController@create')->name('faqs.create');
+        Route::post('faqs', 'FaqController@store')->name('faqs.store');
+        Route::get('faqs/{id}/edit', 'FaqController@edit')->name('faqs.edit');
+        Route::patch('faqs/{id}', 'FaqController@update')->name('faqs.update');
+        Route::delete('faqs/{id}', 'FaqController@destroy')->name('faqs.destroy');
+    });
+
+    // Manage About Us
+    Route::group(['prefix' => 'manage-about'], function () {
         // -- Teams
         Route::get('teams', 'TeamController@index')->name('teams.index');
         Route::get('teams/create', 'TeamController@create')->name('teams.create');
@@ -76,11 +119,6 @@ Route::group(['prefix' => 'admin'], function () {
         Route::patch('teams/{id}', 'TeamController@update')->name('teams.update');
         Route::delete('teams/{id}', 'TeamController@destroy')->name('teams.destroy');
     });
-
-    // Manage Contact Us
-    Route::get('contact', 'ContactController@index')->name('contact.index');
-    Route::post('contact', 'ContactController@store')->name('contact.store');
-    Route::patch('contact/{id}', 'ContactController@update')->name('contact.update');
 
     // Article
     Route::group(['prefix' => 'article'], function () {

@@ -6,7 +6,7 @@
     }
 </style>
 
-<!-- Zoom Image -->
+<!-- Deskripsi -->
 
 <section class="bg-primary-color medium-padding100">
     <div class="container">
@@ -55,8 +55,9 @@
     </div>
 </section>
 
-<!-- ... end Zoom Image -->
-<!-- Info Boxes -->
+<!-- ... end Deskripsi -->
+
+<!-- Our Story -->
 
 <section class="crumina-module crumina-module-slider bg-blue-lighteen medium-padding100">
     <div class="container">
@@ -183,9 +184,9 @@
     </div>
 </section>
 
-<!-- ... end Info Boxes -->
+<!-- ... end our story -->
 
-<!-- Slider with round slides -->
+<!-- Advantages -->
 
 <section class="crumina-module crumina-module-slider medium-padding100 bg-primary-color">
     <div class="container">
@@ -243,9 +244,9 @@
     </div>
 </section>
 
-<!-- ... end Slider with round slides -->
+<!-- ... end Advantages -->
 
-<!-- Accordion -->
+<!-- FAQ -->
 
 <section class="medium-padding120 bg-blue-lighteen ">
     <div class="container">
@@ -254,7 +255,7 @@
 
                 <div class="crumina-module crumina-heading">
                     <h2 class="heading-title">
-                        <span class="c-primary">Utouch</span> the app, challenge your teammates</h2>
+                        <span class="c-primary">FAQ</span> the app, challenge your teammates</h2>
                 </div>
 
                 <div id="accordion" class="crumina-module crumina-accordion">
@@ -354,11 +355,11 @@
     </div>
 </section>
 
-<!-- ... end Accordion -->
+<!-- ... end FAQ -->
 
 
 
-<!-- Teammembers -->
+<!-- Team -->
 
 <section class="crumina-module crumina-module-slider medium-padding100 bg-3 background-cover">
     <div class="container">
@@ -435,7 +436,7 @@
 
 </section>
 
-<!-- ... end Teammembers -->
+<!-- end Team -->
 
 
 
