@@ -24,7 +24,7 @@ class ContactController extends Controller
             'address' => 'required|min:10',
             'phone' => 'required|regex:/(0)[0-9]{11}/',
             'email' => 'required',
-            'link_maps' => 'required|regex:/^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/',
+            'link_maps' => 'required',
         ]);
 
         $contact = new Contact();
@@ -46,7 +46,7 @@ class ContactController extends Controller
             'phone' => 'required|regex:/(0)[0-9]{11}/',
             'whatsapp' => 'required|regex:/(0)[0-9]{11}/',
             'email' => 'required',
-            'link_maps' => 'required|regex:/^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/',
+            'link_maps' => 'required',
         ]);
 
         $contact = Contact::findOrFail($id);
