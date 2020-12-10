@@ -162,6 +162,7 @@ Route::get('/', 'MainController@home')->name('main.home');
 Route::get('/portfolio', 'MainController@portfolio')->name('main.portfolio');
 Route::get('/about', 'MainController@about')->name('main.about');
 Route::get('/contact', 'MainController@contact')->name('main.contact');
+Route::get('/contact/send-mail', 'MainController@email')->name('main.email');
 Route::get('/article', 'MainController@article')->name('main.article');
 Route::get('aricle/detail/{slug}', 'MainController@detail')->name('main.detail');
 Route::get('aricle/category/{slug}', 'MainController@category')->name('main.category');

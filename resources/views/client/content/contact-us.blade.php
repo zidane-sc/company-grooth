@@ -67,7 +67,7 @@
             <div class="heading pb30">
                 <h2 class="h1 heading-title align-center">Get in touch with us</h2>
             </div>
-            <form class="form-validate contact-form crumina-submit" method="post" data-nonce="crumina-submit-form-nonce" data-type="standard" action="https://html.crumina.net/html-utouch/modules/forms/submit.php" style="margin-bottom: 75px">
+            <form class="form-validate contact-form" action="{{ route('main.email') }}" style="margin-bottom: 75px">
                 <div class="row">
 
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -94,7 +94,6 @@
 
                         <div class="row">
 
-
                             <div class="col-lg-12 col-md-6 col-sm-12 col-xs-12">
                                 <div class="with-icon">
                                     <input name="email" placeholder="Example123@gmail.com" type="email">
@@ -117,6 +116,8 @@
                             </svg>
                         </div>
                     </div>
+
+                    <input type="submit" value="test">
                 </div>
             </form>
         </div>

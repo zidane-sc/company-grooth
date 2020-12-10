@@ -154,10 +154,16 @@
 							</nav>
 						</div>
 					</div> --}}
-                @else
+                @elseif(Request::get('keyword'))
                 <div class="alert alert-danger" role="alert">
                     <h3 class="c-white" style="text-align: center;">POST NOT FOUND!</h3>
 					<span style="font-size: 18px;"><strong>Oh snap!</strong> The post you are looking for is not found. Please, make sure the title is correct.</span>
+                    <img style="margin-top: 15px; border-radius:5px; opacity:.95;" src="{{asset('frontAsset/img/not-found.gif')}}" alt="">
+				</div>
+				@else
+				<div class="alert alert-info" role="alert">
+                    <h3 class="c-white" style="text-align: center;">POST IS EMPTY!</h3>
+					<span style="font-size: 18px;"><strong>Oh sorry!</strong> The post is empty.</span>
                     <img style="margin-top: 15px; border-radius:5px; opacity:.95;" src="{{asset('frontAsset/img/not-found.gif')}}" alt="">
 				</div>
                 @endif
