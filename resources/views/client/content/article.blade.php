@@ -12,17 +12,17 @@
 	<div class="container pt30">
 		<div class="row">
 			<div class="breadcrumbs-wrap inline-items with-border">
-				<a href="#" class="btn btn--transparent btn--round">
+				<a href="{{route('main.home')}}" class="btn btn--transparent btn--round">
 					<svg class="utouch-icon utouch-icon-home-icon-silhouette"><use xlink:href="#utouch-icon-home-icon-silhouette"></use></svg>
 				</a>
 
 				<ul class="breadcrumbs">
 					<li class="breadcrumbs-item">
-						<a href="index-2.html">Pages</a>
+						<a href="{{route('main.home')}}">Home</a>
 						<svg class="utouch-icon utouch-icon-media-play-symbol"><use xlink:href="#utouch-icon-media-play-symbol"></use></svg>
 					</li>
-					<li class="breadcrumbs-item active">
-						<span>News</span>
+					<li class="breadcrumbs-item">
+						<a class="active" href="{{route('main.article')}}">Article</a>
 						<svg class="utouch-icon utouch-icon-media-play-symbol"><use xlink:href="#utouch-icon-media-play-symbol"></use></svg>
 					</li>
 				</ul>
@@ -119,7 +119,7 @@
 
 									<span class="category">
 										In
-										<a href="16_news.html">{{$post->category->name}}</a>
+										<a href="#">{{$post->category->name}}</a>
 									</span>
 
 									<span class="post__comments">

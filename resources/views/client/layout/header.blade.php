@@ -30,7 +30,7 @@
 
         <div class="site-logo">
         <a href="" class="full-block"></a>
-            <img src="{{asset('frontAsset/img/logo.png')}}" alt="Utouch">
+            {{-- <img src="{{asset('frontAsset/img/logo.png')}}" alt="Utouch"> --}}
             <div class="logo-text">
                 <div class="logo-title">Grooth</div>
                 <div class="logo-sub-title">app startup</div>
@@ -57,9 +57,9 @@
                 <li class="menu-item-has-children">
                 <a href="{{route('main.home')}}">Home</a>
                 </li>
-                <li class="menu-item-has-children">
+                {{-- <li class="menu-item-has-children">
                    <a href="{{route('main.portfolio')}}">Portfolio</a>
-               </li>
+               </li> --}}
                <li class="">
                 <a href="#">Product</a>
                 <ul class="sub-menu">

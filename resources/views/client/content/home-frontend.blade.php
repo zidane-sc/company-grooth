@@ -10,13 +10,21 @@
     .slider-thumb{
         padding: 0 !important;
     }
-
+    .mt20{
+        margin-top: 20px
+    }
+    .mb50{
+        margin-bottom: 50px;
+    }
+    .pt50{
+        padding-top: 50px;
+    }
 </style>
 
 {{-- Banner --}}
-<div class="crumina-module crumina-module-slider container-full-width">
+<div class="crumina-module crumina-module-slider container-full-width" >
     <div class="swiper-container main-slider navigation-center-both-sides" data-effect="fade">
-        <div class="swiper-wrapper">
+        <div class="swiper-wrapper" >
             @foreach ($data['banners'] as $banner)
                 <div class="swiper-slide  main-slider-bg-light">
                     <div class="slider-thumb img-banner">
@@ -48,63 +56,28 @@
     </div>
 </div>
 {{-- End Banner --}}
-<section class="bg-primary">
+
+<section class=" bg-primary-color" style="padding-bottom: 20px;">
     <div class="container">
         <div class="row">
-            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mt20">
                 <div class="course-details">
                     <div class="tab-content">
                         <div class="row">
-                            <div class="col-lg-8 col-md-12 col-sm-12 col-xs-12">
+                            <div class="col-lg-8 col-md-12 col-sm-12 col-xs-12" style="text-align:justify;">
                                 <h3>Description</h3>
-                                <p class="weight-bold">Quam nunc putamus parum claram, anteposuerit litterarum formas
-                                    humanitatis per seacula quarta decima et quinta decima modo typi, qui nunc.</p>
+
                                 <p>Mirum est notare quam littera gothica, quam nunc putamus parum claram,
                                     anteposuerit litterarum formas humanitatis per seacula quarta decima et quinta decima.
                                     Eodem modo typi, qui nunc nobis videntur parum clari, fiant sollemnes in futurum.
                                     Claritas est etiam processus dynamicus, qui sequitur mutationem consuetudium lectorum
                                     eleifend option congue nihil imperdiet.
                                 </p>
-
-                                <h5>Sertification</h5>
-                                <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod
-                                    tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam,
-                                    quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo
-                                    consequat. Claritas est etiam processus dynamicus, qui sequitur mutationem consuetudium lectorum.
-                                </p>
-
-                                <h5>Learning Outcomes</h5>
-                                <p>Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis
-                                    nisl ut aliquip ex ea commodo consequat est etiam processus dynamicus.
-                                </p>
-                                <ul class="list list--standard">
-                                    <li>
-                                        <svg class="utouch-icon utouch-icon-correct-symbol-1"><use xlink:href="#utouch-icon-correct-symbol-1"></use></svg>
-                                        <a href="#">Over 37 lectures and 55.5 hours of content!</a>
-                                    </li>
-                                    <li>
-                                        <svg class="utouch-icon utouch-icon-correct-symbol-1"><use xlink:href="#utouch-icon-correct-symbol-1"></use></svg>
-                                        <a href="#">Testing Training Included.</a>
-                                    </li>
-                                    <li>
-                                        <svg class="utouch-icon utouch-icon-correct-symbol-1"><use xlink:href="#utouch-icon-correct-symbol-1"></use></svg>
-                                        <a href="#">Learn Software Testing and Automation basics from a professional trainer
-                                            from your own desk.</a>
-                                    </li>
-                                    <li>
-                                        <svg class="utouch-icon utouch-icon-correct-symbol-1"><use xlink:href="#utouch-icon-correct-symbol-1"></use></svg>
-                                        <a href="#">Practical learning experience with live project work and examples.</a>
-                                    </li>
-                                    <li>
-                                        <svg class="utouch-icon utouch-icon-correct-symbol-1"><use xlink:href="#utouch-icon-correct-symbol-1"></use></svg>
-                                        <a href="#">Testing Training Included.</a>
-                                    </li>
-                                </ul>
                             </div>
                             <div class="col-lg-4 col-md-12 col-sm-12 col-xs-12">
-                                <div class="course-features">
-                                    <h5 class="title">Course Features</h5>
-
+                                <div class="course-features" style="text-align: center;">
+                                    <h5 class="title" style="text-align: center;">Course Features</h5>
+                                    <img width="100%" style=" box-shadow: 0px 0px 153px -54px rgba(0,0,0,0.75); border-radius:5px; border: 0.5px solid black;" src="{{asset('frontAsset/img/screenshot13.jpg')}}" alt="">
                                 </div>
                             </div>
                         </div>
@@ -117,11 +90,11 @@
 
 <!-- ... end Course Details -->
 <!--Information -->
-<div class="bg-22 background-cover pt100">
+<div class="bg-blue-lighteen ">
     <section class="crumina-module crumina-module-slider slider-tabs-vertical-line ">
         <div class="bg-22 background-cover ">
             <section class="crumina-module crumina-module-slider slider-tabs-vertical-line ">
-                <div class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 col-sm-12 col-sm-offset-0 col-xs-12" style="margin-top: -50px;">
+                <div class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 col-sm-12 col-sm-offset-0 col-xs-12 mb50" >
                     <div class=" align-center">
                         <h1 class="slider-content-title with-decoration" style="margin-top: 50px; color:black; font-size:40px;"  >
                             INTERNET <span class="c-primary">OF</span> THINGS
@@ -146,12 +119,11 @@
                                     <img src="{{asset('storage/'.$data['section_one']->image)}}" alt="iphone">
                                 </div>
                             </div>
-                            <div class="col-lg-6 col-lg-offset-1 col-md-7 col-md-offset-0 col-sm-12 col-xs-12">
+                            <div class="col-lg-7 col-lg-offset-0 col-md-7 col-md-offset-0 col-sm-12 col-xs-12">
                                 <div class="crumina-module crumina-heading custom-color c-black">
                                     <h6 class="heading-sup-title"></h6>
                                     <h2 class="heading-title">{{$data['section_one']->title}}</h2>
-                                    <div class="heading-text">{{$data['section_one']->description}}
-                                    </div>
+                                   <p>{{$data['section_one']->description}}</p>
                                     <p></p>
                                     <a href="{{$data['section_one']->link}}" target="_blank" class="btn btn-border btn--with-shadow c-black">
                                         Visit
@@ -169,18 +141,18 @@
     <hr style="width: 70%; height:6px; opacity:0.8; background-color:black; border-radius:5px;">
 
 <!-- Info Boxes -->
-<section class="medium-padding100">
+<section class="pt50">
     <div class="container">
         <div class="row">
             @foreach ($data['section_two'] as $section)
-            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 mb30">
                 <div class="crumina-module crumina-info-box info-box--standard-hover">
 
                     <div class="info-box-image">
                         <img class="utouch-icon" src="{{asset('storage/'.$section->image)}}" >
                     </div>
                     <div class="info-box-content " style="margin-top: -2rem;">
-                        <a href="#" class="h5 info-box-title">{{$section->title}}</a>
+                        <h5 class=" info-box">{{$section->title}}</h5>
                         <p class="info-box-text" style=" text-align:justify;">{{$section->description}}
                         </p>
                     </div>
@@ -189,12 +161,12 @@
             @endforeach
         </div>
     </div>
-</section>
+</section></div>
 <!-- ... end Info Boxes -->
 
 {{-- Visi & Misi --}}
-<section class="bg-blue-lighteen medium-padding120">
-    <div class="container bg-11 background-cover">
+<section class="bg-3 medium-padding120">
+    <div class="container ">
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 col-sm-12 col-sm-offset-0 col-xs-12" style="margin-top: -50px;">
                 <div class=" align-center">
@@ -216,10 +188,8 @@
 
             <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 " style="margin-top: 50px">
                 <h6 class="heading-sup-title c-black" style="font-size: 28px; text-align:center;">Visi</h6>
-                <div class="heading-text c-black"><p style="font-size: 18px;">{{$data['visi_misi']->visi}} </p></div>
-                <div class="video-thumb">
-                    <img  style="margin-top: 0px; width:500px; height:300px;" src="{{asset('storage/'.$data['visi_misi']->image)}}" alt="visi">
-                </div>
+                <p>{{$data['visi_misi']->visi}} </p>
+
             </div>
             <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 " style="margin-top: 50px">
                 <div class="crumina-module crumina-heading">
@@ -228,7 +198,7 @@
                         @foreach ($data['misi'] as $misi)
                              @if ($misi != null)
                                 <li>
-                                    <span href="#" style="font-size: 19px;">{{$misi}}</span>
+                                    <span href="#" style="font-size: 17px;">{{$misi}}</span>
                                 </li>
                              @endif
                         @endforeach

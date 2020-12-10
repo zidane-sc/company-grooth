@@ -30,7 +30,7 @@
 	</section>
 
     <section class="medium-padding100 bg-blue-lighteen">
-        <div class="container" style="border:1px solid black; padding:20px; border-radius:5px;">
+        <div class="container" style=" background-color:white; padding:20px; border-radius:5px;">
 
                 <div class="col-lg-7 col-md-12 col-sm-12 col-xs-12">
                     <h4 style="margin-bottom: 25px">Dark background text selection</h4>
@@ -55,12 +55,10 @@
 		<div class="container">
             <div class="row mb30 mt20">
                 <div class="col-lg-12 col-md-12 col-sm-12 mb30"style="margin-top: -60px; text-align:center; ">
-                    <h3 class="spr">Feature Of KLHK MALINDO</h3>
+                    <h3 class="spr">Advantage Of KLHK MALINDO</h3>
                     <span>Our Smart Factory Solution has the capability to connect multiple sensors to monitor the status, automate, collect data, analyze it and derive useful insights to improve manufacturing operations.</span>
                 </div>
-            </div>
 
-			<div class="row">
 				<div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
 					<div class="crumina-module crumina-info-box info-box--classic" data-mh="box--classic">
 						<div class="info-box-image">
@@ -204,11 +202,11 @@
 	<section class="medium-padding120">
 		<div class="container">
 			<div class="row">
-				<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 
-					<div class="crumina-module crumina-heading">
+					<div class="crumina-module crumina-heading align-center">
 						<h2 class="heading-title">
-							<span class="c-primary">Utouch</span> the app, challenge your teammates</h2>
+							<span class="c-primary">FAQ</span> the app, challenge your teammates</h2>
 					</div>
 
 					<div id="accordion" class="crumina-module crumina-accordion">
@@ -298,11 +296,6 @@
 							</div>
 						</div>
 					</div>
-
-				</div>
-
-				<div class="col-lg-5 col-lg-offset-1 col-md-6 col-sm-12 col-xs-12">
-					<img src="{{asset('frontAsset/img/product-img2.png')}}" alt="image">
 				</div>
 			</div>
 		</div>

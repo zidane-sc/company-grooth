@@ -1,4 +1,4 @@
-@extends('client.layout.app')
+{{-- @extends('client.layout.app')
 
  @section('content')
  <div class="content-wrapper">
@@ -290,4 +290,4 @@
 
 
 </div>
-@endsection
+@endsection --}}

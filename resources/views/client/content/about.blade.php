@@ -1,55 +1,9 @@
 @extends('client.layout.app')
 @section('content')
 <style>
-
-
-    .card__one {
-        transition: transform .5s;
-        text-align: center;
-        margin-top:40px;
+    .mt100{
+        margin-top: 100px;
     }
-
-    .card__one::after {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        transition: opacity 2s cubic-bezier(.165, .84, .44, 1);
-        box-shadow: 0 8px 17px 0 rgba(0, 0, 0, .2), 0 6px 20px 0 rgba(0, 0, 0, .15);
-        content: '';
-        opacity: 0;
-        z-index: -1;
-    }
-
-    .card__one:hover,
-    .card__one:focus {
-        transform: scale3d(1.036, 1.036, 1);
-        -webkit-box-shadow: -1px -1px 16px -4px rgba(0, 0, 0, 0.53);
-        -moz-box-shadow: -1px -1px 16px -4px rgba(0, 0, 0, 0.53);
-        box-shadow: -1px -1px 16px -4px rgba(0, 0, 0, 0.53);
-
-
-    }
-
-
-    .member-content {
-    margin-bottom: 30px;
-    }
-
-    .member-content .member-text {
-        padding: 20px;
-    }
-
-    .member-content .member-text .member-name {
-        margin-bottom: 7px;
-    }
-
-    .member-content .member-text .member-tag {
-
-        font-weight: 500;
-    }
-
 </style>
 
 <!-- Zoom Image -->
@@ -57,16 +11,13 @@
 <section class="bg-primary-color medium-padding100">
     <div class="container">
         <div class="row">
-            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                <div class="crumina-module crumina-zoom-image">
-                    <img src="{{asset('frontAsset/img/smartphone.png')}}" alt="smartphone">
-                    <div class="zoom-round-img">
-                        <img src="{{asset('frontAsset/img/zoom-img.png')}}" alt="zoom">
-                    </div>
+            <div class="col-lg-5 col-md-6 col-sm-12 col-xs-12">
+                <div class="crumina-module crumina-zoom-image mt100">
+                    <img src="{{asset('frontAsset/img/blog3.jpg')}}" alt="smartphone">
                 </div>
             </div>
 
-            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+            <div class="col-lg-7 col-md-6 col-sm-12 col-xs-12">
                 <div class="crumina-module crumina-heading custom-color c-white">
                     <h2 class="heading-title">Simple and Powerful Dashboard</h2>
                     <div class="heading-text">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.
@@ -233,9 +184,70 @@
 </section>
 
 <!-- ... end Info Boxes -->
+
+<!-- Slider with round slides -->
+
+<section class="crumina-module crumina-module-slider medium-padding100 bg-primary-color">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
+                <div class="swiper-container" data-effect="fade">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide">
+                            <img src="{{asset('frontAsset/img/slides3.png')}}" alt="image" data-swiper-parallax="-200">
+                        </div>
+                        <div class="swiper-slide">
+                            <img src="{{asset('frontAsset/img/slides3.png')}}" alt="image" data-swiper-parallax="-200">
+                        </div>
+                        <div class="swiper-slide">
+                            <img src="{{asset('frontAsset/img/slides3.png')}}" alt="image" data-swiper-parallax="-200">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 col-lg-offset-1 col-md-7 col-sm-12 col-xs-12">
+                <div class="slider-slides slider-slides--round-text">
+                    <div class="slides-item">
+                        <div class="number">1</div>
+                        <div class="crumina-module crumina-heading custom-color c-white">
+                            <h5 class="heading-title">Online Shopping</h5>
+                            <div class="heading-text">Investigationes demonstraverunt lectores legere me lius quod nunc
+                                putamus parum claram, anteposuerit litterarum.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="slides-item slide-active">
+                        <div class="number">2</div>
+                        <div class="crumina-module crumina-heading custom-color c-white">
+                            <h5 class="heading-title">Multimedia Archives</h5>
+                            <div class="heading-text">Eodem modo typi, qui nunc nobis videntur parum clari, fiant
+                                sollemnes in futurum qui sequitur mutationem.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="slides-item">
+                        <div class="number">3</div>
+                        <div class="crumina-module crumina-heading custom-color c-white">
+                            <h5 class="heading-title">Quick Settings</h5>
+                            <div class="heading-text">Duis autem vel eum iriure dolor in hendrerit in vulputate velit
+                                esse molestie consequat, vel illum dolore.
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ... end Slider with round slides -->
+
 <!-- Accordion -->
 
-<section class="medium-padding120">
+<section class="medium-padding120 bg-blue-lighteen ">
     <div class="container">
         <div class="row">
             <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
