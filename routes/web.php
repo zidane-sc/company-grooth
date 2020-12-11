@@ -42,6 +42,12 @@ Route::group(['prefix' => 'admin'], function () {
         Route::patch('banners/{id}', 'BannerController@update')->name('banners.update');
         Route::delete('banners/{id}', 'BannerController@destroy')->name('banners.destroy');
 
+        // -- Section One
+        Route::get('description', 'DescriptionHomeController@index')->name('description.index');
+        Route::post('description', 'DescriptionHomeController@store')->name('description.store');
+        Route::patch('description/{id}', 'DescriptionHomeController@update')->name('description.update');
+
+
         // -- Visi & Misi
         Route::get('visi-misi', 'VisiMisiController@index')->name('visi-misi.index');
         Route::post('visi-misi', 'VisiMisiController@store')->name('visi-misi.store');
