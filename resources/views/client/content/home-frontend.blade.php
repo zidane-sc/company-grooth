@@ -87,7 +87,7 @@
                                     <h5 class="title" style="text-align: center;">Course Features</h5>
                                     <img width="100%"
                                         style=" box-shadow: 0px 0px 153px -54px rgba(0,0,0,0.75); border-radius:5px; border: 0.5px solid black;"
-                                        src="{{asset('frontAsset/img/screenshot13.jpg')}}" alt="">
+                                        src="{{asset('storage/'.$data['section_one']->image)}}" alt="">
                                 </div>
                             </div>
                         </div>
