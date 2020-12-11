@@ -58,6 +58,7 @@
 {{-- End Banner --}}
 
 {{-- deskripsi --}}
+@isset($data['description'])
 <section class=" bg-primary-color" style="padding-bottom: 20px;">
     <div class="container">
         <div class="row">
@@ -68,17 +69,12 @@
                             <div class="col-lg-8 col-md-12 col-sm-12 col-xs-12" style="text-align:justify;">
                                 <h3>Description</h3>
 
-                                <p>Mirum est notare quam littera gothica, quam nunc putamus parum claram,
-                                    anteposuerit litterarum formas humanitatis per seacula quarta decima et quinta decima.
-                                    Eodem modo typi, qui nunc nobis videntur parum clari, fiant sollemnes in futurum.
-                                    Claritas est etiam processus dynamicus, qui sequitur mutationem consuetudium lectorum
-                                    eleifend option congue nihil imperdiet.
-                                </p>
+                                <p>{{ $data['description']->description }}</p>
                             </div>
                             <div class="col-lg-4 col-md-12 col-sm-12 col-xs-12">
                                 <div class="course-features" style="text-align: center;">
                                     <h5 class="title" style="text-align: center;">Course Features</h5>
-                                    <img width="100%" style=" box-shadow: 0px 0px 153px -54px rgba(0,0,0,0.75); border-radius:5px; border: 0.5px solid black;" src="{{asset('frontAsset/img/screenshot13.jpg')}}" alt="">
+                                    <img width="100%" style=" box-shadow: 0px 0px 153px -54px rgba(0,0,0,0.75); border-radius:5px; border: 0.5px solid black;" src="{{ asset('storage/'.$data['description']->image) }}" alt="">
                                 </div>
                             </div>
                         </div>
@@ -88,11 +84,13 @@
         </div>
     </div>
 </section>
+@endisset
 
 <!-- ... End Deskripsi -->
 
 <!--Information -->
 <div class="bg-blue-lighteen ">
+    @isset($data['section_one'])
     <section class="crumina-module crumina-module-slider slider-tabs-vertical-line ">
         <div class="bg-22 background-cover ">
             <section class="crumina-module crumina-module-slider slider-tabs-vertical-line ">
@@ -138,9 +136,12 @@
             </section>
         </div>
     </section>
-<!-- ... End information -->
 
     <hr style="width: 70%; height:6px; opacity:0.8; background-color:black; border-radius:5px;">
+
+    @endisset
+<!-- ... End information -->
+
 
 <!-- Info Boxes -->
 <section class="pt50">
@@ -163,7 +164,9 @@
             @endforeach
         </div>
     </div>
-</section></div>
+</section>
+
+</div>
 <!-- ... end Info Boxes -->
 
 {{-- Visi & Misi --}}
@@ -190,21 +193,23 @@
 
             <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 " style="margin-top: 50px">
                 <h6 class="heading-sup-title c-black" style="font-size: 28px; text-align:center;">Visi</h6>
-                <p>{{$data['visi_misi']->visi}} </p>
+                <p>{{isset($data['visi_misi']->visi)}} </p>
 
             </div>
             <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 " style="margin-top: 50px">
                 <div class="crumina-module crumina-heading">
                     <h6 class="heading-sup-title  c-black"style="font-size: 28px; text-align:center;">Misi</h6>
+                    @isset($data['misi'])
                     <ul class="" style="list-style-type:decimal; padding-left:30px;">
                         @foreach ($data['misi'] as $misi)
-                             @if ($misi != null)
-                                <li>
-                                    <span href="#" style="font-size: 17px;">{{$misi}}</span>
-                                </li>
-                             @endif
+                        @if ($misi != null)
+                        <li>
+                            <span href="#" style="font-size: 17px;">{{$misi}}</span>
+                        </li>
+                        @endif
                         @endforeach
                     </ul>
+                    @endisset
                 </div>
             </div>
         </div>

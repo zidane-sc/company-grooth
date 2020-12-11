@@ -5,8 +5,8 @@ namespace App\Http\Controllers;
 use App\Banner;
 use App\Category;
 use App\Contact;
+use App\DescriptionHome;
 use App\Mail\ContactEmail;
-use App\Portfolio;
 use App\Post;
 use App\Product;
 use App\SectionOne;
@@ -28,7 +28,10 @@ class MainController extends Controller
     {
         $data['banners'] = Banner::all();
         $data['visi_misi'] = VisiMisi::first();
-        $data['misi'] = json_decode($data['visi_misi']->misi);
+        $data['description'] = DescriptionHome::first();
+        if ($data['visi_misi'] != null) {
+            $data['misi'] = json_decode($data['visi_misi']->misi);
+        }
 
         $data['section_one'] = SectionOne::first();
         $data['section_two'] = SectionTwo::all();
