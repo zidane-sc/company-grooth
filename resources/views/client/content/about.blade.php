@@ -355,11 +355,11 @@
     </div>
 </section>
 
-<!-- ... end FAQ -->
+<!-- ... end Accordion -->
 
 
 
-<!-- Team -->
+<!-- Teammembers -->
 
 <section class="crumina-module crumina-module-slider medium-padding100 bg-3 background-cover">
     <div class="container">
@@ -436,7 +436,7 @@
 
 </section>
 
-<!-- end Team -->
+<!-- ... end Teammembers -->
 
 
 

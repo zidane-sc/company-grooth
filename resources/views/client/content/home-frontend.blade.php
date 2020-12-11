@@ -1,36 +1,41 @@
 @extends('client.layout.app')
 
- @section('content')
+@section('content')
 <style>
-    .img-banner{
+    .img-banner {
         height: 680px;
         background-size: cover;
 
     }
-    .slider-thumb{
+
+    .slider-thumb {
         padding: 0 !important;
     }
-    .mt20{
+
+    .mt20 {
         margin-top: 20px
     }
-    .mb50{
+
+    .mb50 {
         margin-bottom: 50px;
     }
-    .pt50{
+
+    .pt50 {
         padding-top: 50px;
     }
+
 </style>
 
 {{-- Banner --}}
-<div class="crumina-module crumina-module-slider container-full-width" >
+<div class="crumina-module crumina-module-slider container-full-width">
     <div class="swiper-container main-slider navigation-center-both-sides" data-effect="fade">
-        <div class="swiper-wrapper" >
+        <div class="swiper-wrapper">
             @foreach ($data['banners'] as $banner)
-                <div class="swiper-slide  main-slider-bg-light">
-                    <div class="slider-thumb img-banner">
-                        <img width="1400px;" src="{{ asset('storage/'.$banner->image) }}" alt="slider">
-                    </div>
+            <div class="swiper-slide  main-slider-bg-light">
+                <div class="slider-thumb img-banner">
+                    <img width="1400px;" src="{{ asset('storage/'.$banner->image) }}" alt="slider">
                 </div>
+            </div>
             @endforeach
         </div>
 
@@ -69,16 +74,20 @@
                                 <h3>Description</h3>
 
                                 <p>Mirum est notare quam littera gothica, quam nunc putamus parum claram,
-                                    anteposuerit litterarum formas humanitatis per seacula quarta decima et quinta decima.
+                                    anteposuerit litterarum formas humanitatis per seacula quarta decima et quinta
+                                    decima.
                                     Eodem modo typi, qui nunc nobis videntur parum clari, fiant sollemnes in futurum.
-                                    Claritas est etiam processus dynamicus, qui sequitur mutationem consuetudium lectorum
+                                    Claritas est etiam processus dynamicus, qui sequitur mutationem consuetudium
+                                    lectorum
                                     eleifend option congue nihil imperdiet.
                                 </p>
                             </div>
                             <div class="col-lg-4 col-md-12 col-sm-12 col-xs-12">
                                 <div class="course-features" style="text-align: center;">
                                     <h5 class="title" style="text-align: center;">Course Features</h5>
-                                    <img width="100%" style=" box-shadow: 0px 0px 153px -54px rgba(0,0,0,0.75); border-radius:5px; border: 0.5px solid black;" src="{{asset('frontAsset/img/screenshot13.jpg')}}" alt="">
+                                    <img width="100%"
+                                        style=" box-shadow: 0px 0px 153px -54px rgba(0,0,0,0.75); border-radius:5px; border: 0.5px solid black;"
+                                        src="{{asset('frontAsset/img/screenshot13.jpg')}}" alt="">
                                 </div>
                             </div>
                         </div>
@@ -96,9 +105,10 @@
     <section class="crumina-module crumina-module-slider slider-tabs-vertical-line ">
         <div class="bg-22 background-cover ">
             <section class="crumina-module crumina-module-slider slider-tabs-vertical-line ">
-                <div class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 col-sm-12 col-sm-offset-0 col-xs-12 mb50" >
+                <div class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 col-sm-12 col-sm-offset-0 col-xs-12 mb50">
                     <div class=" align-center">
-                        <h1 class="slider-content-title with-decoration" style="margin-top: 50px; color:black; font-size:40px;"  >
+                        <h1 class="slider-content-title with-decoration"
+                            style="margin-top: 50px; color:black; font-size:40px;">
                             INTERNET <span class="c-primary">OF</span> THINGS
 
                             <svg class="first-decoration utouch-icon utouch-icon-arrow-left">
@@ -113,7 +123,7 @@
                         <span>Why choose us?</span>
                     </div>
                 </div><br>
-                <div style="padding: 20px; margin-top:20px;" >
+                <div style="padding: 20px; margin-top:20px;">
                     <div class="container">
                         <div class="row">
                             <div class="col-lg-5 col-lg-offset-0 col-md-5 col-md-offset-0 col-sm-12 col-xs-12">
@@ -125,9 +135,10 @@
                                 <div class="crumina-module crumina-heading custom-color c-black">
                                     <h6 class="heading-sup-title"></h6>
                                     <h2 class="heading-title">{{$data['section_one']->title}}</h2>
-                                   <p>{{$data['section_one']->description}}</p>
+                                    <p>{{$data['section_one']->description}}</p>
                                     <p></p>
-                                    <a href="{{$data['section_one']->link}}" target="_blank" class="btn btn-border btn--with-shadow c-black">
+                                    <a href="{{$data['section_one']->link}}" target="_blank"
+                                        class="btn btn-border btn--with-shadow c-black">
                                         Visit
                                     </a>
                                 </div>
@@ -138,41 +149,44 @@
             </section>
         </div>
     </section>
-<!-- ... End information -->
+    <!-- ... End information -->
 
     <hr style="width: 70%; height:6px; opacity:0.8; background-color:black; border-radius:5px;">
 
-<!-- Info Boxes -->
-<section class="pt50">
-    <div class="container">
-        <div class="row">
-            @foreach ($data['section_two'] as $section)
-            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 mb30">
-                <div class="crumina-module crumina-info-box info-box--standard-hover">
+    <!-- Info Boxes -->
+    <section class="pt50">
+        <div class="container">
+            <div class="row">
+                @foreach ($data['section_two'] as $section)
+                <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 mb30">
+                    <div class="crumina-module crumina-info-box info-box--standard-hover">
 
-                    <div class="info-box-image">
-                        <img class="utouch-icon" src="{{asset('storage/'.$section->image)}}" >
-                    </div>
-                    <div class="info-box-content " style="margin-top: -2rem;">
-                        <h5 class=" info-box">{{$section->title}}</h5>
-                        <p class="info-box-text" style=" text-align:justify;">{{$section->description}}
-                        </p>
+                        <div class="info-box-image">
+                            <img class="utouch-icon" src="{{asset('storage/'.$section->image)}}">
+                        </div>
+                        <div class="info-box-content " style="margin-top: -2rem;">
+                            <h5 class=" info-box">{{$section->title}}</h5>
+                            <p class="info-box-text" style=" text-align:justify;">{{$section->description}}
+                            </p>
+                        </div>
                     </div>
                 </div>
+                @endforeach
             </div>
-            @endforeach
         </div>
-    </div>
-</section></div>
+    </section>
+</div>
 <!-- ... end Info Boxes -->
 
 {{-- Visi & Misi --}}
 <section class="bg-3 medium-padding120">
     <div class="container ">
         <div class="row">
-            <div class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 col-sm-12 col-sm-offset-0 col-xs-12" style="margin-top: -50px;">
+            <div class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 col-sm-12 col-sm-offset-0 col-xs-12"
+                style="margin-top: -50px;">
                 <div class=" align-center">
-                    <h1 class="slider-content-title with-decoration" style="margin-top: 50px; color:black; font-size:40px;"  >
+                    <h1 class="slider-content-title with-decoration"
+                        style="margin-top: 50px; color:black; font-size:40px;">
                         VISI <span class="c-primary">&</span> MISI
 
                         <svg class="first-decoration utouch-icon utouch-icon-arrow-left">
@@ -195,14 +209,14 @@
             </div>
             <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 " style="margin-top: 50px">
                 <div class="crumina-module crumina-heading">
-                    <h6 class="heading-sup-title  c-black"style="font-size: 28px; text-align:center;">Misi</h6>
+                    <h6 class="heading-sup-title  c-black" style="font-size: 28px; text-align:center;">Misi</h6>
                     <ul class="" style="list-style-type:decimal; padding-left:30px;">
                         @foreach ($data['misi'] as $misi)
-                             @if ($misi != null)
-                                <li>
-                                    <span href="#" style="font-size: 17px;">{{$misi}}</span>
-                                </li>
-                             @endif
+                        @if ($misi != null)
+                        <li>
+                            <span href="#" style="font-size: 17px;">{{$misi}}</span>
+                        </li>
+                        @endif
                         @endforeach
                     </ul>
                 </div>

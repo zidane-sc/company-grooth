@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Banner;
 use App\Category;
 use App\Contact;
+use App\Mail\ContactEmail;
 use App\Portfolio;
 use App\Post;
 use App\Product;
@@ -14,6 +15,7 @@ use App\Tag;
 use App\Team;
 use App\VisiMisi;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class MainController extends Controller
 {
@@ -34,10 +36,10 @@ class MainController extends Controller
         return view('client.content.home-frontend', ['data' => $data]);
     }
 
-    public function portfolio()
+    public function solution($product)
     {
-        $data['portfolios'] = Portfolio::all();
-        return view('client.content.portfolio', ['data' => $data]);
+        $data['product'] = Product::where('name', $product)->with(['advantages', 'features', 'faqs'])->first();
+        return view('client.iot-solution.product', ['data' => $data]);
     }
 
     public function about()
@@ -106,9 +108,15 @@ class MainController extends Controller
         return view('client.content.contact-us', ['data' => $data]);
     }
 
-    public function solution($product)
+    public function email(Request $request)
     {
-        $data['product'] = Product::where('name', $product)->with(['advantages', 'features', 'faqs'])->first();
-        return view('client.iot-solution.product', ['data' => $data]);
+        $data['name'] = $request->get('name');
+        $data['phone'] = $request->get('phone');
+        $data['email'] = $request->get('email');
+        $data['message'] = $request->get('message');
+
+        Mail::to("sahriramadan000@gmail.com")->send(new ContactEmail($data));
+
+        return redirect()->route('main.contact');
     }
 }
