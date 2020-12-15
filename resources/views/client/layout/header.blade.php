@@ -61,7 +61,7 @@
                    <a href="{{route('main.portfolio')}}">Portfolio</a>
                </li> --}}
                <li class="">
-                <a href="#">Product</a>
+                <a href="#">Iot Solution</a>
                 <ul class="sub-menu">
                     @foreach ($products as $product)
 

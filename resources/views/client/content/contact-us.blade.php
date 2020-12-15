@@ -116,8 +116,11 @@
                             </svg>
                         </div>
                     </div>
-
-                    <input type="submit" value="test">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 Heading Style-center">
+                        <button type="submit" class="btn btn--primary full-width btn--with-shadow"  style="margin-bottom: 20px; margin-left: 0;">
+                            Send
+                        </button>
+                    </div>
                 </div>
             </form>
         </div>

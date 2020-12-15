@@ -11,23 +11,53 @@
 		.w100{
 			width: 100%;
 		}
+    .img-banner{
+
+        background-size: cover;
+
+    }
+    .pt40{
+        padding-top: 40px;;
+    }
+    .stunning-bg-1{
+        background-image: url("{{asset('storage/'.$data['product']->banner)}}") !important;
+    }
+
+
  </style>
-	<section class="background-contain bg-17 pt100">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 col-sm-12 col-sm-offset-0">
-					<div class="crumina-module crumina-heading align-center">
-						<h6 class="heading-sup-title">Our Solutions</h6>
-						<h2 class="heading-title">
-							<span class="c-primary">{{ $data['product']->name }}</span> app startup is an Inspiring leadership innovation</h2>
-					</div>
-				</div>
-				<div class="col-lg-12 col-sm-12">
-					<img src="{{asset('storage/'.$data['product']->banner)}}" alt="image" class="display-block">
-				</div>
-			</div>
-		</div>
-	</section>
+ <!-- Stunning Header -->
+
+ <div class="crumina-stunning-header stunning-header--content-center stunning-header--min360 stunning-bg-1 stunning-header--bg-photo align-center custom-color c-white" style="height: 700px;">
+    <div class="container">
+        <div class="stunning-header-content">
+            <h6 class="category-link color-icon">Our Product</h6>
+            <h2 class="stunning-header-title">{{ $data['product']->name }}</span> app startup is an Inspiring leadership innovation</h2>
+
+            <div class="breadcrumbs-wrap inline-items">
+                <a href="#" class="btn btn--primary btn--round">
+                    <svg class="utouch-icon utouch-icon-home-icon-silhouette"><use xlink:href="#utouch-icon-home-icon-silhouette"></use></svg>
+                </a>
+
+                <ul class="breadcrumbs breadcrumbs--bordered">
+                    <li class="breadcrumbs-item">
+                        <a href="{{route('main.home')}}" class="breadcrumbs-custom">Home</a>
+                        <svg class="utouch-icon utouch-icon-media-play-symbol breadcrumbs-custom"><use xlink:href="#utouch-icon-media-play-symbol"></use></svg>
+                    </li>
+                    <li class="breadcrumbs-item active">
+                        <a href="#" class="breadcrumbs-custom">Iot Solution</a>
+                        <svg class="utouch-icon utouch-icon-media-play-symbol breadcrumbs-custom"><use xlink:href="#utouch-icon-media-play-symbol"></use></svg>
+                    </li>
+                    <li class="breadcrumbs-item active">
+                        <a href="#" class="breadcrumbs-custom">{{ $data['product']->name }}</a>
+                        <svg class="utouch-icon utouch-icon-media-play-symbol breadcrumbs-custom"><use xlink:href="#utouch-icon-media-play-symbol"></use></svg>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="overlay-standard overlay--dark"></div>
+</div>
 
     <section class="medium-padding100 bg-blue-lighteen">
         <div class="container" style=" background-color:white; padding:20px; border-radius:5px;">
@@ -167,7 +197,7 @@
 						</div>
 					</div>
 					@endforeach
-					
+
 				</div>
 			</div>
 		</div>

@@ -11,14 +11,15 @@ class ContactEmail extends Mailable
 {
     use Queueable, SerializesModels;
 
+    public $data;
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($data)
     {
-        //
+        $this->data = $data;
     }
 
     /**
@@ -28,14 +29,6 @@ class ContactEmail extends Mailable
      */
     public function build()
     {
-        return $this->from('grooth@grooth.com')
-                    ->view('client.email.index')
-                    ->with(
-                        [
-                            'nama' => 'test',
-                            'phone' => '3920402',
-                            'email' => 'test',
-                            'detail' => 'tesawdadawdadawdawdat',
-                        ]);
+        return $this->subject('Get In Touch')->view('client.email.index');
     }
 }

@@ -28,11 +28,16 @@ class MainController extends Controller
     {
         $data['banners'] = Banner::all();
         $data['visi_misi'] = VisiMisi::first();
+<<<<<<< HEAD
+        $data['misi'] = json_decode($data['visi_misi']->misi);
+        $data['description'] = DescriptionHome::first();
+=======
         $data['description'] = DescriptionHome::first();
         if ($data['visi_misi'] != null) {
             $data['misi'] = json_decode($data['visi_misi']->misi);
         }
 
+>>>>>>> d309d095c4dae8170a442084a8608152045c9d38
         $data['section_one'] = SectionOne::first();
         $data['section_two'] = SectionTwo::all();
 
@@ -111,16 +116,15 @@ class MainController extends Controller
         return view('client.content.contact-us', ['data' => $data]);
     }
 
-    public function email(Request $request){
+    public function email(Request $request)
+    {
         $data['name'] = $request->get('name');
         $data['phone'] = $request->get('phone');
         $data['email'] = $request->get('email');
         $data['message'] = $request->get('message');
 
+        Mail::to("sahriramadan000@gmail.com")->send(new ContactEmail($data));
 
-		Mail::to("sahriramadan000@gmail.com")->send(new ContactEmail(), ['data' => $data]);
- 
-		return "Email telah dikirim";
- 
-	}
+        return redirect()->route('main.contact');
+    }
 }
