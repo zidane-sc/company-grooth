@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use File;
 use App\Product;
 use App\ProductFeature;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
 
 class ProductFeatureController extends Controller
 {
@@ -43,9 +43,13 @@ class ProductFeatureController extends Controller
 
         $feature = new ProductFeature();
 
-        $image = $request->file('image');
-        $name  = $image->storeAs('images/product-features', time() . '-feature.' . $image->extension());
-        $feature->image = $name;
+        if ($request->hasFile('image')) {            
+            $image = $request->file('image');
+            $name = time() . '.' . $image->getClientOriginalExtension();
+            $destinationPath = public_path('backend/images/product-features/');
+            $image->move($destinationPath, $name);
+            $feature->image = "backend/images/product-features/".$name;
+        }
 
         $feature->name = $validateData['name'];
         $feature->description = json_encode($validateData['description']);
@@ -75,12 +79,21 @@ class ProductFeatureController extends Controller
 
         $feature = ProductFeature::findOrFail($id);
 
-        if ($request->file('image')) {
-            Storage::delete($feature->image);
+        if ($request->hasFile('image')) {
 
+            // Delete Img
+            if ($feature->image) {
+                $image_path = public_path($feature->image); // Value is not URL but directory file path
+                if (File::exists($image_path)) {
+                    File::delete($image_path);
+                }
+            }
+            
             $image = $request->file('image');
-            $name  = $image->storeAs('images/product-features', time() . '-feature.' . $image->extension());
-            $feature->image = $name;
+            $name = time() . '.' . $image->getClientOriginalExtension();
+            $destinationPath = public_path('backend/images/product-features/');
+            $image->move($destinationPath, $name);
+            $feature->image = "backend/images/product-features/".$name;
         }
 
         $feature->name = $validateData['name'];
@@ -95,7 +108,12 @@ class ProductFeatureController extends Controller
     public function destroy($id)
     {
         $feature = ProductFeature::findOrFail($id);
-        Storage::delete($feature->image);
+        if ($feature->image) {
+            $image_path = public_path($feature->image); // Value is not URL but directory file path
+            if (File::exists($image_path)) {
+                File::delete($image_path);
+            }
+        }
         $feature->delete();
 
         return redirect()->route('features.index')->with(['delete' => 'Feature deleted successfully!']);

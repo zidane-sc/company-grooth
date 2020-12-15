@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use File;
 use App\DescriptionHome;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
 
 class DescriptionHomeController extends Controller
 {
@@ -28,10 +28,12 @@ class DescriptionHomeController extends Controller
 
         $description = new DescriptionHome();
 
-        if($request->file('image')) {
+        if ($request->hasFile('image')) {
             $image = $request->file('image');
-            $name  = $image->storeAs('images/description', time().'-description.'.$image->extension());
-            $description->image = $name;
+            $name = time() . '.' . $image->getClientOriginalExtension();
+            $destinationPath = public_path('backend/images/description/');
+            $image->move($destinationPath, $name);
+            $description->image = "backend/images/description/".$name;
         }
 
         $description->description = $validateData['description'];
@@ -50,12 +52,21 @@ class DescriptionHomeController extends Controller
 
         $description = DescriptionHome::findOrFail($id);
 
-        if($request->file('image')) {
-            Storage::delete($description->image);
+        if ($request->hasFile('image')) {
 
+            // Delete Img
+            if ($description->image) {
+                $image_path = public_path($description->image); // Value is not URL but directory file path
+                if (File::exists($image_path)) {
+                    File::delete($image_path);
+                }
+            }
+            
             $image = $request->file('image');
-            $name  = $image->storeAs('images/description', time().'-description.'.$image->extension());
-            $description->image = $name;
+            $name = time() . '.' . $image->getClientOriginalExtension();
+            $destinationPath = public_path('backend/images/description/');
+            $image->move($destinationPath, $name);
+            $description->image = "backend/images/description/".$name;
         }
 
         $description->description = $validateData['description'];

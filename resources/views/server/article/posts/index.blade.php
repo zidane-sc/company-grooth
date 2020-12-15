@@ -60,7 +60,7 @@
                 <tr>
                     <td>{{ $loop->iteration }}</td>
                     <td>
-                        <img src="{{ asset('storage/'.$post->thumbnail) }}" height="80px">
+                        <img src="{{ asset($post->thumbnail) }}" height="80px">
                     </td>
                     <td>{{ $post->title }}</td>
                     <td>{{ $post->slug }}</td>

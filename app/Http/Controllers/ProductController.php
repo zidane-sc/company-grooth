@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use File;
 use App\Product;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
 
 class ProductController extends Controller
 {
@@ -36,13 +36,21 @@ class ProductController extends Controller
 
         $product = new Product();
 
-        $image = $request->file('banner');
-        $name  = $image->storeAs('images/products', time() . '-product.' . $image->extension());
-        $product->banner = $name;
+        if ($request->hasFile('banner')) {
+            $image = $request->file('banner');
+            $name = time() . '.' . $image->getClientOriginalExtension();
+            $destinationPath = public_path('backend/images/products/');
+            $image->move($destinationPath, $name);
+            $product->banner = "backend/images/products/".$name;
+        }
 
-        $image = $request->file('image_description');
-        $name  = $image->storeAs('images/products-description', time() . '-product-description.' . $image->extension());
-        $product->image_description = $name;
+        if ($request->hasFile('image_description')) {
+            $image = $request->file('image_description');
+            $name = time() . '.' . $image->getClientOriginalExtension();
+            $destinationPath = public_path('backend/images/products-description/');
+            $image->move($destinationPath, $name);
+            $product->image_description = "backend/images/products-description/".$name;
+        }
 
         $product->name = $validateData['name'];
         $product->description = $validateData['description'];
@@ -71,20 +79,38 @@ class ProductController extends Controller
 
         $product = Product::findOrFail($id);
 
-        if ($request->file('banner')) {
-            Storage::delete($product->banner);
+        if ($request->hasFile('banner')) {
 
+            // Delete Img
+            if ($product->banner) {
+                $image_path = public_path($product->banner); // Value is not URL but directory file path
+                if (File::exists($image_path)) {
+                    File::delete($image_path);
+                }
+            }
+            
             $image = $request->file('banner');
-            $name  = $image->storeAs('images/products', time() . '-product.' . $image->extension());
-            $product->banner = $name;
+            $name = time() . '.' . $image->getClientOriginalExtension();
+            $destinationPath = public_path('backend/images/products/');
+            $image->move($destinationPath, $name);
+            $product->banner = "backend/images/products/".$name;
         }
 
-        if ($request->file('image_description')) {
-            Storage::delete($product->image_description);
+        if ($request->hasFile('image_description')) {
 
+            // Delete Img
+            if ($product->image_description) {
+                $image_path = public_path($product->image_description); // Value is not URL but directory file path
+                if (File::exists($image_path)) {
+                    File::delete($image_path);
+                }
+            }
+            
             $image = $request->file('image_description');
-            $name  = $image->storeAs('images/products-description', time() . '-product-description.' . $image->extension());
-            $product->image_description = $name;
+            $name = time() . '.' . $image->getClientOriginalExtension();
+            $destinationPath = public_path('backend/images/products-description/');
+            $image->move($destinationPath, $name);
+            $product->image_description = "backend/images/products-description/".$name;
         }
 
         $product->name = $validateData['name'];
@@ -99,8 +125,18 @@ class ProductController extends Controller
     public function destroy($id)
     {
         $product = Product::findOrFail($id);
-        Storage::delete($product->banner);
-        Storage::delete($product->image_description);
+        if ($product->banner) {
+            $image_path = public_path($product->banner); // Value is not URL but directory file path
+            if (File::exists($image_path)) {
+                File::delete($image_path);
+            }
+        }
+        if ($product->image_description) {
+            $image_path = public_path($product->image_description); // Value is not URL but directory file path
+            if (File::exists($image_path)) {
+                File::delete($image_path);
+            }
+        }
         $product->delete();
 
         return redirect()->route('products.index')->with(['delete' => 'Product deleted successfully!']);

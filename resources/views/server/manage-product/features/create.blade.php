@@ -81,7 +81,7 @@
                                 <div class="form-group increment">
                                     <label for="description">Description</label>
                                     <div class="input-group">
-                                        <input type="text" class="form-control @error('description') is-invalid @enderror" id="description" name="description[]" value="{{ old('description')[0] }}"  placeholder="Enter Description">
+                                        <input type="text" class="form-control @error('description') is-invalid @enderror" id="description" name="description[]" value="{{ old('description')[0] ?? "" }}"  placeholder="Enter Description">
                                         <div class="input-group-append">
                                             <button type="button"  class="btn btn-outline-primary btn-add">
                                                 <i class="fas fa-plus-square"></i>

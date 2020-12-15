@@ -48,27 +48,7 @@
                             @csrf
 
                             <div class="card-body">
-                                <div class="form-group">
-                                    <label for="image">Image :</label>
-                                    @if($data['visi'] && $data['visi']->image)
-                                        <img src="{{asset('storage/'.$data['visi']->image)}}" width="170px" class="image img"/>
-                                    @else
-                                        <span class="block">No Image</span>
-                                    @endif
-
-                                    <div class="input-group">
-                                        <div class="custom-file">
-                                            <input type="file" class="custom-file-input @error('image') is-invalid @enderror" id="image" name="image">
-                                            <label class="custom-file-label @error('image') is-invalid @enderror" for="image">Change Image</label>
-                                        </div>
-                                    </div>
-                                    @error('image')
-                                        <span class="small text-danger" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
-                                </div>
-
+                                
                                 <div class="form-group">
                                     <label for="visi">Visi</label>
                                     <textarea class="form-control @error('visi') is-invalid @enderror"  id="visi" name="visi" rows="3">{{ old('visi') ?? ($data['visi']->visi ?? "") }}</textarea>

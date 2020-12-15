@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use File;
 use App\SectionTwo;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
 
 class SectionTwoController extends Controller
 {
@@ -34,10 +34,12 @@ class SectionTwoController extends Controller
 
         $section_two = new SectionTwo();
 
-        if($request->file('image')) {
+        if ($request->hasFile('image')) {
             $image = $request->file('image');
-            $name  = $image->storeAs('images/section-two', time().'-section-two.'.$image->extension());
-            $section_two->image = $name;
+            $name = time() . '.' . $image->getClientOriginalExtension();
+            $destinationPath = public_path('backend/images/section-two/');
+            $image->move($destinationPath, $name);
+            $section_two->image = "backend/images/section-two/".$name;
         }
 
         $section_two->title = $validateData['title'];
@@ -64,12 +66,20 @@ class SectionTwoController extends Controller
 
         $section_two = SectionTwo::findOrFail($id);
 
-        if($request->file('image')) {
-            Storage::delete($section_two->image);
-
+        if ($request->hasFile('image')) {
+            // Delete Img
+            if ($section_two->image) {
+                $image_path = public_path($section_two->image); // Value is not URL but directory file path
+                if (File::exists($image_path)) {
+                    File::delete($image_path);
+                }
+            }
+            
             $image = $request->file('image');
-            $name  = $image->storeAs('images/section-two', time().'-section-two.'.$image->extension());
-            $section_two->image = $name;
+            $name = time() . '.' . $image->getClientOriginalExtension();
+            $destinationPath = public_path('backend/images/section-two/');
+            $image->move($destinationPath, $name);
+            $section_two->image = "backend/images/section-two/".$name;
         }
 
         $section_two->title = $validateData['title'];
@@ -83,7 +93,12 @@ class SectionTwoController extends Controller
     public function destroy($id)
     {
         $section_two = SectionTwo::findOrFail($id);
-        Storage::delete($section_two->image);
+        if ($section_two->image) {
+            $image_path = public_path($section_two->image); // Value is not URL but directory file path
+            if (File::exists($image_path)) {
+                File::delete($image_path);
+            }
+        }
         $section_two->delete();
 
         return redirect()->route('section-two.index')->with(['delete' => 'Portfolio added successfully!']);

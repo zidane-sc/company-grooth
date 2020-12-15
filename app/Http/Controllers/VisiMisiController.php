@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\VisiMisi;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
 
 class VisiMisiController extends Controller
 {
@@ -27,18 +26,11 @@ class VisiMisiController extends Controller
     {
 
         $validateData = $request->validate([
-            'image' => 'image|mimes:jpeg,png,jpg,gif,svg',
             'visi' => 'required',
             'misi' => 'required',
         ]);
 
         $visi_misi = new VisiMisi();
-
-        if($request->file('image')) {
-            $image = $request->file('image');
-            $name  = $image->storeAs('images/visi-misi', time().$image->extension());
-            $visi_misi->image = $name;
-        }
 
         $visi_misi->visi = $validateData['visi'];
         $visi_misi->misi = json_encode($validateData['misi']);
@@ -51,20 +43,11 @@ class VisiMisiController extends Controller
     public function update(Request $request, $id)
     {
         $validateData = $request->validate([
-            'image' => 'image|mimes:jpeg,png,jpg,gif,svg',
             'visi' => 'required',
             'misi' => 'required',
         ]);
 
         $visi_misi = VisiMisi::findOrFail($id);
-
-        if($request->file('image')) {
-            Storage::delete($visi_misi->image);
-
-            $image = $request->file('image');
-            $name  = $image->storeAs('images/visi-misi', time().$image->extension());
-            $visi_misi->image = $name;
-        }
 
         $visi_misi->visi = $validateData['visi'];
         $visi_misi->misi = $validateData['misi'];

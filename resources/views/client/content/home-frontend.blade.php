@@ -74,29 +74,12 @@
                             <div class="col-lg-8 col-md-12 col-sm-12 col-xs-12" style="text-align:justify;">
                                 <h3>Description</h3>
 
-<<<<<<< HEAD
-                                <p>Mirum est notare quam littera gothica, quam nunc putamus parum claram,
-                                    anteposuerit litterarum formas humanitatis per seacula quarta decima et quinta
-                                    decima.
-                                    Eodem modo typi, qui nunc nobis videntur parum clari, fiant sollemnes in futurum.
-                                    Claritas est etiam processus dynamicus, qui sequitur mutationem consuetudium
-                                    lectorum
-                                    eleifend option congue nihil imperdiet.
-                                </p>
-=======
                                 <p>{{ $data['description']->description }}</p>
->>>>>>> d309d095c4dae8170a442084a8608152045c9d38
                             </div>
                             <div class="col-lg-4 col-md-12 col-sm-12 col-xs-12">
                                 <div class="course-features" style="text-align: center;">
                                     <h5 class="title" style="text-align: center;">Course Features</h5>
-<<<<<<< HEAD
-                                    <img width="100%"
-                                        style=" box-shadow: 0px 0px 153px -54px rgba(0,0,0,0.75); border-radius:5px; border: 0.5px solid black;"
-                                        src="{{asset('storage/'.$data['section_one']->image)}}" alt="">
-=======
                                     <img width="100%" style=" box-shadow: 0px 0px 153px -54px rgba(0,0,0,0.75); border-radius:5px; border: 0.5px solid black;" src="{{ asset('storage/'.$data['description']->image) }}" alt="">
->>>>>>> d309d095c4dae8170a442084a8608152045c9d38
                                 </div>
                             </div>
                         </div>
@@ -160,19 +143,6 @@
             </section>
         </div>
     </section>
-<<<<<<< HEAD
-    <!-- ... End information -->
-
-    <hr style="width: 70%; height:6px; opacity:0.8; background-color:black; border-radius:5px;">
-
-    <!-- Info Boxes -->
-    <section class="pt50">
-        <div class="container">
-            <div class="row">
-                @foreach ($data['section_two'] as $section)
-                <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 mb30">
-                    <div class="crumina-module crumina-info-box info-box--standard-hover">
-=======
 
     <hr style="width: 70%; height:6px; opacity:0.8; background-color:black; border-radius:5px;">
 
@@ -187,7 +157,6 @@
             @foreach ($data['section_two'] as $section)
             <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 mb30">
                 <div class="crumina-module crumina-info-box info-box--standard-hover">
->>>>>>> d309d095c4dae8170a442084a8608152045c9d38
 
                         <div class="info-box-image">
                             <img class="utouch-icon" src="{{asset('storage/'.$section->image)}}">
@@ -202,13 +171,9 @@
                 @endforeach
             </div>
         </div>
-<<<<<<< HEAD
-    </section>
-=======
     </div>
 </section>
 
->>>>>>> d309d095c4dae8170a442084a8608152045c9d38
 </div>
 <!-- ... end Info Boxes -->
 
@@ -243,12 +208,8 @@
             </div>
             <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 " style="margin-top: 50px">
                 <div class="crumina-module crumina-heading">
-<<<<<<< HEAD
-                    <h6 class="heading-sup-title  c-black" style="font-size: 28px; text-align:center;">Misi</h6>
-=======
                     <h6 class="heading-sup-title  c-black"style="font-size: 28px; text-align:center;">Misi</h6>
                     @isset($data['misi'])
->>>>>>> d309d095c4dae8170a442084a8608152045c9d38
                     <ul class="" style="list-style-type:decimal; padding-left:30px;">
                         @foreach ($data['misi'] as $misi)
                         @if ($misi != null)

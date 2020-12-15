@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use File;
 use App\Category;
 use App\Post;
 use App\Tag;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Storage;
 
 class PostController extends Controller
 {
@@ -50,10 +50,12 @@ class PostController extends Controller
         $post->content = $validateData['content'];
         $post->status = $validateData['status'];
 
-        if($request->file('thumbnail')) {
+        if ($request->hasFile('thumbnail')) {            
             $image = $request->file('thumbnail');
-            $name  = $image->storeAs('images/thumbnails', time().$image->extension());
-            $post->thumbnail = $name;
+            $name = time() . '.' . $image->getClientOriginalExtension();
+            $destinationPath = public_path('backend/images/thumbnails/');
+            $image->move($destinationPath, $name);
+            $post->thumbnail = "backend/images/thumbnails/".$name;
         }
 
         $post->save();
@@ -110,12 +112,21 @@ class PostController extends Controller
         $post->content = $validateData['content'];
         $post->status = $validateData['status'];
 
-        if($request->file('thumbnail')) {
-            Storage::delete($post->thumbnail);
+        if ($request->hasFile('thumbnail')) {
 
+            // Delete Img
+            if ($post->thumbnail) {
+                $image_path = public_path($post->thumbnail); // Value is not URL but directory file path
+                if (File::exists($image_path)) {
+                    File::delete($image_path);
+                }
+            }
+            
             $image = $request->file('thumbnail');
-            $name  = $image->storeAs('images/thumbnails', time().$image->extension());
-            $post->thumbnail = $name;
+            $name = time() . '.' . $image->getClientOriginalExtension();
+            $destinationPath = public_path('backend/images/thumbnails/');
+            $image->move($destinationPath, $name);
+            $post->thumbnail = "backend/images/thumbnails/".$name;
         }
 
         $post->save();
@@ -127,6 +138,12 @@ class PostController extends Controller
     public function destroy($id)
     {
         $post = Post::findOrFail($id);
+        if ($post->thumbnail) {
+            $image_path = public_path($post->thumbnail); // Value is not URL but directory file path
+            if (File::exists($image_path)) {
+                File::delete($image_path);
+            }
+        }
         $post->tags()->detach();
         $post->delete();
 

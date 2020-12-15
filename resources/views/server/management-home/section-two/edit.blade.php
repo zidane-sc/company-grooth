@@ -49,7 +49,7 @@
                                     <label for="image">Image</label>
 
                                     @if($section_two->image)
-                                        <img src="{{asset('storage/'.$section_two->image)}}" width="170px" class="image img"/>
+                                        <img src="{{asset($section_two->image)}}" width="170px" class="image img"/>
                                     @else
                                         <span class="block">No Image</span>
                                     @endif

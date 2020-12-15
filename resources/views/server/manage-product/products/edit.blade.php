@@ -54,7 +54,7 @@
                                 <div class="form-group">
                                     <label for="banner">Banner</label>
 
-                                    <img src="{{asset('storage/'.$product->banner)}}" width="100px" class="image img"/>
+                                    <img src="{{asset($product->banner)}}" width="100px" class="image img"/>
 
                                     <div class="input-group">
                                         <div class="custom-file">
@@ -93,7 +93,7 @@
                                 <div class="form-group">
                                     <label for="image_description">Image Desciption</label>
 
-                                    <img src="{{asset('storage/'.$product->image_description)}}" width="100px" class="image img"/>
+                                    <img src="{{asset($product->image_description)}}" width="100px" class="image img"/>
 
                                     <div class="input-group">
                                         <div class="custom-file">

@@ -60,12 +60,12 @@
                 <tr>
                     <td>{{ $loop->iteration }}</td>
                     <td>
-                        <img src="{{ asset('storage/'.$product->banner) }}" height="80px">
+                        <img src="{{ asset($product->banner) }}" height="80px">
                     </td>
                     <td>{{ $product->name }}</td>
                     <td>{{ Str::limit($product->description, 110, '...') }}</td>
                     <td>
-                        <img src="{{ asset('storage/'.$product->image_description) }}" height="80px">
+                        <img src="{{ asset($product->image_description) }}" height="80px">
                     </td>
                     <td>{{ $product->link }}</td>
                     <td>

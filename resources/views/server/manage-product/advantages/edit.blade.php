@@ -68,7 +68,7 @@
                                 <div class="form-group">
                                     <label for="image">Image</label>
 
-                                    <img src="{{asset('storage/'.$data['advantage']->image)}}" width="100px" class="image img"/>
+                                    <img src="{{asset($data['advantage']->image)}}" width="100px" class="image img"/>
 
                                     <div class="input-group">
                                         <div class="custom-file">

@@ -51,7 +51,7 @@
                                 <div class="form-group">
                                     <label for="image">Image :</label>
                                     @if($data && $data->image)
-                                        <img src="{{asset('storage/'.$data->image)}}" width="170px" class="image img"/>
+                                        <img src="{{asset($data->image)}}" width="170px" class="image img"/>
                                     @else
                                         <span class="block">No Image</span>
                                     @endif

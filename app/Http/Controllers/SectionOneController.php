@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use File;
 use App\SectionOne;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
 
 class SectionOneController extends Controller
 {
@@ -29,11 +29,13 @@ class SectionOneController extends Controller
         ]);
 
         $section_one = new SectionOne();
-
-        if($request->file('image')) {
+        
+        if ($request->hasFile('image')) {
             $image = $request->file('image');
-            $name  = $image->storeAs('images/section-one', time().'-section-one.'.$image->extension());
-            $section_one->image = $name;
+            $name = time() . '.' . $image->getClientOriginalExtension();
+            $destinationPath = public_path('backend/images/section-one/');
+            $image->move($destinationPath, $name);
+            $section_one->image = "backend/images/section-one/".$name;
         }
 
         $section_one->title = $validateData['title'];
@@ -56,12 +58,21 @@ class SectionOneController extends Controller
 
         $section_one = SectionOne::findOrFail($id);
 
-        if($request->file('image')) {
-            Storage::delete($section_one->image);
+        if ($request->hasFile('image')) {
 
+            // Delete Img
+            if ($section_one->image) {
+                $image_path = public_path($section_one->image); // Value is not URL but directory file path
+                if (File::exists($image_path)) {
+                    File::delete($image_path);
+                }
+            }
+            
             $image = $request->file('image');
-            $name  = $image->storeAs('images/section-one', time().'-section-one.'.$image->extension());
-            $section_one->image = $name;
+            $name = time() . '.' . $image->getClientOriginalExtension();
+            $destinationPath = public_path('backend/images/section-one/');
+            $image->move($destinationPath, $name);
+            $section_one->image = "backend/images/section-one/".$name;
         }
 
         $section_one->title = $validateData['title'];

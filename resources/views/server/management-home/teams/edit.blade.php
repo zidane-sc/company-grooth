@@ -54,7 +54,7 @@
                                 <div class="form-group">
                                     <label for="image">Image</label>
 
-                                    <img src="{{asset('storage/'.$team->image)}}" width="100px" class="image img"/>
+                                    <img src="{{asset($team->image)}}" width="100px" class="image img"/>
 
                                     <div class="input-group">
                                         <div class="custom-file">

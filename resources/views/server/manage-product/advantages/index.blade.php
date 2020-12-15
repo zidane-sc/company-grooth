@@ -77,7 +77,7 @@
                 <tr>
                     <td>{{ $loop->iteration }}</td>
                     <td>
-                        <img src="{{ asset('storage/'.$advantage->image) }}" height="80px">
+                        <img src="{{ asset($advantage->image) }}" height="80px">
                     </td>
                     <td>{{ $advantage->name }}</td>
                     <td>{{ Str::limit($advantage->description, 100, '...') }}</ul>

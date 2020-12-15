@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use File;
 use App\Banner;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
 
 class BannerController extends Controller
 {
@@ -32,10 +32,14 @@ class BannerController extends Controller
 
         $banner = new Banner();
 
-        $image = $validateData['image'];
-        $name  = $image->storeAs('images/banners', time().'.'.$image->extension());
+        if ($request->hasFile('image')) {
+            $image = $request->file('image');
+            $name = time() . '.' . $image->getClientOriginalExtension();
+            $destinationPath = public_path('backend/images/banners/');
+            $image->move($destinationPath, $name);
+            $banner->image = "backend/images/banners/".$name;
+        }
 
-        $banner->image = $name;
         $banner->description = $request->get('description') ?? "-";
 
         $banner->save();
@@ -57,12 +61,21 @@ class BannerController extends Controller
 
         $banner = Banner::findOrFail($id);
 
-        if($request->file('image')){
-            Storage::delete($banner->image);
+        if ($request->hasFile('image')) {
 
+            // Delete Img
+            if ($banner->image) {
+                $image_path = public_path($banner->image); // Value is not URL but directory file path
+                if (File::exists($image_path)) {
+                    File::delete($image_path);
+                }
+            }
+            
             $image = $request->file('image');
-            $name  = $image->storeAs('images/banners', time().'.'.$image->extension());
-            $banner->image = $name;
+            $name = time() . '.' . $image->getClientOriginalExtension();
+            $destinationPath = public_path('backend/images/banners/');
+            $image->move($destinationPath, $name);
+            $banner->image = "backend/images/banners/".$name;
         }
 
         $banner->description = $request->get('description');
@@ -75,7 +88,12 @@ class BannerController extends Controller
     public function destroy($id)
     {
         $banner = Banner::findOrFail($id);
-        Storage::delete($banner->image);
+        if ($banner->image) {
+            $image_path = public_path($banner->image); // Value is not URL but directory file path
+            if (File::exists($image_path)) {
+                File::delete($image_path);
+            }
+        }
         $banner->delete();
 
         return redirect()->route('banners.index')->with(['delete' => 'Banner deleted successfully!']);

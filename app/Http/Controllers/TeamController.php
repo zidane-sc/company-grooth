@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use File;
 use App\Team;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
 
 class TeamController extends Controller
 {
@@ -35,9 +35,13 @@ class TeamController extends Controller
 
         $team = new Team();
 
-        $image = $request->file('image');
-        $name  = $image->storeAs('images/teams', time() . '-team.' . $image->extension());
-        $team->image = $name;
+        if ($request->hasFile('image')) {            
+            $image = $request->file('image');
+            $name = time() . '.' . $image->getClientOriginalExtension();
+            $destinationPath = public_path('backend/images/teams/');
+            $image->move($destinationPath, $name);
+            $team->image = "backend/images/teams/".$name;
+        }
 
         $team->name = $validateData['name'];
         $team->position = $validateData['position'];
@@ -65,12 +69,21 @@ class TeamController extends Controller
 
         $team = Team::findOrFail($id);
 
-        if ($request->file('image')) {
-            Storage::delete($team->image);
+        if ($request->hasFile('image')) {
 
+            // Delete Img
+            if ($team->image) {
+                $image_path = public_path($team->image); // Value is not URL but directory file path
+                if (File::exists($image_path)) {
+                    File::delete($image_path);
+                }
+            }
+            
             $image = $request->file('image');
-            $name  = $image->storeAs('images/teams', time() . '-team.' . $image->extension());
-            $team->image = $name;
+            $name = time() . '.' . $image->getClientOriginalExtension();
+            $destinationPath = public_path('backend/images/teams/');
+            $image->move($destinationPath, $name);
+            $team->image = "backend/images/teams/".$name;
         }
 
         $team->name = $validateData['name'];
@@ -85,7 +98,12 @@ class TeamController extends Controller
     public function destroy($id)
     {
         $team = Team::findOrFail($id);
-        Storage::delete($team->image);
+        if ($team->image) {
+            $image_path = public_path($team->image); // Value is not URL but directory file path
+            if (File::exists($image_path)) {
+                File::delete($image_path);
+            }
+        }
         $team->delete();
 
         return redirect()->route('teams.index')->with(['delete' => 'Team deleted successfully!']);

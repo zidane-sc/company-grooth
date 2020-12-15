@@ -124,7 +124,7 @@
                                         <div class="form-group">
                                             <label for="thumbnail">Thumbnail</label>
 
-                                            <img src="{{asset('storage/'.$data['post']->thumbnail)}}" height="160px" class="image img"/>
+                                            <img src="{{asset($data['post']->thumbnail)}}" height="160px" class="image img"/>
 
                                             <div class="input-group mt-4">
                                                 <div class="custom-file">

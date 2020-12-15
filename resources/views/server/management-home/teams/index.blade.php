@@ -59,7 +59,7 @@
                 <tr>
                     <td>{{ $loop->iteration }}</td>
                     <td>
-                        <img src="{{ asset('storage/'.$team->image) }}" height="80px">
+                        <img src="{{ asset($team->image) }}" height="80px">
                     </td>
                     <td>{{ $team->name }}</td>
                     <td>{{ $team->position }}</td>

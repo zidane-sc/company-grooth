@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use File;
 use App\Advantage;
 use App\Product;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
 
 class AdvantageController extends Controller
 {
@@ -43,9 +43,13 @@ class AdvantageController extends Controller
 
         $advantage = new Advantage();
 
-        $image = $request->file('image');
-        $name  = $image->storeAs('images/product-advantages', time() . '-advantage.' . $image->extension());
-        $advantage->image = $name;
+        if ($request->hasFile('image')) {
+            $image = $request->file('image');
+            $name = time() . '.' . $image->getClientOriginalExtension();
+            $destinationPath = public_path('backend/images/product-advantages/');
+            $image->move($destinationPath, $name);
+            $advantage->image = "backend/images/product-advantages/".$name;
+        }
 
         $advantage->name = $validateData['name'];
         $advantage->description = $validateData['description'];
@@ -74,12 +78,21 @@ class AdvantageController extends Controller
 
         $advantage = Advantage::findOrFail($id);
 
-        if ($request->file('image')) {
-            Storage::delete($advantage->image);
+        if ($request->hasFile('image')) {
 
+            // Delete Img
+            if ($advantage->image) {
+                $image_path = public_path($advantage->image); // Value is not URL but directory file path
+                if (File::exists($image_path)) {
+                    File::delete($image_path);
+                }
+            }
+            
             $image = $request->file('image');
-            $name  = $image->storeAs('images/product-advantages', time() . '-advantage.' . $image->extension());
-            $advantage->image = $name;
+            $name = time() . '.' . $image->getClientOriginalExtension();
+            $destinationPath = public_path('backend/images/product-advantages/');
+            $image->move($destinationPath, $name);
+            $advantage->image = "backend/images/product-advantages/".$name;
         }
 
         $advantage->name = $validateData['name'];
@@ -94,7 +107,12 @@ class AdvantageController extends Controller
     public function destroy($id)
     {
         $advantage = Advantage::findOrFail($id);
-        Storage::delete($advantage->image);
+        if ($advantage->image) {
+            $image_path = public_path($advantage->image); // Value is not URL but directory file path
+            if (File::exists($image_path)) {
+                File::delete($image_path);
+            }
+        }
         $advantage->delete();
 
         return redirect()->route('advantages.index')->with(['delete' => 'Advantage deleted successfully!']);

@@ -77,7 +77,7 @@
                 <tr>
                     <td>{{ $loop->iteration }}</td>
                     <td>
-                        <img src="{{ asset('storage/'.$feature->image) }}" height="80px">
+                        <img src="{{ asset($feature->image) }}" height="80px">
                     </td>
                     <td>{{ $feature->name }}</td>
                     <td>
