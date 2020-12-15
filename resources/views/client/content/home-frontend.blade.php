@@ -35,7 +35,7 @@
         </div>
 
         <!--Prev next buttons-->
-        <div class="btn-prev with-bg">
+        <div class="btn-prev with-bg uto">
             <svg class="utouch-icon icon-hover utouch-icon-arrow-left-1">
                 <use xlink:href="#utouch-icon-arrow-left-1"></use>
             </svg>
