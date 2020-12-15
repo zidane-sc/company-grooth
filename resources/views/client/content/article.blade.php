@@ -48,8 +48,8 @@
 
 					<article class="hentry post post-standard has-post-thumbnail sticky">
 						<div class="post-thumb">
-							<img src="{{asset('storage/'.$post->thumbnail)}}" alt="post">
-							<a href="{{asset('storage/'.$post->thumbnail)}}" class="link-image js-zoom-image">
+							<img src="{{asset($post->thumbnail)}}" alt="post">
+							<a href="{{asset($post->thumbnail)}}" class="link-image js-zoom-image">
 								<svg class="utouch-icon utouch-icon-zoom-increasing-button-outline"><use xlink:href="#utouch-icon-zoom-increasing-button-outline"></use></svg>
 							</a>
                         <a href="{{route('main.detail', $post->slug)}}" class="link-post">
@@ -221,7 +221,7 @@
 								<article itemscope="" itemtype="http://schema.org/NewsArticle" class="latest-news-item">
 									<header>
 										<div class="post-thumb">
-											<img src="{{asset('storage/'.$latest->thumbnail)}}">
+											<img src="{{asset($latest->thumbnail)}}">
 										</div>
 										<div class="post-additional-info">
 											<h6 class="post__title entry-title" itemprop="name">
@@ -247,7 +247,7 @@
 								<article itemscope="" itemtype="http://schema.org/NewsArticle" class="latest-news-item">
 									<header>
 										<div class="post-thumb">
-											<img src="{{asset('storage/'.$popular->thumbnail)}}">
+											<img src="{{asset($popular->thumbnail)}}">
 										</div>
 										<div class="post-additional-info">
 											<h6 class="post__title entry-title" itemprop="name">
