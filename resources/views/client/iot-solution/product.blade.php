@@ -20,7 +20,7 @@
         padding-top: 40px;;
     }
     .stunning-bg-1{
-        background-image: url("{{asset('storage/'.$data['product']->banner)}}") !important;
+        background-image: url("{{asset($data['product']->banner)}}") !important;
     }
 
 
@@ -67,7 +67,7 @@
                     <p style=" text-align: justify;">{{ $data['product']->description }}</p>
                 </div>
 					<div class="col-lg-5 col-md-12 col-sm-12 col-xs-12" style="text-align:center;" >
-                   <img  style="width:100% !important; border: 1px solid black; border-radius: 5px; box-shadow: 0px 0px 153px -54px rgba(0,0,0,0.75);  margin-top:10px;" src="{{asset('storage/'.$data['product']->image_description)}}" alt="gambar">
+                   <img  style="width:100% !important; border: 1px solid black; border-radius: 5px; box-shadow: 0px 0px 153px -54px rgba(0,0,0,0.75);  margin-top:10px;" src="{{asset($data['product']->image_description)}}" alt="gambar">
                 </div>
             </div>
         </div>
@@ -87,7 +87,7 @@
 				<div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
 					<div class="crumina-module crumina-info-box info-box--classic" data-mh="box--classic">
 						<div class="info-box-image">
-							<img class="utouch-icon" src="{{asset('storage/'.$advantage->image)}}">
+							<img class="utouch-icon" src="{{asset($advantage->image)}}">
 						</div>
 						<div class="info-box-content">
 							<h5 class="info-box-title">{{ $advantage->name }}</h5>
@@ -132,7 +132,7 @@
                         <div class="swiper-slide">
                             <div class="col-lg-7 col-md-12 col-sm-12" data-swiper-parallax="-100">
                                 <div class="slider-faqs-thumb">
-                                    <img style="height: 20rem;" src="{{asset('storage/'.$feature->image)}}" alt="image">
+                                    <img style="height: 20rem;" src="{{asset($feature->image)}}" alt="image">
                                 </div>
                             </div>
 

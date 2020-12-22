@@ -33,7 +33,7 @@
             @foreach ($data['banners'] as $banner)
             <div class="swiper-slide  main-slider-bg-light">
                 <div class="slider-thumb img-banner">
-                    <img width="1400px;" src="{{ asset('storage/'.$banner->image) }}" alt="slider">
+                    <img width="1400px;" src="{{ asset($banner->image) }}" alt="slider">
                 </div>
             </div>
             @endforeach
@@ -79,7 +79,7 @@
                             <div class="col-lg-4 col-md-12 col-sm-12 col-xs-12">
                                 <div class="course-features" style="text-align: center;">
                                     <h5 class="title" style="text-align: center;">Course Features</h5>
-                                    <img width="100%" style=" box-shadow: 0px 0px 153px -54px rgba(0,0,0,0.75); border-radius:5px; border: 0.5px solid black;" src="{{ asset('storage/'.$data['description']->image) }}" alt="">
+                                    <img width="100%" style=" box-shadow: 0px 0px 153px -54px rgba(0,0,0,0.75); border-radius:5px; border: 0.5px solid black;" src="{{ asset($data['description']->image) }}" alt="">
                                 </div>
                             </div>
                         </div>
@@ -122,7 +122,7 @@
                         <div class="row">
                             <div class="col-lg-5 col-lg-offset-0 col-md-5 col-md-offset-0 col-sm-12 col-xs-12">
                                 <div class="m-auto">
-                                    <img src="{{asset('storage/'.$data['section_one']->image)}}" alt="iphone">
+                                    <img src="{{asset($data['section_one']->image)}}" alt="iphone">
                                 </div>
                             </div>
                             <div class="col-lg-7 col-lg-offset-0 col-md-7 col-md-offset-0 col-sm-12 col-xs-12">
@@ -159,7 +159,7 @@
                 <div class="crumina-module crumina-info-box info-box--standard-hover">
 
                         <div class="info-box-image">
-                            <img class="utouch-icon" src="{{asset('storage/'.$section->image)}}">
+                            <img class="utouch-icon" src="{{asset($section->image)}}">
                         </div>
                         <div class="info-box-content " style="margin-top: -2rem;">
                             <h5 class=" info-box">{{$section->title}}</h5>
@@ -203,7 +203,9 @@
 
             <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 " style="margin-top: 50px">
                 <h6 class="heading-sup-title c-black" style="font-size: 28px; text-align:center;">Visi</h6>
-                <p>{{isset($data['visi_misi']->visi)}} </p>
+                @isset($data['visi_misi']->visi)
+                <p>{{$data['visi_misi']->visi}} </p>
+                @endisset
 
             </div>
             <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 " style="margin-top: 50px">

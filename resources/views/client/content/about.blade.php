@@ -377,7 +377,7 @@
                             <div class="crumina-module crumina-teammembers-item teammember-item--author-in-round thumb--big">
 
                                 <div class="teammembers-thumb">
-                                    <img src="{{asset('storage/'.$team->image)}}" alt="team member">
+                                    <img src="{{asset($team->image)}}" alt="team member">
                                 </div>
 
                                 <div class="teammember-content">

@@ -91,7 +91,7 @@
 							<div class="post-additional-info">
 								<span class="category">
 									Category:
-									<a href="16_news.html">{{ $data['post']->category->name }}</a>
+									<a href="{{route('main.category', $data['post']->category->slug)}}">{{ $data['post']->category->name }}</a>
 								</span>
 								<span class="post__comments">
 									<a href="#"><span>Read By</span> {{ $data['post']->view }} <span>People</span></a>
@@ -108,14 +108,14 @@
 								@foreach ($data['post']->tags as $tag)
 								@if($loop->last)
 								<li>
-									<a href="#">
+									<a href="{{ route('main.tags', $tag->slug) }}">
 										{{ $tag->name }}
 									</a>
 									@break
 								</li>
 								@endif
 								<li>
-									<a href="#">
+									<a href="{{ route('main.tags', $tag->slug) }}">
 										{{ $tag->name }}
 									</a>
 									,
@@ -185,7 +185,7 @@
 										<article itemscope="" itemtype="http://schema.org/NewsArticle" class="latest-news-item">
 											<header>
 												<div class="post-thumb">
-													<img src="{{asset('storage/'.$latest->thumbnail)}}">
+													<img src="{{asset($latest->thumbnail)}}">
 												</div>
 												<div class="post-additional-info">
 													<h6 class="post__title entry-title" itemprop="name">
@@ -221,7 +221,7 @@
 										<article itemscope="" itemtype="http://schema.org/NewsArticle" class="latest-news-item">
 											<header>
 												<div class="post-thumb">
-													<img src="{{asset('storage/'.$popular->thumbnail)}}" alt="news">
+													<img src="{{asset($popular->thumbnail)}}" alt="news">
 												</div>
 												<div class="post-additional-info">
 													<h6 class="post__title entry-title" itemprop="name">
